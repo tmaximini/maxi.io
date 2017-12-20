@@ -41,9 +41,15 @@ const Header = () => (
   <HeaderWrapper>
     <Logo to="/">Maxi.io</Logo>
     <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/work">Work</NavLink>
-      <NavLink to="/blog">Blog</NavLink>
+      <NavLink to="/" exact>
+        Home
+      </NavLink>
+      <NavLink to="/work" exact>
+        Work
+      </NavLink>
+      <NavLink to="/blog" exact>
+        Blog
+      </NavLink>
     </nav>
   </HeaderWrapper>
 )
