@@ -9,10 +9,13 @@ const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 10px;
+  @media screen and (min-width: 375px) {
+    padding: 0 20px;
+  }
 `
 
 const Logo = styled(Link)`
