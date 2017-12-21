@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'gatsby-link'
 import P from '../Shared/P/P'
 import pic from './profile_pic.png'
 
@@ -39,6 +40,7 @@ const Skill = styled.li`
   line-height: 1;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
+  font-size: 0.9em;
   background-color: rgba(87, 199, 255, 0.1);
   border-right: 2px solid rgba(87, 199, 255, 0.3);
   border-left: 2px solid rgba(87, 199, 255, 0.3);
@@ -52,13 +54,17 @@ const Profile = () => (
     </NameWrapper>
     <Skills>
       <Skill>full stack developer</Skill>
-      <Skill>react lover</Skill>
-      <Skill>electronic music producer</Skill>
+      <Skill>software engineer</Skill>
+      <Skill>dj &amp; producer</Skill>
     </Skills>
+    <P>I am a freelancing web developer based in Berlin, Germany.</P>
+    <P>I develop interactive websites and mobile applications based on modern web technologies.</P>
     <P>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic, iure cupiditate dolor nisi
-      atque deleniti ratione pariatur est, similique voluptates delectus placeat omnis beatae? Vitae
-      vero laborum distinctio voluptatibus quisquam!
+      You can find me on <a href="http://github.com/tmaximini">Github</a>,{' '}
+      <a href="http://twitter.com/tmaximini">Twitter</a> or send me an{' '}
+      <a href="mailto:tmaximini@gmail.com" external>
+        E-Mail
+      </a>.
     </P>
   </ProfileWrapper>
 )

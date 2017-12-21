@@ -6,16 +6,17 @@ const FooterWrapper = styled.footer`
   background: #fafafa;
   color: rgba(0, 0, 0, 0.7);
   border-top: 1px solid #f2f2f2;
-  padding: 50px;
+  padding: 40px;
 `
 
 const CopyRight = styled.h3`
-  color: #050505;
+  color: rgba(0, 0, 0, 0.7);
   text-align: center;
   font-weight: 400;
+  font-size: 0.9em;
   text-rendering: optimizeLegibility;
   line-height: 1.65rem;
-  font-size: inherit;
+  margin: 0;
 `
 
 const Footer = () => (
