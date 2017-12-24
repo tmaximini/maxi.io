@@ -4,6 +4,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
 
   const postTemplate = path.resolve('src/templates/post.js')
+  const projectTemplate = path.resolve('src/templates/project.js')
 
   return graphql(`
     {
@@ -15,6 +16,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             frontmatter {
               path
               title
+              type
             }
           }
         }
@@ -28,7 +30,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     res.data.allMarkdownRemark.edges.forEach(({ node }) => {
       createPage({
         path: node.frontmatter.path,
-        component: postTemplate
+        component: node.frontmatter.type === 'project' ? projectTemplate : postTemplate
       })
     })
   })

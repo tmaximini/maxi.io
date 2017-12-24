@@ -62,9 +62,7 @@ const Profile = () => (
     <P>
       You can find me on <a href="http://github.com/tmaximini">Github</a>,{' '}
       <a href="http://twitter.com/tmaximini">Twitter</a> or send me an{' '}
-      <a href="mailto:tmaximini@gmail.com" external>
-        E-Mail
-      </a>.
+      <a href="mailto:tmaximini@gmail.com">E-Mail</a>.
     </P>
   </ProfileWrapper>
 )

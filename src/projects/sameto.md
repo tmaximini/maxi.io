@@ -1,0 +1,16 @@
+---
+path: '/projects/same-to'
+title: 'Same.to'
+published: true
+date: '2017-10-12'
+type: 'project'
+url: 'http://fleek.de'
+tech:
+  - react native
+  - redux
+  - redux-saga
+---
+
+Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.
+I helped to build a shop front-end from scratch using re-usable react components, redux for state management, redux-saga for managing async operations and side effects, jest for testing and koa / node.js for a api middleware layer that communicates with
+Zalando's internal services like payment and stock management.

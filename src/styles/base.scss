@@ -2,10 +2,17 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Droid Sans,
     Helvetica Neue, sans-serif;
   background-color: #fdfffc;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 a,
 a:hover,
 a:active {
   color: #4c5b61;
+}
+
+p,
+li {
+  line-height: 1.65;
+  font-size: 0.9em;
 }
