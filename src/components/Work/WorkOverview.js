@@ -23,13 +23,14 @@ const ProjectList = styled.ul`
   margin: 0 auto;
 `
 
-const WorkOverview = ({ projects }) => (
-  <WorkOverviewWrapper>
-    <Headline>Work</Headline>
-    <ProjectList>
-      {projects.map(p => <ProjectTeaser project={p.node} key={p.node.id} />)}
-    </ProjectList>
-  </WorkOverviewWrapper>
-)
+const WorkOverview = ({ projects, headline = 'Work' }) => {
+  console.info({ projects })
+  return (
+    <WorkOverviewWrapper>
+      <Headline>{headline}</Headline>
+      <ProjectList>{projects.map(p => <ProjectTeaser project={p} key={p.id} />)}</ProjectList>
+    </WorkOverviewWrapper>
+  )
+}
 
 export default WorkOverview

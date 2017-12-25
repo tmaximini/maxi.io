@@ -17,6 +17,15 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               path
               title
               type
+              tech
+              url
+              image {
+                childImageSharp {
+                  resize(width: 250) {
+                    src
+                  }
+                }
+              }
             }
           }
         }
@@ -27,10 +36,28 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       return Promise.reject(res.errors)
     }
 
-    res.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    const projects = res.data.allMarkdownRemark.edges.filter(
+      ({ node }) => node.frontmatter.type === 'project'
+    )
+    const posts = res.data.allMarkdownRemark.edges.filter(
+      ({ node }) => node.frontmatter.type === 'post'
+    )
+
+    projects.forEach(({ node }, index) => {
       createPage({
         path: node.frontmatter.path,
-        component: node.frontmatter.type === 'project' ? projectTemplate : postTemplate
+        component: projectTemplate,
+        context: {
+          prev: index === 0 ? projects[projects.length - 1].node : projects[index - 1].node,
+          next: index === projects.length - 1 ? projects[0].node : projects[index + 1].node
+        }
+      })
+    })
+
+    posts.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.path,
+        component: postTemplate
       })
     })
   })

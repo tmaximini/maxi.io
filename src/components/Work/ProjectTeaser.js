@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { navigateTo } from 'gatsby-link'
+import TechList from './TechList'
 
 const Project = styled.li`
   margin: 20px auto;
@@ -12,12 +13,18 @@ const Project = styled.li`
     padding-right: 20px;
     margin: 0;
   }
+  overflow: hidden;
 `
 
 const Description = styled.div`
   text-align: left;
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.65;
+  max-height: 200px;
+  overflow: hidden;
+  p {
+    text-overflow: ellipsis;
+  }
 `
 
 const Flex = styled.div`
@@ -40,10 +47,13 @@ const Img = styled.img`
 
 const ProjectTeaser = ({ project }) => (
   <Project onClick={() => navigateTo(project.frontmatter.path)}>
-    <h3>{project.frontmatter.title}</h3>
     <Flex>
       <Img src={project.frontmatter.image.childImageSharp.resize.src} />
-      <Description dangerouslySetInnerHTML={{ __html: project.html }} />
+      <div>
+        <h3>{project.frontmatter.title}</h3>
+        <Description dangerouslySetInnerHTML={{ __html: project.html }} />
+        <TechList items={project.frontmatter.tech} />
+      </div>
     </Flex>
   </Project>
 )

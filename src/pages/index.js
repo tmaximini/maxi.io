@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => {
   return (
     <div>
       <Profile />
-      <WorkOverview projects={projects} />
+      <WorkOverview projects={projects.map(p => p.node)} />
     </div>
   )
 }
