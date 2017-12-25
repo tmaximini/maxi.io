@@ -19,12 +19,16 @@ const ProjectList = styled.ul`
   padding: 0;
   margin: 0;
   list-style: none;
+  max-width: 62em;
+  margin: 0 auto;
 `
 
 const WorkOverview = ({ projects }) => (
   <WorkOverviewWrapper>
     <Headline>Work</Headline>
-    <ProjectList>{projects.map(p => <ProjectTeaser project={p} key={p.node.id} />)}</ProjectList>
+    <ProjectList>
+      {projects.map(p => <ProjectTeaser project={p.node} key={p.node.id} />)}
+    </ProjectList>
   </WorkOverviewWrapper>
 )
 

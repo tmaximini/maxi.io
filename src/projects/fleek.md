@@ -5,6 +5,7 @@ published: true
 date: '12-2017 - 03-2018'
 type: 'project'
 url: 'http://fleek.de'
+image: './fleek.png'
 tech:
   - react
   - redux

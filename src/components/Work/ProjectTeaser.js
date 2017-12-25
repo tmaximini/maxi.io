@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { navigateTo } from 'gatsby-link'
 
 const Project = styled.li`
   margin: 20px auto;
   width: 100%;
   max-width: 40em;
+  cursor: pointer;
   @media screen and (min-width: 60em) {
     width: 50%;
     padding-right: 20px;
@@ -19,11 +20,31 @@ const Description = styled.div`
   line-height: 1.65;
 `
 
+const Flex = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const Img = styled.img`
+  flex: 1;
+  flex-grow: 0;
+  max-height: 250px;
+  max-width: 250px;
+  width: 100%;
+  margin-right: 20px;
+  @media screen and (min-width: 60em) {
+    max-width: 200px;
+    max-height: 200px;
+  }
+`
+
 const ProjectTeaser = ({ project }) => (
-  <Project>
-    <h3>{project.node.frontmatter.title}</h3>
-    <Description dangerouslySetInnerHTML={{ __html: project.node.html }} />
-    <Link to={project.node.frontmatter.path}>Details</Link>
+  <Project onClick={() => navigateTo(project.frontmatter.path)}>
+    <h3>{project.frontmatter.title}</h3>
+    <Flex>
+      <Img src={project.frontmatter.image.childImageSharp.resize.src} />
+      <Description dangerouslySetInnerHTML={{ __html: project.html }} />
+    </Flex>
   </Project>
 )
 

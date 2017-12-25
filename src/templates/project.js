@@ -6,6 +6,9 @@ export default function Template({ data }) {
   const { title, tech, url, date } = project.frontmatter
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <h1>{title}</h1>
       <div dangerouslySetInnerHTML={{ __html: project.html }} />
       <ul>{tech.map(t => <li>{t}</li>)}</ul>

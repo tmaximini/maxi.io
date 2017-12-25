@@ -34,6 +34,13 @@ export const workQuery = graphql`
             date
             tech
             url
+            image {
+              childImageSharp {
+                resize(width: 250) {
+                  src
+                }
+              }
+            }
           }
         }
       }
