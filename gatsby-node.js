@@ -18,7 +18,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               title
               type
               tech
-              url
+              summary
               image {
                 childImageSharp {
                   resize(width: 250) {

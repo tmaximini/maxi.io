@@ -33,7 +33,7 @@ export const workQuery = graphql`
             title
             date
             tech
-            url
+            summary
             image {
               childImageSharp {
                 resize(width: 250) {

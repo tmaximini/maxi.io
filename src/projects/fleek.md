@@ -6,6 +6,7 @@ date: '12-2017 - 03-2018'
 type: 'project'
 url: 'http://fleek.de'
 image: './fleek.png'
+summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
 tech:
   - react
   - redux

@@ -12,8 +12,13 @@ const Project = styled.li`
     width: 50%;
     padding-right: 20px;
     margin: 0;
+    margin-bottom: 40px;
   }
   overflow: hidden;
+`
+
+const SubHeader = styled.h3`
+  margin-bottom: 10px;
 `
 
 const Description = styled.div`
@@ -24,6 +29,7 @@ const Description = styled.div`
   overflow: hidden;
   p {
     text-overflow: ellipsis;
+    margin: 10px 0;
   }
 `
 
@@ -33,15 +39,14 @@ const Flex = styled.div`
 `
 
 const Img = styled.img`
-  flex: 1;
-  flex-grow: 0;
   max-height: 250px;
   max-width: 250px;
-  width: 100%;
+  width: 100px;
+  height: 100px;
   margin-right: 20px;
-  @media screen and (min-width: 60em) {
-    max-width: 200px;
-    max-height: 200px;
+  @media screen and (min-width: 40em) {
+    width: 150px;
+    height: 150px;
   }
 `
 
@@ -49,11 +54,11 @@ const ProjectTeaser = ({ project }) => (
   <Project onClick={() => navigateTo(project.frontmatter.path)}>
     <Flex>
       <Img src={project.frontmatter.image.childImageSharp.resize.src} />
-      <div>
-        <h3>{project.frontmatter.title}</h3>
-        <Description dangerouslySetInnerHTML={{ __html: project.html }} />
+      <Description>
+        <SubHeader>{project.frontmatter.title}</SubHeader>
+        <p>{project.frontmatter.summary}</p>
         <TechList items={project.frontmatter.tech} />
-      </div>
+      </Description>
     </Flex>
   </Project>
 )

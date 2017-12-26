@@ -14,6 +14,7 @@ const HeaderWrapper = styled.header`
   justify-content: space-between;
   padding: 0 10px;
   z-index: 99;
+  border-bottom: 1px solid #f2f2f2;
   @media screen and (min-width: 375px) {
     padding: 0 20px;
   }
