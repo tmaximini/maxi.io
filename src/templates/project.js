@@ -19,7 +19,7 @@ export default function ProjectTemplate({ data, pathContext }) {
         <Link to={next.frontmatter.path}>next: {next.frontmatter.title}</Link>
       </div>
       <div dangerouslySetInnerHTML={{ __html: project.html }} />
-      <ul>{tech.map(t => <li>{t}</li>)}</ul>
+      <ul>{tech.map(t => <li key={t}>{t}</li>)}</ul>
       <WorkOverview headline="Other projects" projects={[prev, next]} />
     </div>
   )
