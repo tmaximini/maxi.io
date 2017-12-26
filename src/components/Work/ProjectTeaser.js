@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { navigateTo } from 'gatsby-link'
+import Image from 'gatsby-image'
 import TechList from './TechList'
 
 const Project = styled.li`
@@ -36,13 +37,14 @@ const Description = styled.div`
 const Flex = styled.div`
   display: flex;
   flex-direction: row;
+  position: relative;
 `
 
-const Img = styled.img`
+const ImgContainer = styled.div`
   max-height: 250px;
   max-width: 250px;
-  width: 100px;
-  height: 100px;
+  min-width: 200px;
+  min-height: 200px;
   margin-right: 20px;
   @media screen and (min-width: 40em) {
     width: 150px;
@@ -53,12 +55,14 @@ const Img = styled.img`
 const ProjectTeaser = ({ project }) => (
   <Project onClick={() => navigateTo(project.frontmatter.path)}>
     <Flex>
-      <Img src={project.frontmatter.image.childImageSharp.resize.src} />
-      <Description>
-        <SubHeader>{project.frontmatter.title}</SubHeader>
-        <p>{project.frontmatter.summary}</p>
+      <ImgContainer>
+        <Image sizes={project.frontmatter.image.childImageSharp.sizes} />
+      </ImgContainer>
+      <div>
+        <h3>{project.frontmatter.title}</h3>
+        <Description dangerouslySetInnerHTML={{ __html: project.html }} />
         <TechList items={project.frontmatter.tech} />
-      </Description>
+      </div>
     </Flex>
   </Project>
 )

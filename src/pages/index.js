@@ -36,8 +36,8 @@ export const workQuery = graphql`
             summary
             image {
               childImageSharp {
-                resize(width: 250) {
-                  src
+                sizes(maxWidth: 600) {
+                  ...GatsbyImageSharpSizes
                 }
               }
             }

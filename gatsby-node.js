@@ -21,8 +21,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               summary
               image {
                 childImageSharp {
-                  resize(width: 250) {
+                  sizes(maxWidth: 600) {
                     src
+                    srcSet
+                    sizes
+                    base64
                   }
                 }
               }
