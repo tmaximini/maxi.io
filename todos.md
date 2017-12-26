@@ -1,6 +1,11 @@
+* Images / responsive!!
+* Texte / Bilder / Content
+* Design Changes!!
+* Icons Github etc
+
 * SEO tags
-* Images / responsive
+
+// phase 2 (Blog)
+
 * Blog design
 * code highlighting
-* Texte
-* Design Changes!!

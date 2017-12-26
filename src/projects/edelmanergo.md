@@ -8,10 +8,9 @@ url: 'http://fleek.de'
 image: './fleek.png'
 summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
 tech:
-  - react
-  - redux
-  - node.js
-  - koa
+  - html5
+  - javascript
+  - gsap
 ---
 
 Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.

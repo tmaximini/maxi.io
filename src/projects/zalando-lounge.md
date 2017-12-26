@@ -12,6 +12,7 @@ tech:
   - redux
   - node.js
   - koa
+  - aws
 ---
 
 Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.
