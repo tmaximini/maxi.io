@@ -6,6 +6,7 @@ const TechList = styled.ul`
   padding: 0;
   list-style-position: outside;
   list-style-type: circle;
+  line-height: 1.3;
 `
 
 const TechItem = styled.li`

@@ -33,7 +33,7 @@ const Logo = styled(Link)`
 `
 
 const NavLink = styled(Link)`
-  color: #050505;
+  color: #4b4c4b;
   margin-left: 20px;
   font-size: 14px;
   text-decoration: none;
@@ -44,7 +44,7 @@ const NavLink = styled(Link)`
 
 NavLink.defaultProps = {
   activeStyle: {
-    borderBottom: '2px solid'
+    borderBottom: '2px solid #4b4c4b'
   }
 }
 

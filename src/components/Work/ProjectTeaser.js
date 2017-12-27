@@ -24,9 +24,12 @@ const SubHeader = styled.h3`
 
 const Description = styled.div`
   text-align: left;
+  width: calc(100% - 120px);
   color: rgba(0, 0, 0, 0.7);
+  @media screen and (min-width: 40em) {
+    width: calc(100% - 170px);
+  }
   line-height: 1.65;
-  max-height: 200px;
   overflow: hidden;
   p {
     text-overflow: ellipsis;
@@ -41,14 +44,20 @@ const Flex = styled.div`
 `
 
 const ImgContainer = styled.div`
-  max-height: 250px;
-  max-width: 250px;
-  min-width: 100px;
-  min-height: 100px;
+  width: 100px;
+  height: 100px;
   margin-right: 20px;
   @media screen and (min-width: 40em) {
-    min-width: 150px;
-    min-height: 150px;
+    width: 150px;
+    height: 150px;
+  }
+  * {
+    height: 100px;
+    width: 100px;
+    @media screen and (min-width: 40em) {
+      width: 150px;
+      height: 150px;
+    }
   }
 `
 
@@ -58,13 +67,11 @@ const ProjectTeaser = ({ project }) => (
       <ImgContainer>
         <Image sizes={project.frontmatter.image.childImageSharp.sizes} />
       </ImgContainer>
-      <div>
-        <Description>
-          <SubHeader>{project.frontmatter.title}</SubHeader>
-          <p>{project.frontmatter.summary}</p>
-          <TechList items={project.frontmatter.tech} />
-        </Description>
-      </div>
+      <Description>
+        <SubHeader>{project.frontmatter.title}</SubHeader>
+        <p>{project.frontmatter.summary}</p>
+        <TechList items={project.frontmatter.tech} />
+      </Description>
     </Flex>
   </Project>
 )
