@@ -14,6 +14,7 @@ const TechItem = styled.li`
   list-style: circle;
   color: #aaa;
   font-size: 0.8em;
+  margin: 0;
   &:not(:last-child)::after {
     content: '•';
     padding: 0 0.3em;

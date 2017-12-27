@@ -9,12 +9,18 @@ const HeaderWrapper = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99;
+  border-bottom: 1px solid #f2f2f2;
+`
+
+const Inner = styled.div`
   display: flex;
+  height: 60px;
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  z-index: 99;
-  border-bottom: 1px solid #f2f2f2;
+  max-width: 62em;
+  margin: 0 auto;
   @media screen and (min-width: 375px) {
     padding: 0 20px;
   }
@@ -44,18 +50,20 @@ NavLink.defaultProps = {
 
 const Header = () => (
   <HeaderWrapper>
-    <Logo to="/">Maxi.io</Logo>
-    <nav>
-      <NavLink to="/" exact>
-        Home
-      </NavLink>
-      <NavLink to="/work" exact>
-        Work
-      </NavLink>
-      <NavLink to="/blog" exact>
-        Blog
-      </NavLink>
-    </nav>
+    <Inner>
+      <Logo to="/">Maxi.io</Logo>
+      <nav>
+        <NavLink to="/" exact>
+          Home
+        </NavLink>
+        <NavLink to="/work" exact>
+          Work
+        </NavLink>
+        <NavLink to="/blog" exact>
+          Blog
+        </NavLink>
+      </nav>
+    </Inner>
   </HeaderWrapper>
 )
 

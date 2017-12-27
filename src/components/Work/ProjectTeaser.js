@@ -43,12 +43,12 @@ const Flex = styled.div`
 const ImgContainer = styled.div`
   max-height: 250px;
   max-width: 250px;
-  min-width: 200px;
-  min-height: 200px;
+  min-width: 100px;
+  min-height: 100px;
   margin-right: 20px;
   @media screen and (min-width: 40em) {
-    width: 150px;
-    height: 150px;
+    min-width: 150px;
+    min-height: 150px;
   }
 `
 
@@ -59,9 +59,11 @@ const ProjectTeaser = ({ project }) => (
         <Image sizes={project.frontmatter.image.childImageSharp.sizes} />
       </ImgContainer>
       <div>
-        <h3>{project.frontmatter.title}</h3>
-        <Description dangerouslySetInnerHTML={{ __html: project.html }} />
-        <TechList items={project.frontmatter.tech} />
+        <Description>
+          <SubHeader>{project.frontmatter.title}</SubHeader>
+          <p>{project.frontmatter.summary}</p>
+          <TechList items={project.frontmatter.tech} />
+        </Description>
       </div>
     </Flex>
   </Project>

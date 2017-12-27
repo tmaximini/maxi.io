@@ -6,7 +6,6 @@ import pic from './profile_pic.png'
 
 const ProfileWrapper = styled.section`
   text-align: center;
-  padding: 20px;
 `
 
 const ProfilePic = styled.img`

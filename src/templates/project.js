@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import WorkOverview from '../components/Work/WorkOverview'
+import Section from '../components/Shared/Section/Section'
 
 export default function ProjectTemplate({ data, pathContext }) {
   const { markdownRemark: project } = data
@@ -13,14 +14,16 @@ export default function ProjectTemplate({ data, pathContext }) {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <h1>{title}</h1>
-      <div>
-        <Link to={prev.frontmatter.path}>prev: {prev.frontmatter.title}</Link>
-        <Link to={next.frontmatter.path}>next: {next.frontmatter.title}</Link>
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: project.html }} />
-      <ul>{tech.map(t => <li key={t}>{t}</li>)}</ul>
-      <WorkOverview headline="Other projects" projects={[prev, next]} />
+
+      <Section>
+        <h1>{title}</h1>
+        <div>
+          <Link to={prev.frontmatter.path}>prev: {prev.frontmatter.title}</Link>
+          <Link to={next.frontmatter.path}>next: {next.frontmatter.title}</Link>
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: project.html }} />
+        <WorkOverview headline="Other projects" projects={[prev, next]} />
+      </Section>
     </div>
   )
 }

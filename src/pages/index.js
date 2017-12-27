@@ -3,15 +3,16 @@ import Link from 'gatsby-link'
 
 import Profile from '../components/Profile/Profile'
 import WorkOverview from '../components/Work/WorkOverview'
+import Section from '../components/Shared/Section/Section'
 
 const IndexPage = ({ data }) => {
   const { edges: projects } = data.allMarkdownRemark
   console.info({ projects })
   return (
-    <div>
+    <Section>
       <Profile />
       <WorkOverview projects={projects.map(p => p.node)} />
-    </div>
+    </Section>
   )
 }
 

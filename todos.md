@@ -1,5 +1,6 @@
 * Images / responsive!!
 * Texte / Bilder / Content
+* Work Layout
 * Design Changes!!
 * Icons Github etc
 
