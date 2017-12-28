@@ -2,16 +2,31 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
+import ChevronLeft from 'react-icons/lib/fa/angle-left'
+import ChevronRight from 'react-icons/lib/fa/angle-right'
 import WorkOverview from '../components/Work/WorkOverview'
 import ProjectDetailInfo from '../components/Work/ProjectDetailInfo'
 import Section from '../components/Shared/Section/Section'
 
 const TopLinks = styled.div`
   width: 100%;
-  padding: 10px 0 30px;
+  margin: 20px auto;
+  max-width: 62em;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    text-decoration: none;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.15s ease-in;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 `
 
 export default function ProjectTemplate({ data, pathContext }) {
@@ -23,12 +38,17 @@ export default function ProjectTemplate({ data, pathContext }) {
       <Helmet>
         <title>{project.frontmatter.title}</title>
       </Helmet>
-
+      <TopLinks>
+        <Link to={prev.frontmatter.path}>
+          <ChevronLeft />
+          <span>{prev.frontmatter.title}</span>
+        </Link>
+        <Link to={next.frontmatter.path}>
+          <span>{next.frontmatter.title}</span>
+          <ChevronRight />
+        </Link>
+      </TopLinks>
       <Section>
-        <TopLinks>
-          <Link to={prev.frontmatter.path}>prev: {prev.frontmatter.title}</Link>
-          <Link to={next.frontmatter.path}>next: {next.frontmatter.title}</Link>
-        </TopLinks>
         <ProjectDetailInfo project={project} />
         <WorkOverview headline="Other projects" projects={[prev, next]} />
       </Section>

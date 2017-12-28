@@ -2,7 +2,7 @@
 path: '/projects/fleek'
 title: 'Fleek'
 published: true
-date: '12-2017 - 03-2018'
+date: '2017 - 2018'
 type: 'project'
 url: 'http://fleek.de'
 image: './fleek.png'

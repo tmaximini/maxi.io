@@ -2,11 +2,11 @@
 path: '/projects/zalando-lounge'
 title: 'Zalando Lounge'
 published: true
-date: '2017-10-12'
+date: '2015 - 2016'
 type: 'project'
-url: 'http://fleek.de'
-image: './fleek.png'
-summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
+url: 'http://zalando-lounge.de'
+image: './zal-lounge.png'
+summary: 'Zalando Lounge is the fashion shopping club of Zalando featuring daily and weekly campaigns with heavily discounted brand articles.'
 tech:
   - react
   - redux
@@ -15,6 +15,4 @@ tech:
   - aws
 ---
 
-Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.
-I helped to build a shop front-end from scratch using re-usable react components, redux for state management, redux-saga for managing async operations and side effects, jest for testing and koa / node.js for a api middleware layer that communicates with
-Zalando's internal services like payment and stock management.
+I was hired as a freelancer to help the existing in-house team with the migration from a monolithic PHP application to a microservice oriented architecture. We rebuilt the shop frontend using react and redux and introduced a node.js middleware layer for communicating with existing Zalando services and API responses.

@@ -2,15 +2,15 @@
 path: '/projects/sparwelt'
 title: 'Sparwelt'
 published: true
-date: '2017-10-12'
+date: '2014'
 type: 'project'
-url: 'http://fleek.de'
-image: './fleek.png'
-summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
+url: 'https://www.sparwelt.de/internal/sparwelt-app-neu'
+image: './sparwelt.jpg'
+summary: 'Sparwelt is a mobile appication that helps users dicovering special deals, vouchers, gifts and more.'
 tech:
   - ionic framework
   - angular.js
   - apache cordova
 ---
 
-Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.
+As a freelance developer I helped building a hybrid mobile application that ran natively on both iOS and Android devices using Apache Cordova technology. We decided to use the Ionic framework (v1) that was based on the famous Angular.js framework.

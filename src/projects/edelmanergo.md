@@ -2,7 +2,7 @@
 path: '/projects/edelmanergo'
 title: 'Edelman Ergo'
 published: true
-date: '2017-10-12'
+date: '2015'
 type: 'project'
 url: 'http://fleek.de'
 image: './fleek.png'

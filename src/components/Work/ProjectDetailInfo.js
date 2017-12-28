@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   blockquote {
     color: #aaa;
     font-style: italic;
+    margin-left: 0;
   }
 `
 
@@ -36,6 +37,9 @@ const InfoBox = styled.div`
     margin-bottom: 10px;
     fonts-size: 1.2em;
   }
+  a {
+    font-size: 0.9em;
+  }
 `
 
 const FlexRight = styled(Flex)`
@@ -49,28 +53,38 @@ const FlexRight = styled(Flex)`
 const ImgContainer = styled.div`
   height: 200px;
   width: 200px;
+  margin: 20px 0;
   @media screen and (min-width: 40em) {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
   }
   * {
     height: 200px;
     width: 200px;
     @media screen and (min-width: 40em) {
-      width: 400px;
-      height: 400px;
+      width: 300px;
+      height: 300px;
     }
   }
 `
 
+const DateEl = styled.div`
+  font-size: 0.9em;
+  margin: 0 0 20px 0;
+`
+
 const ProjectDetailInfo = ({ project }) => {
-  const { title, tech, url, image, summary } = project.frontmatter
+  const { title, tech, url, image, summary, date } = project.frontmatter
 
   return (
     <Wrapper>
       <Flex style={{ flexGrow: 2, paddingRight: '20px' }}>
-        <h1>{title}</h1>
+        <h1 style={{ marginBottom: '20px' }}>{title}</h1>
+        <DateEl>{date}</DateEl>
         <blockquote>"{summary}"</blockquote>
+        <ImgContainer>
+          <Image sizes={image.childImageSharp.sizes} />
+        </ImgContainer>
         <div dangerouslySetInnerHTML={{ __html: project.html }} />
       </Flex>
       <FlexRight>
