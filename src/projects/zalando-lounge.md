@@ -1,4 +1,5 @@
 ---
+order: 2
 path: '/projects/zalando-lounge'
 title: 'Zalando Lounge'
 published: true

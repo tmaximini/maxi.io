@@ -1,16 +1,16 @@
 ---
+order: 6
 path: '/projects/same-to'
 title: 'Same.to'
 published: true
 date: '2016'
 type: 'project'
-url: 'http://fleek.de'
 image: './sameto.png'
-summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
+summary: 'A social event and activity planner as a native mobile application.'
 tech:
   - react native
   - redux
   - redux-saga
 ---
 
-Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.
+I was hired by an agency to develop a react-native aplpication. Same.to was designed to function as a social event planner. User can register and invite their friends through social channels such as facebook, whatsapp or email. They can create activies or events and plan the travels together through the app. A whatsapp like chat functionality was included. Unfortunately the app never went live.

@@ -1,6 +1,7 @@
 ---
+order: 1
 path: '/projects/fleek'
-title: 'Fleek'
+title: 'Fleek by Zalando'
 published: true
 date: '2017 - 2018'
 type: 'project'

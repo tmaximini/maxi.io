@@ -1,4 +1,5 @@
 ---
+order: 1
 path: '/first-post'
 title: 'first blog post'
 published: true

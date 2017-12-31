@@ -22,7 +22,7 @@ export const workQuery = graphql`
   query AllProjects {
     allMarkdownRemark(
       limit: 10
-      sort: { fields: [frontmatter___date], order: ASC }
+      sort: { fields: [frontmatter___order], order: ASC }
       filter: { frontmatter: { type: { eq: "project" } } }
     ) {
       edges {

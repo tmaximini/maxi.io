@@ -1,18 +1,17 @@
 ---
+order: 4
 path: '/projects/edelmanergo'
 title: 'Edelman Ergo'
 published: true
 date: '2015'
 type: 'project'
-url: 'http://fleek.de'
-image: './fleek.png'
-summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
+image: './edelman.png'
+url: 'https://www.edelmanergo.com'
+summary: 'Website protoype for the joint venture of these two famous german online agencies.'
 tech:
   - html5
   - javascript
   - gsap
 ---
 
-Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.
-I helped to build a shop front-end from scratch using re-usable react components, redux for state management, redux-saga for managing async operations and side effects, jest for testing and koa / node.js for a api middleware layer that communicates with
-Zalando's internal services like payment and stock management.
+In November 2015 I was hired by gosub (part of edelman) to built the first version of [https://www.edelmanergo.com](https://www.edelmanergo.com) in a short time frame, because the announcement of the two companies joining was just around the corner. We built a HTML5 single-page application and a complex gsap animation. Since then, the page has been continously updated by the in-house team of edelmanergo.
