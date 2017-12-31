@@ -16,4 +16,4 @@ tech:
   - aws
 ---
 
-I was hired as a freelancer to help the existing in-house team with the migration from a monolithic PHP application to a microservice oriented architecture. We rebuilt the shop frontend using react and redux and introduced a node.js middleware layer for communicating with existing Zalando services and API responses.
+I was hired as a freelancer to help the existing in-house team with the migration from a monolithic PHP application to a microservice oriented architecture. We rebuilt the shop frontend using react and redux and introduced a node.js middleware layer for communicating with existing Zalando services and transforming API responses.

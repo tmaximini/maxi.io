@@ -1,50 +1,13 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
 import Profile from '../components/Profile/Profile'
 import WorkOverview from '../components/Work/WorkOverview'
 import Section from '../components/Shared/Section/Section'
 
-const IndexPage = ({ data }) => {
-  const { edges: projects } = data.allMarkdownRemark
-  console.info({ projects })
-  return (
-    <Section>
-      <Profile />
-      <WorkOverview projects={projects.map(p => p.node)} />
-    </Section>
-  )
-}
+const IndexPage = () => (
+  <Section>
+    <Profile />
+  </Section>
+)
 
 export default IndexPage
-
-export const workQuery = graphql`
-  query AllProjects {
-    allMarkdownRemark(
-      limit: 10
-      sort: { fields: [frontmatter___order], order: ASC }
-      filter: { frontmatter: { type: { eq: "project" } } }
-    ) {
-      edges {
-        node {
-          id
-          html
-          frontmatter {
-            path
-            title
-            date
-            tech
-            summary
-            image {
-              childImageSharp {
-                sizes(maxWidth: 200) {
-                  ...GatsbyImageSharpSizes
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`

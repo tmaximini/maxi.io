@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import ProjectTeaser from './ProjectTeaser'
 
 const WorkOverviewWrapper = styled.section`
-  margin: 40px 0;
+  margin: ${props => (props.noTopMargin ? '0 0 40px 0' : '40px 0')};
   z-index: -1;
 `
 
@@ -27,10 +27,10 @@ const ProjectList = styled.ul`
   margin: 0 auto;
 `
 
-const WorkOverview = ({ projects, headline = 'Work' }) => {
+const WorkOverview = ({ projects, headline = 'Work', noTopMargin = false }) => {
   console.info({ projects })
   return (
-    <WorkOverviewWrapper>
+    <WorkOverviewWrapper noTopMargin={noTopMargin}>
       <Headline>{headline}</Headline>
       <ProjectList>{projects.map(p => <ProjectTeaser project={p} key={p.id} />)}</ProjectList>
     </WorkOverviewWrapper>

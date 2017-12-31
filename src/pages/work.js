@@ -1,13 +1,46 @@
 import React from 'react'
-import Link from 'gatsby-link'
 
-const SecondPage = () => (
-  <div>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-    <p>fleek, zalando-lounge, lien-tran, https://www.edelmanergo.com, https://www.sparwelt.de/, </p>
-  </div>
-)
+import WorkOverview from '../components/Work/WorkOverview'
+import Section from '../components/Shared/Section/Section'
 
-export default SecondPage
+const WorkPage = ({ data }) => {
+  const { edges: projects } = data.allMarkdownRemark
+  return (
+    <Section>
+      <WorkOverview noTopMargin projects={projects.map(p => p.node)} />
+    </Section>
+  )
+}
+
+export default WorkPage
+
+export const workQuery = graphql`
+  query AllProjects {
+    allMarkdownRemark(
+      limit: 10
+      sort: { fields: [frontmatter___order], order: ASC }
+      filter: { frontmatter: { type: { eq: "project" } } }
+    ) {
+      edges {
+        node {
+          id
+          html
+          frontmatter {
+            path
+            title
+            date
+            tech
+            summary
+            image {
+              childImageSharp {
+                sizes(maxWidth: 200) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

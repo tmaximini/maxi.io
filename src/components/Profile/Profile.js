@@ -57,8 +57,13 @@ const Profile = () => (
       <Skill>software engineer</Skill>
       <Skill>dj &amp; producer</Skill>
     </Skills>
-    <P>I am a freelancing web developer based in Berlin, Germany.</P>
-    <P>I develop interactive web and mobile applications based on modern web technologies.</P>
+    <P>I am a freelancing developer based in Berlin, Germany.</P>
+    <P>
+      I focus on interactive web and mobile applications based on modern and open web technologies.
+    </P>
+    <P>
+      Go and can check out some of my <Link to="/work">work</Link>.
+    </P>
     <P>
       You can find me on <a href="http://github.com/tmaximini">Github</a>,{' '}
       <a href="http://twitter.com/tmaximini">Twitter</a> or send me an{' '}
