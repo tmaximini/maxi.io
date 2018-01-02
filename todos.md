@@ -2,7 +2,7 @@
 * Icons Github etc
 
 * SEO tags
-* analytics
+* analytics UA-111816913-1
 * gh pages deploy
 
 // phase 2 (Blog)

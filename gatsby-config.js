@@ -56,6 +56,14 @@ module.exports = {
         // Defaults to false.
         sizeByPixelDensity: false
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-111816913-1',
+        // Setting this parameter is optional
+        anonymize: true
+      }
     }
   ]
 }
