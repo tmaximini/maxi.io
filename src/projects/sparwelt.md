@@ -14,4 +14,4 @@ tech:
   - apache cordova
 ---
 
-As a freelance developer I helped building a hybrid mobile application that ran natively on both iOS and Android devices using Apache Cordova technology. We decided to use the Ionic framework (v1) that was based on the famous Angular.js framework.
+As a freelance developer I helped building a hybrid mobile application that ran natively on both iOS and Android devices using Apache Cordova technology. We decided to use the Ionic framework (v1) that is based on the famous Angular.js framework.

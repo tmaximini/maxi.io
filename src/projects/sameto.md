@@ -3,7 +3,7 @@ order: 6
 path: '/projects/same-to'
 title: 'Same.to'
 published: true
-date: '2016'
+date: '2016 - 2017'
 type: 'project'
 image: './sameto.png'
 summary: 'A social event and activity planner as a native mobile application.'

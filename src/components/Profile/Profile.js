@@ -55,9 +55,9 @@ const Profile = () => (
     <Skills>
       <Skill>full stack developer</Skill>
       <Skill>software engineer</Skill>
-      <Skill>dj &amp; producer</Skill>
+      <Skill>coach &amp; team builder</Skill>
     </Skills>
-    <P>I am a freelancing developer based in Berlin, Germany.</P>
+    <P>I am a freelancing software developer based in Berlin, Germany.</P>
     <P>
       I focus on interactive web and mobile applications based on modern and open web technologies.
     </P>
