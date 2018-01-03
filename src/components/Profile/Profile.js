@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
 import P from '../Shared/P/P'
-import pic from './thomas.jpg'
+import pic from './thomas2.jpg'
 
 const ProfileWrapper = styled.section`
   text-align: center;
