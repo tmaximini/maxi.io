@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.header`
   height: 60px;
   width: 100%;
-  background-color: #fafafa;
+  background-color: #fdfffc;
   position: fixed;
   top: 0;
   left: 0;

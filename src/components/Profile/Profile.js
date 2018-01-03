@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
 import P from '../Shared/P/P'
-import pic from './profile_pic.png'
+import pic from './thomas.jpg'
 
 const ProfileWrapper = styled.section`
   text-align: center;
@@ -34,16 +34,15 @@ const Skills = styled.ul`
 const Skill = styled.li`
   display: inline-block;
   white-space: nowrap;
-  color: inherit;
+  color: white;
+  border-radius: 5px;
   text-decoration: none;
-  padding: 0.25em;
+  padding: 0.25em 0.4em;
   line-height: 1;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
   font-size: 0.9em;
-  background-color: rgba(87, 199, 255, 0.1);
-  border-right: 2px solid rgba(87, 199, 255, 0.3);
-  border-left: 2px solid rgba(87, 199, 255, 0.3);
+  background-color: rgba(83, 103, 75, 0.8);
 `
 
 const Profile = () => (
