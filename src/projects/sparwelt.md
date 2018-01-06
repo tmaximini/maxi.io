@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 path: '/projects/sparwelt'
 title: 'Sparwelt'
 published: true

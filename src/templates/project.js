@@ -32,7 +32,6 @@ const TopLinks = styled.div`
 export default function ProjectTemplate({ data, pathContext }) {
   const { markdownRemark: project } = data
   const { prev, next } = pathContext
-  console.info({ prev, next })
   return (
     <div>
       <Helmet>

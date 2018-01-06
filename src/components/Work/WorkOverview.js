@@ -28,7 +28,6 @@ const ProjectList = styled.ul`
 `
 
 const WorkOverview = ({ projects, headline = 'Work', noTopMargin = false }) => {
-  console.info({ projects })
   return (
     <WorkOverviewWrapper noTopMargin={noTopMargin}>
       <Headline>{headline}</Headline>

@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 5
 path: '/projects/edelmanergo'
 title: 'Edelman Ergo'
 published: true

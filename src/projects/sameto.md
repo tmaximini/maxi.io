@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 7
 path: '/projects/same-to'
 title: 'Same.to'
 published: true
