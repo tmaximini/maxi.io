@@ -3,10 +3,27 @@ import styled from 'styled-components'
 import Link from 'gatsby-link'
 import P from '../Shared/P/P'
 import pic from './thomas2.jpg'
+import background from './background2.jpg'
 
 const ProfileWrapper = styled.section`
   text-align: center;
   margin-top: 40px;
+  min-height: 100%;
+  &::after {
+    content: '';
+    background: ${props => `url(${background})`} center center no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  a {
+    font-weight: bold;
+  }
 `
 
 const ProfilePic = styled.img`

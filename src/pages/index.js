@@ -5,7 +5,7 @@ import WorkOverview from '../components/Work/WorkOverview'
 import Section from '../components/Shared/Section/Section'
 
 const IndexPage = () => (
-  <Section>
+  <Section style={{ position: 'relative' }}>
     <Profile />
   </Section>
 )
