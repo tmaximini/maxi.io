@@ -6,8 +6,8 @@ import Section from '../components/Shared/Section/Section'
 const WorkPage = ({ data }) => {
   const { edges: projects } = data.allMarkdownRemark
   return (
-    <Section>
-      <WorkOverview noTopMargin projects={projects.map(p => p.node)} />
+    <Section style={{ paddingTop: '40px' }}>
+      <WorkOverview projects={projects.map(p => p.node)} />
     </Section>
   )
 }

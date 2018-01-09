@@ -9,18 +9,6 @@ const ProfileWrapper = styled.section`
   text-align: center;
   margin-top: 40px;
   min-height: 100%;
-  &::after {
-    content: '';
-    background: ${props => `url(${background})`} center center no-repeat;
-    background-size: cover;
-    opacity: 0.3;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-  }
   a {
     font-weight: bold;
   }
@@ -31,16 +19,28 @@ const ProfilePic = styled.img`
   height: 150px;
   border-radius: 50%;
   box-shadow: 0 0 0 3px white, 0 3px 8px 3px #ccc;
+  margin: 20px 0;
 `
 
 const NameWrapper = styled.div`
   margin-bottom: 20px;
+  font-family: 'Alike', serif;
+  h3 {
+    margin: 10px auto;
+    font-size: 1.1em;
+    font-weight: 500;
+  }
+  h2,
+  h3 {
+    font-family: inherit;
+  }
 `
 
 const Name = styled.h2`
-  font-size: 24px;
+  font-size: 2.5em;
   display: inline-block;
   margin: 0;
+  font-weight: 600;
 `
 
 const Skills = styled.ul`
@@ -64,24 +64,23 @@ const Skill = styled.li`
 
 const Profile = () => (
   <ProfileWrapper>
-    <ProfilePic src={pic} />
     <NameWrapper>
+      <h3>Hi, my name is</h3>
       <Name>Thomas Maximini</Name>
+      <h3>and I am a freelance web developer</h3>
     </NameWrapper>
-    <Skills>
-      <Skill>full stack developer</Skill>
-      <Skill>software engineer</Skill>
-      <Skill>coach &amp; team builder</Skill>
-    </Skills>
-    <P>I am a freelancing software developer based in Berlin, Germany.</P>
+
+    <ProfilePic src={pic} />
     <P>
-      I focus on interactive web and mobile applications based on modern and open web technologies.
+      My focus is on interactive web and mobile applications based on modern and open web
+      technologies.
+    </P>
+    <P>I am currently based in Berlin, Germany, but I do remote work as well.</P>
+    <P>
+      Here you can check out some of my <Link to="/work">work</Link>.
     </P>
     <P>
-      Go and can check out some of my <Link to="/work">work</Link>.
-    </P>
-    <P>
-      You can find me on <a href="http://github.com/tmaximini">Github</a>,{' '}
+      You can also find me on <a href="http://github.com/tmaximini">Github</a>,{' '}
       <a href="http://twitter.com/tmaximini">Twitter</a> or send me an{' '}
       <a href="mailto:tmaximini@gmail.com">E-Mail</a>.
     </P>

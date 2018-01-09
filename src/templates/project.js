@@ -15,6 +15,7 @@ const TopLinks = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  display: none;
 
   a {
     text-decoration: none;

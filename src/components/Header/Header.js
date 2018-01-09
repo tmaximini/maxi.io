@@ -5,12 +5,6 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.header`
   height: 60px;
   width: 100%;
-  background-color: rgba(253, 255, 252, 0.98);
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  border-bottom: 1px solid #f2f2f2;
 `
 
 const Inner = styled.div`
