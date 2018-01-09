@@ -36,7 +36,7 @@ export default function ProjectTemplate({ data, pathContext }) {
   return (
     <div>
       <Helmet>
-        <title>{project.frontmatter.title}</title>
+        <title>Thomas Maximini - {project.frontmatter.title}</title>
       </Helmet>
       <TopLinks>
         <Link to={prev.frontmatter.path}>
