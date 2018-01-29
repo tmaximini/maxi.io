@@ -19,7 +19,12 @@ module.exports = {
         path: `${__dirname}/src/projects/`
       }
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-prismjs`]
+      }
+    },
     'gatsby-plugin-styled-components',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',

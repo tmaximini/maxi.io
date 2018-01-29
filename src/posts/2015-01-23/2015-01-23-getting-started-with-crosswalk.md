@@ -6,7 +6,6 @@ title: 'Getting started with crosswalk'
 published: true
 date: '2015-01-23'
 type: 'post'
-
 ---
 
 ## What is Crosswalk?
@@ -36,19 +35,19 @@ First you go the [xwalk downloads page](https://crosswalk-project.org/documentat
 
 If you don't have android added yet to your project, do it now (`ionic platform add android`). Now you just replace the contents of `<your_project>/platforms/android/CordovaLib/` with the contents of the `framework` folder that we just unzipped and you copy the VERSION file to `<your_project>/platforms/android/`.
 
-{% highlight bash %}
+```bash
 cp -r ~/Downloads/crosswalk-cordova-10.39.235.9-arm/framework/\* platforms/android/CordovaLib
-{% endhighlight %}
+```
 
 Next you cd into `<your_project>/platforms/android/CordovaLib/` and run the following two commands:
 
-{% highlight bash %}
+```bash
 android update project --subprojects --path . --target "android-19"
-{% endhighlight %}
+```
 
-{% highlight bash %}
+```bash
 ant debug
-{% endhighlight %}
+```
 
 If you are like me and you don't have ant installed the first time around, just install it. If you're on a Mac, homebrew works great for that.
 
@@ -79,8 +78,8 @@ It worked instantly in my test project, which is very cool! Big kudos to the Ion
 #### App crashes on start right after build
 
 This is usually a permission problem. Make sure you have all the needed permissions set in `platforms/android/AndroidManifest.xml`.
-{% highlight xml %}
 
+```xml
 <!-- you'll most likely always need these -->
 
 <uses-permission android:name="android.permission.INTERNET" />
@@ -92,7 +91,7 @@ This is usually a permission problem. Make sure you have all the needed permissi
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 <uses-permission android:name="android.permission.VIBRATE" />
-{% endhighlight %}
+```
 
 #### SSL Certificate Error Popup
 
@@ -104,7 +103,7 @@ This happened in our last app, although our certificate was perfectly fine. In C
 
 Open the file `CordovaWebViewClient.java` `/android/CordovaLib/src/org/apache/cordova/` and find the `onReceivedSslError` method. Then change this method to the following (If you are on crosswalk 10.x and this method is not in the file, just add the entire method):
 
-{% highlight java %}
+```java
 public void onReceivedSslError(XWalkView view, ValueCallback<Boolean> callback, SslError error) {
 final String packageName = this.cordova.getActivity().getPackageName();
 final PackageManager pm = this.cordova.getActivity().getPackageManager();
@@ -125,8 +124,7 @@ final PackageManager pm = this.cordova.getActivity().getPackageManager();
             callback.onReceiveValue(true);
         }
     }
-
-{% endhighlight %}
+```
 
 Disclaimer: This might impact the security of your application. Only do this if you can 100% trust your HTTPS API and you just want to get rid of this annoying Popup Error. Basically what I am doing here is just sending `callback.onReceiveValue(true)` in all cases, which has the same effect as if the user would have clicked Ok in this popup, but without displaying it.
 

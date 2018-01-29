@@ -22,7 +22,7 @@ export const postsQuery = graphql`
     allMarkdownRemark(
       limit: 10
       sort: { fields: [frontmatter___date], order: ASC }
-      filter: { frontmatter: { published: { eq: true } } }
+      filter: { frontmatter: { type: { eq: "post" }, published: { eq: true } } }
     ) {
       edges {
         node {

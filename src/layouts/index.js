@@ -14,8 +14,14 @@ const TemplateWrapper = ({ children }) => (
     <Helmet
       title="Thomas Maximini"
       meta={[
-        { name: 'description', content: 'Thomas Maximini is a freelance web developer based in Berlin, Germany' },
-        { name: 'keywords', content: 'web development, software engineering, react.js, javascript, node.js' }
+        {
+          name: 'description',
+          content: 'Thomas Maximini is a freelance web developer based in Berlin, Germany'
+        },
+        {
+          name: 'keywords',
+          content: 'web development, software engineering, react.js, javascript, node.js'
+        }
       ]}
     />
     <Wrapper>
