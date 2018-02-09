@@ -1,10 +1,10 @@
 ---
 
 order: 1
-path: '/getting-started-with-crosswalk'
-title: 'Getting started with crosswalk'
+path: '/getting-started-with-crosswalk-for-ionic-framework'
+title: 'Getting started with crosswalk for Ionic Framework'
 published: true
-date: '2015-01-23'
+date: '23.01.2015'
 type: 'post'
 ---
 
@@ -31,7 +31,7 @@ I will briefly explain how you'd go about adding Crosswalk to your project witho
 
 First you go the [xwalk downloads page](https://crosswalk-project.org/documentation/downloads.html) and grab the Cordova Android Version. I have a Nexus5 phone so I download the one for the ARM platform. The unzipped folder should look like this:
 
-![Crosswalk unzipped]({{ site.url }}/images/posts/xwalk/xwalk_unzipped.png "Crosswalk Cordova unzipped")
+![Crosswalk unzipped](xwalk_unzipped.png "Crosswalk Cordova unzipped")
 
 If you don't have android added yet to your project, do it now (`ionic platform add android`). Now you just replace the contents of `<your_project>/platforms/android/CordovaLib/` with the contents of the `framework` folder that we just unzipped and you copy the VERSION file to `<your_project>/platforms/android/`.
 
@@ -53,7 +53,7 @@ If you are like me and you don't have ant installed the first time around, just 
 
 That's already all there is to it, now you can confirm that it is working by running `ionic run android` and visiting [chrome://inspect/#devices](chrome://inspect/#devices) in your (chrome) browser:
 
-![Crosswalk confirmed]({{ site.url }}/images/posts/xwalk/xwalk_confirmed.png "Xwalk confirmed!")
+![Crosswalk confirmed](xwalk_confirmed.png)
 
 That's crosswalk 10 with Chrome 39 at work right there. Yay!
 
@@ -67,7 +67,7 @@ ionic platform add android
 
 Then let's see what browsers are available:
 
-![Ionic browser list]({{ site.url }}/images/posts/xwalk/ionic_browser_list.png "ionic browser list")
+![Ionic browser list](ionic_browser_list.png)
 
 Version 10.x looks fine, so we run `ionic browser add crosswalk@10.39.235.15` and let ionic do its magic. This will download all required files into our project. If you now build again a version on your phone (`ionic run android`) you will notice slightly different output, because ionic uses [Gradle](https://www.gradle.org/) to build the Crosswalk version.
 
@@ -97,7 +97,7 @@ This is usually a permission problem. Make sure you have all the needed permissi
 
 If your app makes requests against an HTTPS endpoint, you might get an error popup saying 'SSL certificate error' when using Crosswalk.
 
-![SSL certificate error]({{ site.url }}/images/posts/xwalk/ssl_error.png "Oh snap! SSL certificate error.")
+![SSL certificate error](ssl_error.png)
 
 This happened in our last app, although our certificate was perfectly fine. In Crosswalk 10 they added an `onReceivedSslError` event handler that you can hack in order to suppress this popup. After debugging this a long time, I finally managed to work around this error. I can however only explain it for the first method, as the Ionic CLI Xwalk files are bit different from the downloaded ones described above (That's why I stick with method 1 for now).
 
@@ -138,4 +138,4 @@ The only drawback so far is that it will increase your app's size around 10-15 M
 
 Anyway, enjoy Crosswalk!
 
-![Crosswalk]({{ site.url }}/images/posts/xwalk/crosswalk.jpg "Xwalk")
+![Crosswalk](crosswalk.jpg)

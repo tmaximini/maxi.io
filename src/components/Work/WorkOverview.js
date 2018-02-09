@@ -30,7 +30,6 @@ const ProjectList = styled.ul`
 const WorkOverview = ({ projects, headline = 'Work' }) => {
   return (
     <WorkOverviewWrapper>
-      <Headline>{headline}</Headline>
       <ProjectList>{projects.map(p => <ProjectTeaser project={p} key={p.id} />)}</ProjectList>
     </WorkOverviewWrapper>
   )

@@ -3,8 +3,8 @@ body {
     Helvetica Neue, sans-serif;
   background: linear-gradient(
     -20deg,
-    hsl(240, 45%, 98%) 0%,
-    hsl(187, 50%, 97%) 40%,
+    hsla(174, 43%, 79%, 0.33) 0%,
+    hsla(241, 100%, 91%, 0.41),
     hsl(220, 43%, 96%) 80%
   );
   color: rgba(0, 0, 0, 0.7);
@@ -21,4 +21,11 @@ p,
 li {
   line-height: 1.65;
   font-size: 0.9em;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  margin-top: 1.45em;
 }

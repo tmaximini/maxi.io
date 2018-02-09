@@ -13,7 +13,7 @@ const TechItem = styled.li`
   font-style: italic;
   display: inline-block;
   list-style: circle;
-  color: #aaa;
+  color: #666666;
   font-size: 0.8em;
   margin: 0;
   &:not(:last-child)::after {

@@ -10,9 +10,13 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   blockquote {
-    color: #aaa;
+    color: #666666;
     font-style: italic;
     margin-left: 0;
+  }
+  h2,
+  h3 {
+    margin-top: 0;
   }
 `
 

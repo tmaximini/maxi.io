@@ -16,6 +16,10 @@ const Project = styled.li`
     margin-bottom: 40px;
   }
   overflow: hidden;
+  h2,
+  h3 {
+    margin-top: 0;
+  }
 `
 
 const SubHeader = styled.h3`

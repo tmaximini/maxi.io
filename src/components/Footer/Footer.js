@@ -38,11 +38,11 @@ const Footer = () => (
   <FooterWrapper>
     <CopyRight>&copy; {new Date().getYear() + 1900} Thomas Maximnini</CopyRight>
     <SocialMedia>
-      <a href="http://twitter.com/tmaximini" target="_blank">
-        <Twitter size={22} />
-      </a>
       <a href="http://github.com/tmaximini" target="_blank">
         <Github size={22} />
+      </a>
+      <a href="http://twitter.com/tmaximini" target="_blank">
+        <Twitter size={22} />
       </a>
       <a href="https://www.linkedin.com/in/thomas-maximini-98701982/" target="_blank">
         <LinkedIn size={22} />

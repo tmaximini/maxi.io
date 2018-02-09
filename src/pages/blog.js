@@ -1,17 +1,18 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Section from '../components/Shared/Section/Section'
 
 const BlogPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   return (
-    <div>
+    <Section style={{ position: 'relative' }}>
       <h1>Blog</h1>
       {posts.map(p => (
         <Link key={p.node.id} to={p.node.frontmatter.path}>
           {p.node.frontmatter.title}
         </Link>
       ))}
-    </div>
+    </Section>
   )
 }
 

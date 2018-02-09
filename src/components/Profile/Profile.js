@@ -75,7 +75,9 @@ const Profile = () => (
       My focus is on interactive web and mobile applications based on modern and open web
       technologies.
     </P>
-    <P>I am currently based in Berlin, Germany, but I do remote work as well.</P>
+    <P>
+      I am currently based in Berlin, Germany, but I do travel and work remotely from time to time.
+    </P>
     <P>
       Here you can check out some of my <Link to="/work">work</Link>.
     </P>

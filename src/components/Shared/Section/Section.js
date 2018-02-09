@@ -8,6 +8,11 @@ const Section = styled.section`
   @media screen and (min-width: 375px) {
     padding: 20px;
   }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1.25em;
+  }
 `
 
 export default Section
