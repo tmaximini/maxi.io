@@ -5,6 +5,9 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.header`
   height: 60px;
   width: 100%;
+  @media screen and (min-width: 680px) {
+    padding: 40px;
+  }
 `
 
 const Inner = styled.div`
@@ -31,6 +34,7 @@ const NavLink = styled(Link)`
   margin-left: 20px;
   font-size: 14px;
   text-decoration: none;
+  text-transform: uppercase;
   @media screen and (min-width: 375px) {
     font-size: 16px;
   }
