@@ -5,6 +5,7 @@ path: '/getting-started-with-crosswalk-for-ionic-framework'
 title: 'Getting started with crosswalk for Ionic Framework'
 published: true
 date: '23.01.2015'
+year: 2015
 type: 'post'
 ---
 

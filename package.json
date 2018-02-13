@@ -17,6 +17,7 @@
     "gatsby-source-filesystem": "^1.5.3",
     "gatsby-transformer-remark": "^1.7.15",
     "gatsby-transformer-sharp": "^1.6.16",
+    "lodash": "^4.17.5",
     "react-icons": "^2.2.7",
     "styled-components": "^2.3.3"
   },
