@@ -12,7 +12,7 @@ import '../styles/index.scss'
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Thomas Maximini"
+      title="Thomas Maximini: Developer of all things web"
       meta={[
         {
           name: 'description',

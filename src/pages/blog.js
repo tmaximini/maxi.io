@@ -12,27 +12,41 @@ const BlogOverview = styled.div`
   a:hover {
     border-bottom: 1px solid;
   }
+
+  h3 {
+    margin-bottom: 0.725em;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
 `
 
 const BlogPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
 
-  console.info({ groupedPosts })
-
   return (
     <Section style={{ position: 'relative' }}>
-      <h1>Blog</h1>
-      {Object.keys(groupedPosts).map(year => (
-        <BlogOverview>
-          <h3>{year}</h3>
-          {groupedPosts[year].map(p => (
-            <Link key={p.node.id} to={p.node.frontmatter.path}>
-              {p.node.frontmatter.title}
-            </Link>
-          ))}
-        </BlogOverview>
-      ))}
+      <h1>Writings</h1>
+      {Object.keys(groupedPosts)
+        .sort()
+        .reverse()
+        .map(year => (
+          <BlogOverview key={year}>
+            <h3>{year}</h3>
+            <ul>
+              {groupedPosts[year].map(p => (
+                <li>
+                  <Link key={p.node.id} to={p.node.frontmatter.path}>
+                    {p.node.frontmatter.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </BlogOverview>
+        ))}
     </Section>
   )
 }

@@ -5,8 +5,9 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.header`
   height: 60px;
   width: 100%;
+  z-index: 10;
   @media screen and (min-width: 680px) {
-    padding: 40px;
+    margin-top: 30px;
   }
 `
 

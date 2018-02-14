@@ -12,6 +12,10 @@ const Published = styled.span`
   font-style: italic;
 `
 
+const Headline = styled.h1`
+  text-align: left !important;
+`
+
 export default function Template({ data }) {
   const { markdownRemark: post } = data
   // const post = data.markdownRemark;
@@ -22,7 +26,7 @@ export default function Template({ data }) {
       </Helmet>
       <Section>
         <Published>{post.frontmatter.date}</Published>
-        <h1>{post.frontmatter.title}</h1>
+        <Headline>{post.frontmatter.title}</Headline>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </Section>
     </div>
