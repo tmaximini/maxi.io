@@ -6,7 +6,7 @@ import Section from '../components/Shared/Section/Section'
 const WorkPage = ({ data }) => {
   const { edges: projects } = data.allMarkdownRemark
   return (
-    <Section style={{ paddingTop: '40px' }}>
+    <Section style={{ position: 'relative', paddingTop: '40px' }}>
       <h1>Work</h1>
       <WorkOverview projects={projects.map(p => p.node)} />
     </Section>

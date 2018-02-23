@@ -1,6 +1,6 @@
 ---
 
-order: 1
+order: 2
 path: '/getting-started-with-crosswalk-for-ionic-framework'
 title: 'Getting started with crosswalk for Ionic Framework'
 published: true

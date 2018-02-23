@@ -14,6 +14,9 @@ const Published = styled.span`
 
 const Headline = styled.h1`
   text-align: left !important;
+  @media screen and (max-width: 500px) {
+    font-size: 1.62671rem;
+  }
 `
 
 export default function Template({ data }) {

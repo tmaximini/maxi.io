@@ -28,20 +28,18 @@ const BlogPage = ({ data }) => {
   const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
 
   return (
-    <Section style={{ position: 'relative' }}>
+    <Section style={{ position: 'relative', paddingTop: '40px' }}>
       <h1>Writings</h1>
       {Object.keys(groupedPosts)
-        .sort()
+
         .reverse()
         .map(year => (
           <BlogOverview key={year}>
             <h3>{year}</h3>
             <ul>
-              {groupedPosts[year].map(p => (
-                <li>
-                  <Link key={p.node.id} to={p.node.frontmatter.path}>
-                    {p.node.frontmatter.title}
-                  </Link>
+              {groupedPosts[year].sort((a, b) => (a.order < b.order ? 1 : -1)).map(p => (
+                <li key={p.node.id}>
+                  <Link to={p.node.frontmatter.path}>{p.node.frontmatter.title}</Link>
                 </li>
               ))}
             </ul>
