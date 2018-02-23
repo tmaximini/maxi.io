@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
-import groupBy from 'lodash/groupby'
+import groupBy from 'lodash/groupBy'
 import Section from '../components/Shared/Section/Section'
 
 const BlogOverview = styled.div`
