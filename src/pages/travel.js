@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import styled from 'styled-components'
+import moment from 'moment'
 import groupBy from 'lodash/groupBy'
 import Section from '../components/Shared/Section/Section'
 
@@ -32,11 +33,22 @@ const TravelPage = ({ data }) => {
       <h1>Travel Diaries</h1>
       <TravelOverview>
         <ul>
-          {posts.map(p => (
-            <li key={p.node.id}>
-              <Link to={p.node.frontmatter.path}>{p.node.frontmatter.title}</Link>
-            </li>
-          ))}
+          {posts
+            .sort(function(a, b) {
+              const aDate = a.node.frontmatter.date.split('.')
+              const bDate = b.node.frontmatter.date.split('.')
+              return (
+                new Date(Date.UTC(bDate[2], bDate[1], bDate[0])) -
+                new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
+              )
+            })
+            .map(p => (
+              <li key={p.node.id}>
+                <Link to={p.node.frontmatter.path}>{`${p.node.frontmatter.date.split('.')[1]}/${
+                  p.node.frontmatter.year
+                } - ${p.node.frontmatter.title}`}</Link>
+              </li>
+            ))}
         </ul>
       </TravelOverview>
     </Section>
