@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    `gatsby-remark-copy-linked-files`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -17,6 +18,13 @@ module.exports = {
       options: {
         name: `projects`,
         path: `${__dirname}/src/projects/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/src/travel/`
       }
     },
     {
@@ -54,7 +62,7 @@ module.exports = {
         maxWidth: 500,
         // Remove the default behavior of adding a link to each
         // image.
-        linkImagesToOriginal: false,
+        linkImagesToOriginal: true,
         // Analyze images' pixel density to make decisions about
         // target image size. This is what GitHub is doing when
         // embedding images in tickets. This is a useful setting

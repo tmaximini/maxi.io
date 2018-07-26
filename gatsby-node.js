@@ -4,6 +4,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
 
   const postTemplate = path.resolve('src/templates/post.js')
+  const travelTemplate = path.resolve('src/templates/travel.js')
   const projectTemplate = path.resolve('src/templates/project.js')
 
   return graphql(`
@@ -45,6 +46,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     const posts = res.data.allMarkdownRemark.edges.filter(
       ({ node }) => node.frontmatter.type === 'post'
     )
+    const travel = res.data.allMarkdownRemark.edges.filter(
+      ({ node }) => node.frontmatter.type === 'travel'
+    )
 
     projects.forEach(({ node }, index) => {
       createPage({
@@ -61,6 +65,13 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       createPage({
         path: node.frontmatter.path,
         component: postTemplate
+      })
+    })
+
+    travel.forEach(({ node }) => {
+      createPage({
+        path: node.frontmatter.path,
+        component: travelTemplate
       })
     })
   })

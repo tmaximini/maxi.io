@@ -30,3 +30,7 @@
   float: left; /* 1 */
   min-width: 100%; /* 2 */
 }
+
+code[class*='language-'] {
+  white-space: nowrap;
+}

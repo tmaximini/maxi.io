@@ -3,17 +3,15 @@ import Helmet from 'react-helmet'
 import Section from '../components/Shared/Section/Section'
 import styled from 'styled-components'
 
-require('prismjs/themes/prism-okaidia.css')
-
-const Published = styled.span`
-  display: block;
-  color: #666666;
-  font-size: 0.8em;
-  font-style: italic;
-`
+// const Published = styled.span`
+//   display: block;
+//   color: #666666;
+//   font-size: 0.8em;
+//   font-style: italic;
+// `
 
 const Headline = styled.h1`
-  text-align: left !important;
+  text-align: center !important;
   @media screen and (max-width: 500px) {
     font-size: 1.62671rem;
   }
@@ -29,7 +27,6 @@ export default function Template({ data }) {
         <title>{post.frontmatter.title} - Thomas Maximini</title>
       </Helmet>
       <Section>
-        <Published>{post.frontmatter.date}</Published>
         <Headline>{post.frontmatter.title}</Headline>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </Section>
@@ -38,13 +35,22 @@ export default function Template({ data }) {
 }
 
 export const postQuery = graphql`
-  query BlogPostByPath($path: String!) {
+  query TravelPostByPath($path: String!) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
         path
         title
         date
+      }
+    }
+    allFile(filter: { relativeDirectory: { eq: "./photos" } }) {
+      edges {
+        node {
+          id
+          name
+          relativePath
+        }
       }
     }
   }

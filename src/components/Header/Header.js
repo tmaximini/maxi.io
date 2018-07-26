@@ -58,6 +58,9 @@ const Header = () => (
         <NavLink to="/work" exact>
           Work
         </NavLink>
+        <NavLink to="/travel" exact>
+          Travel
+        </NavLink>
       </nav>
     </Inner>
   </HeaderWrapper>
