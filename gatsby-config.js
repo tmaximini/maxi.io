@@ -31,7 +31,17 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: 'gatsby-remark-custom-blocks',
+            options: {
+              blocks: {
+                'img-row-3': 'img-row-3',
+                'img-row-5': 'img-row-5'
+              }
+            }
+          },
           `gatsby-remark-prismjs`,
+
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -62,7 +72,7 @@ module.exports = {
         maxWidth: 500,
         // Remove the default behavior of adding a link to each
         // image.
-        linkImagesToOriginal: true,
+        linkImagesToOriginal: false,
         // Analyze images' pixel density to make decisions about
         // target image size. This is what GitHub is doing when
         // embedding images in tickets. This is a useful setting

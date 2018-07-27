@@ -9,5 +9,15 @@ type: 'travel'
 
 ## Thailand
 
-![test image](photos/1.jpg "Test")
-![test image](photos/2.jpg "Test 2")
+### bangkok
+
+[[img-row-3]]
+| ![test image](photos/bk4.jpg "Test")
+| ![test image](photos/bk2.jpg "Test")
+| ![test image](photos/bk3.jpg "Test")
+
+[[img-row-5]]
+| ![test image](photos/bk5.jpg "Test")
+| ![test image](photos/bk6.jpg "Test")
+| ![test image](photos/bk7.jpg "Test")
+| ![test image](photos/bk8.jpg "Test")

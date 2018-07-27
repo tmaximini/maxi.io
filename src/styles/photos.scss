@@ -1,0 +1,28 @@
+.img-row-2,
+.img-row-3,
+.img-row-4,
+.img-row-5,
+.img-row-2 {
+  p {
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    justify-content: center;
+    a {
+      padding: 5px;
+    }
+  }
+}
+
+.img-row-2 p a {
+  width: 50%;
+}
+.img-row-3 p a {
+  width: 33.3333%;
+}
+.img-row-4 p a {
+  width: 25%;
+}
+.img-row-5 p a {
+  width: 20%;
+}
