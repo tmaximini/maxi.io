@@ -8,8 +8,10 @@
     flex-direction: row;
     vertical-align: center;
     justify-content: center;
+    flex-wrap: wrap;
     a {
       padding: 5px;
+      min-width: 180px;
     }
   }
 }

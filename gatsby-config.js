@@ -35,7 +35,9 @@ module.exports = {
             resolve: 'gatsby-remark-custom-blocks',
             options: {
               blocks: {
+                'img-row-2': 'img-row-2',
                 'img-row-3': 'img-row-3',
+                'img-row-4': 'img-row-4',
                 'img-row-5': 'img-row-5'
               }
             }
