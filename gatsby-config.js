@@ -38,6 +38,9 @@ module.exports = {
                 'img-row-2': 'img-row-2',
                 'img-row-3': 'img-row-3',
                 'img-row-4': 'img-row-4',
+                'img-row-h2': 'img-row-h2',
+                'img-row-h3': 'img-row-h3',
+                'img-row-h4': 'img-row-h4',
                 'img-row-5': 'img-row-5'
               }
             }
