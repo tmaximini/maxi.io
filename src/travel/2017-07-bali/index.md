@@ -1,7 +1,7 @@
 ---
 path: '/travel/bali-lombok-gilis'
 title: 'Bali, Lombok, Gili Islands'
-published: true
+published: false
 date: '04.07.2017'
 year: 2017
 type: 'travel'

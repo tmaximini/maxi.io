@@ -1,8 +1,8 @@
 ---
-path: '/travel/living-in-chiang-mai'
-title: 'Living in Chiang Mai'
+path: '/travel/back-to-thailand'
+title: 'Back to Thailand'
 published: true
-date: '26.07.2018'
+date: '20.06.2018'
 year: 2018
 type: 'travel'
 ---

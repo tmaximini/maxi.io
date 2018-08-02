@@ -1,7 +1,7 @@
 ---
 path: '/travel/cambodia-ankor-wat-otres'
 title: 'Combodia'
-published: true
+published: false
 date: '26.05.2017'
 year: 2017
 type: 'travel'

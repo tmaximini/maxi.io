@@ -1,7 +1,7 @@
 ---
 path: '/travel/vietnam'
 title: 'Vietnam'
-published: true
+published: false
 date: '03.03.2017'
 year: 2017
 type: 'travel'

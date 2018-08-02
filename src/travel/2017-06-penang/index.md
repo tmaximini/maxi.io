@@ -1,7 +1,7 @@
 ---
 path: '/travel/penang-malaysia'
 title: 'Penang, Malaysia'
-published: true
+published: false
 date: '04.06.2017'
 year: 2017
 type: 'travel'
