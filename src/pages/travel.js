@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import moment from 'moment'
 import groupBy from 'lodash/groupBy'
 import Section from '../components/Shared/Section/Section'
+import { MONTH_NAMES } from '../constants'
 
 const TravelOverview = styled.div`
   a {
@@ -17,22 +18,29 @@ const TravelOverview = styled.div`
   h3 {
     margin-bottom: 0.725em;
   }
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  table {
+    border: 0;
+    tr,
+    td {
+      border: 0;
+      width: 50%;
+      padding: 5px;
+      &:nth-child(odd) {
+        color: #709a9c;
+        text-align: right;
+      }
+    }
   }
 `
 
 const TravelPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
-
   return (
     <Section style={{ position: 'relative', paddingTop: '40px' }}>
       <h1>Travel Diaries</h1>
       <TravelOverview>
-        <ul>
+        <table>
           {posts
             .sort(function(a, b) {
               const aDate = a.node.frontmatter.date.split('.')
@@ -42,14 +50,23 @@ const TravelPage = ({ data }) => {
                 new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
               )
             })
-            .map(p => (
-              <li key={p.node.id}>
-                <Link to={p.node.frontmatter.path}>{`${p.node.frontmatter.date.split('.')[1]}/${
-                  p.node.frontmatter.year
-                } - ${p.node.frontmatter.title}`}</Link>
-              </li>
-            ))}
-        </ul>
+            .map(p => {
+              const { date, path, title, year } = p.node.frontmatter
+              const month = parseInt(date.split('.')[1])
+              return (
+                <tr key={p.node.id}>
+                  <td className="color">
+                    <span>
+                      {MONTH_NAMES[month]} {year}
+                    </span>
+                  </td>
+                  <td>
+                    <Link to={path}>{` ${title}`}</Link>
+                  </td>
+                </tr>
+              )
+            })}}
+        </table>
       </TravelOverview>
     </Section>
   )

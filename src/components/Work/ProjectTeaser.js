@@ -20,6 +20,12 @@ const Project = styled.li`
   h3 {
     margin-top: 0;
   }
+  transition: transform 0.11s linear;
+  transition-delay: 0.2s;
+  &:hover {
+    transform: scale(1.05);
+    overflow: none;
+  }
 `
 
 const SubHeader = styled.h3`
