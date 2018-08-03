@@ -20,32 +20,22 @@ So thi year's travel would start in Thailand. I met a guy on Couchsurfing and he
 
 When I was the first in Thailand in 2017 I skipped Bangkok and went straight to Chiang Mai, so this time I _had_ to take a look at this megacity. I let them drop my off close to Bangkok to check it out with Romeo, one of the other teachers. I wasn't disappointed! It is what I imagined and a million things more. Quite a crazy city. The traffic is crazy, the smells, the images.
 
-[[img-row-2]]
+[[photos]]
 | ![test image](photos/bk4.jpg "Test")
-| ![test image](photos/bk2.jpg "Test")
-
-[[img-row-2]]
+| ![test image](photos/bk17.jpg "Test")
 | ![test image](photos/bk3.jpg "Test")
 | ![test image](photos/bk5.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/bk6.jpg "Test")
 | ![test image](photos/bk7.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/bk8.jpg "Test")
 | ![test image](photos/bk9.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/bk10.jpg "Test")
-
-[[img-row-2]]
+| ![test image](photos/bk11.jpg "Test")
 | ![test image](photos/bk12.jpg "Test")
 | ![test image](photos/bk13.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/bk14.jpg "Test")
 | ![test image](photos/bk15.jpg "Test")
+| ![test image](photos/bk16.jpg "Test")
 
 ### Suan Mokh: 10 day silent meditation retreat
 
@@ -53,10 +43,10 @@ Something I wanted to do for quite a while is participate in a Vipassana meditat
 
 [[img-row-2]]
 | ![test image](photos/sm1.jpg "Test")
-| ![test image](photos/sm2.jpg "Test")
+| ![test image](photos/sm3.jpg "Test")
 
 [[img-row-2]]
-| ![test image](photos/sm3.jpg "Test")
+| ![test image](photos/sm2.jpg "Test")
 | ![test image](photos/sm4.jpg "Test")
 
 ### English Camp Chiang Mai
@@ -64,18 +54,12 @@ Something I wanted to do for quite a while is participate in a Vipassana meditat
 After I finished the retreat I found out that just on the next day there would be another English Camp in Chiang Mai where I wanted to go anyway. So I booked a last minute flight from Surat Thani to Chiang Mai the same day, got picked up at the airport, spend one night in a comfy hostel after 12 nights on a concrete bed and went straight back to "work" the next day.
 The kids were so awesome though that it did not really feel like work at all :)
 
-[[img-row-2]]
+[[photos]]
 | ![test image](photos/ec1.jpg "Test")
 | ![test image](photos/ec2.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/ec3.jpg "Test")
 | ![test image](photos/ec4.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/ec5.jpg "Test")
 | ![test image](photos/ec6.jpg "Test")
-
-[[img-row-2]]
 | ![test image](photos/ec7.jpg "Test")
 | ![test image](photos/ec9.jpg "Test")

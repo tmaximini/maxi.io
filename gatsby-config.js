@@ -41,7 +41,8 @@ module.exports = {
                 'img-row-h2': 'img-row-h2',
                 'img-row-h3': 'img-row-h3',
                 'img-row-h4': 'img-row-h4',
-                'img-row-5': 'img-row-5'
+                'img-row-5': 'img-row-5',
+                photos: 'photos'
               }
             }
           },
