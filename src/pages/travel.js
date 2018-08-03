@@ -26,7 +26,7 @@ const TravelOverview = styled.div`
       width: 50%;
       padding: 5px;
       &:nth-child(odd) {
-        color: #709a9c;
+        color: #587a7b;
         text-align: right;
       }
     }
@@ -65,7 +65,7 @@ const TravelPage = ({ data }) => {
                   </td>
                 </tr>
               )
-            })}}
+            })}
         </table>
       </TravelOverview>
     </Section>
