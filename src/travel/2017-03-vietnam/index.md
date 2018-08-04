@@ -12,12 +12,12 @@ In March 2017 I started my first big trvel adventure. After giving up my flat in
 So we packed our backpacks and flew into Hanoi, Vietnam. On our way there we had to change in Moscow, Russia and nearly missed our connection flight because we were waiting in the wrong queue for an hour! But we made it and got our first culture shock quickly in Hanoi - the scooter traffic, the narrow streets, the smell, the people, the colors. Everything was so different from Germany or Europe in general. We felt great!
 
 [[photos]]
-| ![test image](photos/v1.jpg "Test")
-| ![test image](photos/v2.jpg "Test 2")
-| ![test image](photos/v3.jpg "Test")
-| ![test image](photos/v4.jpg "Test 2")
-| ![test image](photos/v5.jpg "Test")
-| ![test image](photos/v6.jpg "Test 2")
-| ![test image](photos/v7.jpg "Test")
-| ![test image](photos/v8.jpg "Test")
-| ![test image](photos/v9.jpg "Test 2")
+| ![Ha Long Bay](photos/v1.jpg "Ha Long Bay")
+| ![Hoi An](photos/v2.jpg "Hoi An")
+| ![Market](photos/v3.jpg "Market")
+| ![cooking class](photos/v4.jpg "cooking class")
+| ![cooking class](photos/v5.jpg "cooking class")
+| ![cooking class](photos/v6.jpg "cooking class")
+| ![barbecue](photos/v7.jpg "bbq")
+| ![best breakfast pho of Saigon](photos/v8.jpg "best breakfast pho of Saigon")
+| ![Phu Quoc Sunset](photos/v9.jpg "Phu Quoc Sunset")
