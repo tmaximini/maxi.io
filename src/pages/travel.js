@@ -20,7 +20,6 @@ const TravelOverview = styled.div`
   }
   table {
     border: 0;
-    tr,
     td {
       border: 0;
       width: 50%;
@@ -28,6 +27,7 @@ const TravelOverview = styled.div`
       &:nth-child(odd) {
         color: #587a7b;
         text-align: right;
+        font-size: 0.8em;
       }
     }
   }
@@ -41,31 +41,33 @@ const TravelPage = ({ data }) => {
       <h1>Travel Diaries</h1>
       <TravelOverview>
         <table>
-          {posts
-            .sort(function(a, b) {
-              const aDate = a.node.frontmatter.date.split('.')
-              const bDate = b.node.frontmatter.date.split('.')
-              return (
-                new Date(Date.UTC(bDate[2], bDate[1], bDate[0])) -
-                new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
-              )
-            })
-            .map(p => {
-              const { date, path, title, year } = p.node.frontmatter
-              const month = parseInt(date.split('.')[1])
-              return (
-                <tr key={p.node.id}>
-                  <td className="color">
-                    <span>
-                      {MONTH_NAMES[month]} {year}
-                    </span>
-                  </td>
-                  <td>
-                    <Link to={path}>{` ${title}`}</Link>
-                  </td>
-                </tr>
-              )
-            })}
+          <tbody>
+            {posts
+              .sort(function(a, b) {
+                const aDate = a.node.frontmatter.date.split('.')
+                const bDate = b.node.frontmatter.date.split('.')
+                return (
+                  new Date(Date.UTC(bDate[2], bDate[1], bDate[0])) -
+                  new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
+                )
+              })
+              .map(p => {
+                const { date, path, title, year } = p.node.frontmatter
+                const month = parseInt(date.split('.')[1])
+                return (
+                  <tr key={p.node.id}>
+                    <td className="color">
+                      <span>
+                        {MONTH_NAMES[month]} {year}
+                      </span>
+                    </td>
+                    <td>
+                      <Link to={path}>{` ${title}`}</Link>
+                    </td>
+                  </tr>
+                )
+              })}
+          </tbody>
         </table>
       </TravelOverview>
     </Section>

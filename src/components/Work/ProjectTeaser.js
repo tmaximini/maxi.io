@@ -22,9 +22,10 @@ const Project = styled.li`
   }
   transition: transform 0.11s linear;
   transition-delay: 0.2s;
-  &:hover {
-    transform: scale(1.05);
-    overflow: none;
+  @media screen and (hover: hover) and (min-width: 960px) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `
 

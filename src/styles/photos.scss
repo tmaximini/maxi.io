@@ -1,20 +1,7 @@
 .img-row-2,
 .img-row-3,
 .img-row-4,
-.img-row-5 {
-  p {
-    display: flex;
-    flex-direction: row;
-    vertical-align: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    a {
-      padding: 5px;
-      min-width: 180px;
-      width: 100%;
-    }
-  }
-}
+.img-row-5,
 .img-row-h2,
 .img-row-h3,
 .img-row-h4 {
@@ -25,8 +12,31 @@
     justify-content: center;
     flex-wrap: wrap;
     a {
+      min-width: 180px;
+
       padding: 5px;
+      width: 100%;
+    }
+    a:first-child {
+      padding-left: 0;
+    }
+    a:last-child {
+      padding-right: 0;
+    }
+  }
+}
+.img-row-h2,
+.img-row-h3,
+.img-row-h4 {
+  p {
+    a {
+      margin-bottom: 10px;
+      padding-right: 10px;
       height: 100%;
+      min-width: auto;
+    }
+    a:last-child {
+      padding-right: 0;
     }
   }
 }

@@ -18,7 +18,6 @@ const Headline = styled.h1`
 `
 
 export default function Template({ data }) {
-  console.info({ data })
   const { markdownRemark: post } = data
   // const post = data.markdownRemark;
   return (
