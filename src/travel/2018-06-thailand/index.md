@@ -10,7 +10,7 @@ keywords: 'Bangkok, Thailand, English Teacher, Travel, Wanderlust, Digital Nomad
 
 ### English Camp Phatthalung
 
-So thi year's travel would start in Thailand. I met a guy on Couchsurfing and he recruited me straight away as an English Teacher for a 3 day camp in Phatthalung. Phatthalung is in souther Thailand and he lives in Chiang Mai in the north, so in addition to the 3 days camp we would have 2 days road trip before and after the camp. They picked me in Bangkok just a couple of hours after I arrived there.
+2018 I decided to go back to Asia and I started again in Thailand to get back into the mood with some good old Thai Spirit. I met a guy on Couchsurfing and he recruited me straight away as an English Teacher for a 3 day camp in Phatthalung. Phatthalung is in souther Thailand and he lives in Chiang Mai in the north, so in addition to the 3 days camp we would have 2 days road trip before and after the camp. They picked me in Bangkok just a couple of hours after I arrived there.
 
 [[img-row-3]]
 | ![Resort](photos/cc1.jpg "Resort")
