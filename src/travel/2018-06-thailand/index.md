@@ -5,6 +5,7 @@ published: true
 date: '20.06.2018'
 year: 2018
 type: 'travel'
+keywords: 'Bangkok, Thailand, English Teacher, Travel, Wanderlust, Digital Nomad, Expat'
 ---
 
 ### English Camp Phatthalung

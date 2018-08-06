@@ -5,6 +5,7 @@ published: true
 date: '03.03.2017'
 year: 2017
 type: 'travel'
+keywords: 'Vietnam, Wild, Hanoi, Saigon, Billiard, Travel, Wanderlust, Digital Nomad, Expat'
 ---
 
 In March 2017 I started my first big trvel adventure. After giving up my flat in Berlin me and my good friend Dominik were heading to Asia for a couple of months. I saved up big time for the trip and as I (nearly) didn't have any more fix costs in Germany I was convinced this trip was going to last a while. It was actually the first time for me to leave Europe except from a 10 day trip to New York in 2012.

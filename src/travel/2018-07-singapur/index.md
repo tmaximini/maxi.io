@@ -5,6 +5,7 @@ published: true
 date: '21.07.2018'
 year: 2018
 type: 'travel'
+keywords: 'Singapore, Skyline, Expensive, Travel, Wanderlust, Digital Nomad, Expat'
 ---
 
 ## Singapore

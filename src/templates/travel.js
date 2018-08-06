@@ -3,13 +3,6 @@ import Helmet from 'react-helmet'
 import Section from '../components/Shared/Section/Section'
 import styled from 'styled-components'
 
-// const Published = styled.span`
-//   display: block;
-//   color: #666666;
-//   font-size: 0.8em;
-//   font-style: italic;
-// `
-
 const Headline = styled.h1`
   text-align: center !important;
   @media screen and (max-width: 500px) {
@@ -19,11 +12,13 @@ const Headline = styled.h1`
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data
+  console.info(post.frontmatter)
   // const post = data.markdownRemark;
   return (
     <div>
       <Helmet>
         <title>{post.frontmatter.title} - Thomas Maximini</title>
+        <meta name="keywords" content={post.frontmatter.keywords} />
       </Helmet>
       <Section>
         <Headline>{post.frontmatter.title}</Headline>
@@ -41,6 +36,7 @@ export const postQuery = graphql`
         path
         title
         date
+        keywords
       }
     }
     allFile(filter: { relativeDirectory: { eq: "./photos" } }) {

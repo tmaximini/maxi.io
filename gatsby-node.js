@@ -20,6 +20,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               type
               tech
               summary
+              keywords
               image {
                 childImageSharp {
                   sizes(maxWidth: 200) {

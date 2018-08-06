@@ -5,6 +5,7 @@ published: true
 date: '26.05.2017'
 year: 2017
 type: 'travel'
+keywords: 'Cambodia, Wild, Ankor Wat, Billiard, Travel, Wanderlust, Digital Nomad, Expat'
 ---
 
 The next stop after Vietnam was the Kingdom of Cambodia! The trip there was quite spectacular, as it involved a boat trip where we were freezing (the A/C was on maximum and friggin cold), several bus trips and a lot of patience. The landscape was beautiful though and we met some interesting characters along the way.
