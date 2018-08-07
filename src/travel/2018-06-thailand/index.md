@@ -39,7 +39,8 @@ When I was the first in Thailand in 2017 I skipped Bangkok and went straight to 
 
 ### Suan Mokh: 10 day silent meditation retreat
 
-Something I wanted to do for quite a while is participate in a Vipassana meditation retreat. I heard about this one in Surat Thani when I was in Koh Pangan last year and this specific one always starts at the 1st of each month. You just have to show up, first come first serve, and after busy Bangkok I decided now it would be the right time to do it. It was truely a great experience for me, as somehow who always has a lot of chatter going on inside my head. No phones, no internet, no talking, no alcohol, nothing to do except meditation in the nature for 10 days. I felt very calm afterwards I tell you. It is somethiing I would recommend everybody doind on a regular basis, it feels like recharging the mind. Here you find more information about the retreat: [Suan Mokkh International Dharma Heritage](http://www.suanmokkh-idh.org/).
+Something I wanted to do for quite a while is participate in a Vipassana meditation retreat. I heard about this one in Surat Thani when I was in Koh Pangan last year and this specific one always starts at the 1st of each month. You just have to show up, first come first serve, and after busy Bangkok I decided now it would be the right time to do it. It was truely a great experience for me, as somehow who always has a lot of chatter going on inside my head. No phones, no internet, no talking, no alcohol, nothing to do except meditation in the nature for 10 days straight. After a couple of days I felt very calm and enjoyed a lot of the small details you encounter in nature.
+It is something I would recommend everybody to do on a regular basis as it feels like recharging the mind. Here you find more information about the retreat: [Suan Mokkh International Dharma Heritage](http://www.suanmokkh-idh.org/).
 
 [[img-row-2]]
 | ![Concrete Bed](photos/sm1.jpg "Concrete Bed")
