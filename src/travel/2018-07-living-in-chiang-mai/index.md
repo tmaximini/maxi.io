@@ -22,6 +22,7 @@ My second time around in Thailand I decided I want some time ro unwind and proce
 | ![Food](photos/11.jpg "Food")
 | ![Lucifer](photos/12.jpg "Lucifer")
 | ![Mechanic](photos/13.jpg "Mechanic")
+| ![Doi Suthep](photos/15.jpg "Doi Suthep")
 | ![Monk Trail](photos/mt1.jpg "Monk Trail")
 | ![Monk Trail](photos/mt2.jpg "Monk Trail")
 | ![Monk Trail](photos/mt3.jpg "Monk Trail")

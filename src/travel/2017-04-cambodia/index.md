@@ -2,7 +2,7 @@
 path: '/travel/cambodia-ankor-wat-otres'
 title: 'Combodia'
 published: true
-date: '26.05.2017'
+date: '5.04.2017'
 year: 2017
 type: 'travel'
 keywords: 'Cambodia, Wild, Ankor Wat, Billiard, Travel, Wanderlust, Digital Nomad, Expat'

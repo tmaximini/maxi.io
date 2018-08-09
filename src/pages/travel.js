@@ -53,7 +53,7 @@ const TravelPage = ({ data }) => {
               })
               .map(p => {
                 const { date, path, title, year } = p.node.frontmatter
-                const month = parseInt(date.split('.')[1])
+                const month = parseInt(date.split('.')[1]) - 1
                 return (
                   <tr key={p.node.id}>
                     <td className="color">
