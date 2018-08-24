@@ -29,7 +29,5 @@ After spending my first month in Thailand, I decided that instead of extending m
 | ![Building](photos/20.jpg "Building")
 | ![Gardens by the Bay](photos/18.jpg "Gardens by the Bay")
 | ![Building](photos/12.jpg "Building")
-
-[[img-row-2]]
 | ![Camera Selfie](photos/8.jpg "Camera Selfie")
 | ![Camera Selfie](photos/14.jpg "Camera Selfie")
