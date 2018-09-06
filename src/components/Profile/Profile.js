@@ -76,7 +76,8 @@ const Profile = () => (
       technologies.
     </P>
     <P>
-      I am based in Berlin, Germany, but I travel a lot and thus do a lot of my work remotely.
+      I am based in Berlin, Germany, but I <Link to="/travel">travel</Link> a lot and thus do a lot
+      of my work remotely.
     </P>
     <P>
       Here you can check out some of my <Link to="/work">work</Link>.

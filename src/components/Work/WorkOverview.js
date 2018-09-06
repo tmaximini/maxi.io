@@ -4,7 +4,7 @@ import Link from 'gatsby-link'
 import ProjectTeaser from './ProjectTeaser'
 
 const WorkOverviewWrapper = styled.section`
-  margin: '40px 0';
+  margin: 40px 0;
   z-index: -1;
 `
 

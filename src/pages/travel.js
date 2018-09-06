@@ -24,10 +24,10 @@ const TravelOverview = styled.div`
       border: 0;
       width: 50%;
       padding: 5px;
+      font-size: 0.9em;
       &:nth-child(odd) {
         color: #587a7b;
         text-align: right;
-        font-size: 0.8em;
       }
     }
   }
@@ -38,7 +38,13 @@ const TravelPage = ({ data }) => {
   const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
   return (
     <Section style={{ position: 'relative', paddingTop: '40px' }}>
-      <h1>Travel Diaries</h1>
+      <h1 style={{ marginBottom: '1.45rem' }}>Travel Diaries</h1>
+      <p style={{ textAlign: 'center' }}>
+        See where I am (possibly) now on{' '}
+        <a href="https://nomadlist.com/@tmaximini" title="Nomadlist">
+          Nomadlist
+        </a>
+      </p>
       <TravelOverview>
         <table>
           <tbody>
