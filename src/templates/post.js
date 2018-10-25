@@ -1,5 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
+
+import Layout from '../components/Layout'
 import Section from '../components/Shared/Section/Section'
 import styled from 'styled-components'
 
@@ -23,16 +26,18 @@ export default function Template({ data }) {
   const { markdownRemark: post } = data
   // const post = data.markdownRemark;
   return (
-    <div>
-      <Helmet>
-        <title>{post.frontmatter.title} - Thomas Maximini</title>
-      </Helmet>
-      <Section>
-        <Published>{post.frontmatter.date}</Published>
-        <Headline>{post.frontmatter.title}</Headline>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </Section>
-    </div>
+    <Layout>
+      <div>
+        <Helmet>
+          <title>{post.frontmatter.title} - Thomas Maximini</title>
+        </Helmet>
+        <Section>
+          <Published>{post.frontmatter.date}</Published>
+          <Headline>{post.frontmatter.title}</Headline>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </Section>
+      </div>
+    </Layout>
   )
 }
 

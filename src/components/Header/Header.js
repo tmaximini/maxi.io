@@ -1,5 +1,5 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 
 const HeaderWrapper = styled.header`
@@ -52,13 +52,13 @@ const Header = () => (
     <Inner>
       <Logo to="/">Maxi.io</Logo>
       <nav>
-        <NavLink to="/" exact>
+        <NavLink to="/">
           Home
         </NavLink>
-        <NavLink to="/work" exact>
+        <NavLink to="/work">
           Work
         </NavLink>
-        <NavLink to="/travel" exact>
+        <NavLink to="/travel">
           Travel
         </NavLink>
       </nav>

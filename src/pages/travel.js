@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
-import moment from 'moment'
-import groupBy from 'lodash/groupBy'
+
+import Layout from '../components/Layout'
 import Section from '../components/Shared/Section/Section'
 import { MONTH_NAMES } from '../constants'
 
@@ -35,48 +35,49 @@ const TravelOverview = styled.div`
 
 const TravelPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
-  const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
   return (
-    <Section style={{ position: 'relative', paddingTop: '40px' }}>
-      <h1 style={{ marginBottom: '1.45rem' }}>Travel Diaries</h1>
-      <p style={{ textAlign: 'center' }}>
-        See where I am (possibly) now on{' '}
-        <a href="https://nomadlist.com/@tmaximini" title="Nomadlist">
-          Nomadlist
-        </a>
-      </p>
-      <TravelOverview>
-        <table>
-          <tbody>
-            {posts
-              .sort(function(a, b) {
-                const aDate = a.node.frontmatter.date.split('.')
-                const bDate = b.node.frontmatter.date.split('.')
-                return (
-                  new Date(Date.UTC(bDate[2], bDate[1], bDate[0])) -
-                  new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
-                )
-              })
-              .map(p => {
-                const { date, path, title, year } = p.node.frontmatter
-                const month = parseInt(date.split('.')[1]) - 1
-                return (
-                  <tr key={p.node.id}>
-                    <td className="color">
-                      <span>
-                        {MONTH_NAMES[month]} {year}
-                      </span>
-                    </td>
-                    <td>
-                      <Link to={path}>{` ${title}`}</Link>
-                    </td>
-                  </tr>
-                )
-              })}
-          </tbody>
-        </table>
-      </TravelOverview>
-    </Section>
+    <Layout>
+      <Section style={{ position: 'relative', paddingTop: '40px' }}>
+        <h1 style={{ marginBottom: '1.45rem' }}>Travel Diaries</h1>
+        <p style={{ textAlign: 'center' }}>
+          See where I am (possibly) now on{' '}
+          <a href="https://nomadlist.com/@tmaximini" title="Nomadlist">
+            Nomadlist
+          </a>
+        </p>
+        <TravelOverview>
+          <table>
+            <tbody>
+              {posts
+                .sort(function(a, b) {
+                  const aDate = a.node.frontmatter.date.split('.')
+                  const bDate = b.node.frontmatter.date.split('.')
+                  return (
+                    new Date(Date.UTC(bDate[2], bDate[1], bDate[0])) -
+                    new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
+                  )
+                })
+                .map(p => {
+                  const { date, path, title, year } = p.node.frontmatter
+                  const month = parseInt(date.split('.')[1]) - 1
+                  return (
+                    <tr key={p.node.id}>
+                      <td className="color">
+                        <span>
+                          {MONTH_NAMES[month]} {year}
+                        </span>
+                      </td>
+                      <td>
+                        <Link to={path}>{` ${title}`}</Link>
+                      </td>
+                    </tr>
+                  )
+                })}
+            </tbody>
+          </table>
+        </TravelOverview>
+      </Section>
+    </Layout>
   )
 }
 

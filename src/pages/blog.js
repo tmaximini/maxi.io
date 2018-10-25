@@ -1,8 +1,9 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link, graphql } from 'gatsby'
 import styled from 'styled-components'
 import groupBy from 'lodash/groupBy'
 import Section from '../components/Shared/Section/Section'
+import Layout from '../components/Layout'
 
 const BlogOverview = styled.div`
   a {
@@ -28,24 +29,26 @@ const BlogPage = ({ data }) => {
   const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
 
   return (
-    <Section style={{ position: 'relative', paddingTop: '40px' }}>
-      <h1>Writings</h1>
-      {Object.keys(groupedPosts)
+    <Layout>
+      <Section style={{ position: 'relative', paddingTop: '40px' }}>
+        <h1>Writings</h1>
+        {Object.keys(groupedPosts)
 
-        .reverse()
-        .map(year => (
-          <BlogOverview key={year}>
-            <h3>{year}</h3>
-            <ul>
-              {groupedPosts[year].sort((a, b) => (a.order < b.order ? 1 : -1)).map(p => (
-                <li key={p.node.id}>
-                  <Link to={p.node.frontmatter.path}>{p.node.frontmatter.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </BlogOverview>
-        ))}
-    </Section>
+          .reverse()
+          .map(year => (
+            <BlogOverview key={year}>
+              <h3>{year}</h3>
+              <ul>
+                {groupedPosts[year].sort((a, b) => (a.order < b.order ? 1 : -1)).map(p => (
+                  <li key={p.node.id}>
+                    <Link to={p.node.frontmatter.path}>{p.node.frontmatter.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </BlogOverview>
+          ))}
+      </Section>
+    </Layout>
   )
 }
 

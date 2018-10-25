@@ -1,9 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
-import ChevronLeft from 'react-icons/lib/fa/angle-left'
-import ChevronRight from 'react-icons/lib/fa/angle-right'
+import { Link, graphql } from 'gatsby'
+
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import Layout from '../components/Layout'
 import WorkOverview from '../components/Work/WorkOverview'
 import ProjectDetailInfo from '../components/Work/ProjectDetailInfo'
 import Section from '../components/Shared/Section/Section'
@@ -30,29 +31,31 @@ const TopLinks = styled.div`
   }
 `
 
-export default function ProjectTemplate({ data, pathContext }) {
+export default function ProjectTemplate({ data, pageContext }) {
   const { markdownRemark: project } = data
-  const { prev, next } = pathContext
+  const { prev, next } = pageContext
   return (
-    <div>
-      <Helmet>
-        <title>Thomas Maximini - {project.frontmatter.title}</title>
-      </Helmet>
-      <TopLinks>
-        <Link to={prev.frontmatter.path}>
-          <ChevronLeft />
-          <span>{prev.frontmatter.title}</span>
-        </Link>
-        <Link to={next.frontmatter.path}>
-          <span>{next.frontmatter.title}</span>
-          <ChevronRight />
-        </Link>
-      </TopLinks>
-      <Section>
-        <ProjectDetailInfo project={project} />
-        <WorkOverview headline="Other projects" projects={[prev, next]} />
-      </Section>
-    </div>
+    <Layout>
+      <div>
+        <Helmet>
+          <title>Thomas Maximini - {project.frontmatter.title}</title>
+        </Helmet>
+        <TopLinks>
+          <Link to={prev.frontmatter.path}>
+            <FaChevronLeft />
+            <span>{prev.frontmatter.title}</span>
+          </Link>
+          <Link to={next.frontmatter.path}>
+            <span>{next.frontmatter.title}</span>
+            <FaChevronRight />
+          </Link>
+        </TopLinks>
+        <Section>
+          <ProjectDetailInfo project={project} />
+          <WorkOverview headline="Other projects" projects={[prev, next]} />
+        </Section>
+      </div>
+    </Layout>
   )
 }
 
@@ -69,7 +72,7 @@ export const projectQuery = graphql`
         summary
         image {
           childImageSharp {
-            sizes(maxWidth: 400) {
+            fluid(maxWidth: 400) {
               src
               srcSet
               sizes

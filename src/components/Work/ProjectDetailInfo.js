@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
 import Image from 'gatsby-image'
 
 const Wrapper = styled.div`
@@ -87,7 +86,7 @@ const ProjectDetailInfo = ({ project }) => {
         <DateEl>{date}</DateEl>
         <blockquote>"{summary}"</blockquote>
         <ImgContainer>
-          <Image sizes={image.childImageSharp.sizes} />
+          <Image fluid={image.childImageSharp.fluid} />
         </ImgContainer>
         <div dangerouslySetInnerHTML={{ __html: project.html }} />
       </Flex>
@@ -95,14 +94,18 @@ const ProjectDetailInfo = ({ project }) => {
         {url && (
           <InfoBox>
             <h3>Links</h3>
-            <a target="_blank" href={url}>
+            <a target="_blank" rel="noopener noreferrer" href={url}>
               {url}
             </a>
           </InfoBox>
         )}
         <InfoBox>
           <h3>Technologies</h3>
-          <ul>{tech.map(item => <li key={item}>{item}</li>)}</ul>
+          <ul>
+            {tech.map(item => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </InfoBox>
       </FlexRight>
     </Wrapper>

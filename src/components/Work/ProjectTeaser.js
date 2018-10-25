@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { navigateTo } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import Image from 'gatsby-image'
 import TechList from './TechList'
 
@@ -73,10 +73,10 @@ const ImgContainer = styled.div`
 `
 
 const ProjectTeaser = ({ project }) => (
-  <Project onClick={() => navigateTo(project.frontmatter.path)}>
+  <Project onClick={() => navigate(project.frontmatter.path)}>
     <Flex>
       <ImgContainer>
-        <Image sizes={project.frontmatter.image.childImageSharp.sizes} />
+        <Image fluid={project.frontmatter.image.childImageSharp.fluid} />
       </ImgContainer>
       <Description>
         <SubHeader>{project.frontmatter.title}</SubHeader>

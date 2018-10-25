@@ -1,7 +1,10 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import Section from '../components/Shared/Section/Section'
 import styled from 'styled-components'
+import { graphql } from 'gatsby'
+
+import Layout from '../components/Layout'
+import Section from '../components/Shared/Section/Section'
 
 const Headline = styled.h1`
   text-align: center !important;
@@ -12,19 +15,19 @@ const Headline = styled.h1`
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data
-  console.info(post.frontmatter)
-  // const post = data.markdownRemark;
   return (
-    <div>
-      <Helmet>
-        <title>{post.frontmatter.title} - Thomas Maximini</title>
-        <meta name="keywords" content={post.frontmatter.keywords} />
-      </Helmet>
-      <Section>
-        <Headline>{post.frontmatter.title}</Headline>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </Section>
-    </div>
+    <Layout>
+      <div>
+        <Helmet>
+          <title>{post.frontmatter.title} - Thomas Maximini</title>
+          <meta name="keywords" content={post.frontmatter.keywords} />
+        </Helmet>
+        <Section>
+          <Headline>{post.frontmatter.title}</Headline>
+          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        </Section>
+      </div>
+    </Layout>
   )
 }
 

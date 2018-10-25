@@ -1,20 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
 import ProjectTeaser from './ProjectTeaser'
 
 const WorkOverviewWrapper = styled.section`
   margin: 40px 0;
   z-index: -1;
-`
-
-const Headline = styled.h2`
-  font-size: 1.5em;
-  text-align: center;
-  margin-bottom: 20px;
-  @media screen and (min-width: 40em) {
-    margin-bottom: 40px;
-  }
 `
 
 const ProjectList = styled.ul`
@@ -30,7 +20,11 @@ const ProjectList = styled.ul`
 const WorkOverview = ({ projects, headline = 'Work' }) => {
   return (
     <WorkOverviewWrapper>
-      <ProjectList>{projects.map(p => <ProjectTeaser project={p} key={p.id} />)}</ProjectList>
+      <ProjectList>
+        {projects.map(p => (
+          <ProjectTeaser project={p} key={p.id} />
+        ))}
+      </ProjectList>
     </WorkOverviewWrapper>
   )
 }

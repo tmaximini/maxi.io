@@ -1,7 +1,7 @@
 const path = require('path')
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions
 
   const postTemplate = path.resolve('src/templates/post.js')
   const travelTemplate = path.resolve('src/templates/travel.js')
@@ -23,7 +23,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               keywords
               image {
                 childImageSharp {
-                  sizes(maxWidth: 200) {
+                  fluid(maxWidth: 200) {
                     src
                     srcSet
                     sizes

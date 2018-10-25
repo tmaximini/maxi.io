@@ -1,12 +1,7 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
 
-import Twitter from 'react-icons/lib/fa/twitter'
-import Github from 'react-icons/lib/fa/github'
-import Instagram from 'react-icons/lib/fa/instagram'
-import Tumblr from 'react-icons/lib/fa/tumblr'
-import LinkedIn from 'react-icons/lib/fa/linkedin'
+import { FaTwitter, FaGithub, FaInstagram, FaTumblr, FaLinkedin } from 'react-icons/fa'
 
 const FooterWrapper = styled.footer`
   color: rgba(0, 0, 0, 0.7);
@@ -38,20 +33,24 @@ const Footer = () => (
   <FooterWrapper>
     <CopyRight>&copy; {new Date().getYear() + 1900} Thomas Maximnini</CopyRight>
     <SocialMedia>
-      <a href="http://github.com/tmaximini" target="_blank">
-        <Github size={22} />
+      <a href="http://github.com/tmaximini" target="_blank" rel="noopener noreferrer">
+        <FaGithub size={22} />
       </a>
-      <a href="http://twitter.com/tmaximini" target="_blank">
-        <Twitter size={22} />
+      <a href="http://twitter.com/tmaximini" target="_blank" rel="noopener noreferrer">
+        <FaTwitter size={22} />
       </a>
-      <a href="https://www.linkedin.com/in/thomas-maximini-98701982/" target="_blank">
-        <LinkedIn size={22} />
+      <a
+        href="https://www.linkedin.com/in/thomas-maximini-98701982/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FaLinkedin size={22} />
       </a>
-      <a href="http://instagram.com/mxmn82" target="_blank">
-        <Instagram size={22} />
+      <a href="http://instagram.com/mxmn82" target="_blank" rel="noopener noreferrer">
+        <FaInstagram size={22} />
       </a>
-      <a href="https://diechaostruppe.tumblr.com/" target="_blank">
-        <Tumblr size={22} />
+      <a href="https://diechaostruppe.tumblr.com/" target="_blank" rel="noopener noreferrer">
+        <FaTumblr size={22} />
       </a>
     </SocialMedia>
   </FooterWrapper>

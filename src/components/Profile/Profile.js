@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import P from '../Shared/P/P'
 import pic from './thomas2.jpg'
-import background from './background2.jpg'
 
 const ProfileWrapper = styled.section`
   text-align: center;
@@ -41,25 +40,6 @@ const Name = styled.h2`
   display: inline-block;
   margin: 0;
   font-weight: 600;
-`
-
-const Skills = styled.ul`
-  margin-bottom: 20px;
-  list-style: none;
-`
-
-const Skill = styled.li`
-  display: inline-block;
-  white-space: nowrap;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  padding: 0.25em 0.4em;
-  line-height: 1;
-  margin-right: 0.5em;
-  margin-bottom: 0.5em;
-  font-size: 0.9em;
-  background-color: rgba(83, 103, 75, 0.8);
 `
 
 const Profile = () => (

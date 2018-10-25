@@ -1,13 +1,15 @@
 import React from 'react'
 
+import Layout from '../components/Layout'
 import Profile from '../components/Profile/Profile'
-import WorkOverview from '../components/Work/WorkOverview'
 import Section from '../components/Shared/Section/Section'
 
 const IndexPage = () => (
-  <Section style={{ position: 'relative' }}>
-    <Profile />
-  </Section>
+  <Layout>
+    <Section style={{ position: 'relative' }}>
+      <Profile />
+    </Section>
+  </Layout>
 )
 
 export default IndexPage
