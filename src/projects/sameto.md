@@ -13,4 +13,4 @@ tech:
   - redux-saga
 ---
 
-I was hired by an agency to develop a react-native aplpication. Same.to was designed to function as a social event planner. User can register and invite their friends through social channels such as facebook, whatsapp or email. They can create activies or events and plan the travels together through the app. A whatsapp like chat functionality was included. Unfortunately the app never went live.
+I was hired by an agency to develop a react-native application. Same.to was designed to function as a social event planner. Users can register and invite their friends through social channels such as facebook, whatsapp or email. They can create activities or events and plan the travels together through the app. A whatsapp like chat functionality was included.

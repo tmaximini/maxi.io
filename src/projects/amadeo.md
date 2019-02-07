@@ -15,4 +15,4 @@ tech:
   - phantomjs
 ---
 
-Amadeo is a startup that aims to simplify the insurance process for young people. Instead of handling heaps of paperwork you fill out an interactive questionaire about your life situation and Amadeo uses your data to scrape various insurance partner sites and propose you a tailored, customizable package. The project involved lots of remote scraping via phantomjs, a node.js / express backend as well as a state-of-the-art react powered frontend.
+Amadeo is a startup that aims to simplify the insurance process for young people. Instead of handling heaps of paperwork the user fills out an interactive questionnaire about their life situation and Amadeo uses their data to scrape various insurance partner sites and propose them a tailored, customizable package. The project involved lots of remote scraping via phantomjs, a node.js / express backend with a MongoDB as well as a state-of-the-art react powered frontend.
