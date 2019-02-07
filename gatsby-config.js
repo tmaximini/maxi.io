@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/posts/`,
+        path: `${__dirname}/src/posts`,
         name: 'posts'
       }
     },
@@ -17,14 +17,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/src/projects/`
+        path: `${__dirname}/src/projects`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/src/travel/`
+        path: `${__dirname}/src/travel`
       }
     },
     {
