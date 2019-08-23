@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Image from 'gatsby-image'
+import React from "react";
+import styled from "styled-components";
+import Image from "gatsby-image";
 
 const Wrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   h3 {
     margin-top: 0;
   }
-`
+`;
 
 const Flex = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ const Flex = styled.div`
       margin-bottom: 0;
     }
   }
-`
+`;
 
 const InfoBox = styled.div`
   margin-bottom: 20px;
@@ -41,9 +41,9 @@ const InfoBox = styled.div`
     fonts-size: 1.2em;
   }
   a {
-    font-size: 0.9em;
+    font-size: 1.1em;
   }
-`
+`;
 
 const FlexRight = styled(Flex)`
   @media screen and (min-width: 40em) {
@@ -51,7 +51,7 @@ const FlexRight = styled(Flex)`
     border-left: 1px solid #f2f2f2;
     padding-left: 10px;
   }
-`
+`;
 
 const ImgContainer = styled.div`
   height: 200px;
@@ -69,20 +69,20 @@ const ImgContainer = styled.div`
       height: 300px;
     }
   }
-`
+`;
 
 const DateEl = styled.div`
-  font-size: 0.9em;
+  font-size: 1.1em;
   margin: 0 0 20px 0;
-`
+`;
 
 const ProjectDetailInfo = ({ project }) => {
-  const { title, tech, url, image, summary, date } = project.frontmatter
+  const { title, tech, url, image, summary, date } = project.frontmatter;
 
   return (
     <Wrapper>
-      <Flex style={{ flexGrow: 2, paddingRight: '20px' }}>
-        <h1 style={{ marginBottom: '20px' }}>{title}</h1>
+      <Flex style={{ flexGrow: 2, paddingRight: "20px" }}>
+        <h1 style={{ marginBottom: "20px" }}>{title}</h1>
         <DateEl>{date}</DateEl>
         <blockquote>"{summary}"</blockquote>
         <ImgContainer>
@@ -109,6 +109,6 @@ const ProjectDetailInfo = ({ project }) => {
         </InfoBox>
       </FlexRight>
     </Wrapper>
-  )
-}
-export default ProjectDetailInfo
+  );
+};
+export default ProjectDetailInfo;

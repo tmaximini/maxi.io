@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
+import React from "react";
+import { Link } from "gatsby";
+import styled from "styled-components";
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -9,7 +9,7 @@ const HeaderWrapper = styled.header`
   @media screen and (min-width: 680px) {
     margin-top: 30px;
   }
-`
+`;
 
 const Inner = styled.div`
   display: flex;
@@ -22,13 +22,13 @@ const Inner = styled.div`
   @media screen and (min-width: 375px) {
     padding: 0 20px;
   }
-`
+`;
 
 const Logo = styled(Link)`
   color: #050505;
   text-transform: uppercase;
   text-decoration: none;
-`
+`;
 
 const NavLink = styled(Link)`
   color: #4b4c4b;
@@ -39,31 +39,26 @@ const NavLink = styled(Link)`
   @media screen and (min-width: 375px) {
     font-size: 16px;
   }
-`
+`;
 
 NavLink.defaultProps = {
   activeStyle: {
-    borderBottom: '2px solid #4b4c4b'
+    borderBottom: "1px solid #4b4c4b"
   }
-}
+};
 
 const Header = () => (
   <HeaderWrapper>
     <Inner>
       <Logo to="/">Maxi.io</Logo>
       <nav>
-        <NavLink to="/">
-          Home
-        </NavLink>
-        <NavLink to="/work">
-          Work
-        </NavLink>
-        <NavLink to="/travel">
-          Travel
-        </NavLink>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/work">Work</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/travel">Travel</NavLink>
       </nav>
     </Inner>
   </HeaderWrapper>
-)
+);
 
-export default Header
+export default Header;

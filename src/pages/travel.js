@@ -24,7 +24,7 @@ const TravelOverview = styled.div`
       border: 0;
       width: 50%;
       padding: 5px;
-      font-size: 0.9em;
+      font-size: 1.1em;
       &:nth-child(odd) {
         color: #587a7b;
         text-align: right;

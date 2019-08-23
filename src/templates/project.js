@@ -1,13 +1,13 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
-import { Link, graphql } from 'gatsby'
+import React from "react";
+import Helmet from "react-helmet";
+import styled from "styled-components";
+import { Link, graphql } from "gatsby";
 
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import Layout from '../components/Layout'
-import WorkOverview from '../components/Work/WorkOverview'
-import ProjectDetailInfo from '../components/Work/ProjectDetailInfo'
-import Section from '../components/Shared/Section/Section'
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Layout from "../components/Layout";
+import WorkOverview from "../components/Work/WorkOverview";
+import ProjectDetailInfo from "../components/Work/ProjectDetailInfo";
+import Section from "../components/Shared/Section/Section";
 
 const TopLinks = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ const TopLinks = styled.div`
 
   a {
     text-decoration: none;
-    font-size: 0.9em;
+    font-size: 1.1em;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,11 +29,11 @@ const TopLinks = styled.div`
       transform: scale(1.1);
     }
   }
-`
+`;
 
 export default function ProjectTemplate({ data, pageContext }) {
-  const { markdownRemark: project } = data
-  const { prev, next } = pageContext
+  const { markdownRemark: project } = data;
+  const { prev, next } = pageContext;
   return (
     <Layout>
       <div>
@@ -56,7 +56,7 @@ export default function ProjectTemplate({ data, pageContext }) {
         </Section>
       </div>
     </Layout>
-  )
+  );
 }
 
 export const projectQuery = graphql`
@@ -83,4 +83,4 @@ export const projectQuery = graphql`
       }
     }
   }
-`
+`;

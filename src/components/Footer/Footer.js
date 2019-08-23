@@ -1,20 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import {
-  FaTwitter,
-  FaGithub,
-  FaInstagram,
-  FaTumblr,
-  FaLinkedin
-} from "react-icons/fa";
+import { FaTwitter, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const FooterWrapper = styled.footer`
   color: rgba(0, 0, 0, 0.7);
   padding: 40px;
 `;
 
-const CopyRight = styled.h3`
+const CopyRight = styled.h4`
   color: rgba(0, 0, 0, 0.7);
   text-align: center;
   font-weight: 400;
@@ -66,13 +60,6 @@ const Footer = () => (
         rel="noopener noreferrer"
       >
         <FaInstagram size={22} />
-      </a>
-      <a
-        href="https://diechaostruppe.tumblr.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <FaTumblr size={22} />
       </a>
     </SocialMedia>
   </FooterWrapper>
