@@ -42,7 +42,7 @@ Cypress Version: 3.4.1
 ## Install all deps on the AWS AMI?
 
 We were already using [AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html) to power our CI build server, so my first take was just installing the missing dependencies and creating a new AMI revision.
-I tried following [this blog post](https://medium.com/aubergine-solutions/install-cypress-io-front-end-testing-tool-dependencies-on-amazon-linux-ami-ec2-instance-f676da4abbdd) and to install all these dependencies manually per SSH directly on the AWS Linux machine. At the end I still could not get it to work as some of the deps were already out of date because we use the latest cypress version and the deps changed since this post was written.
+I tried following [this excellent blog post](https://medium.com/aubergine-solutions/install-cypress-io-front-end-testing-tool-dependencies-on-amazon-linux-ami-ec2-instance-f676da4abbdd) and to install all these dependencies manually per SSH directly on the AWS Linux machine. Unfortunately I still could not get it to work as some of the deps were already out of date because we use the latest cypress version (3.4.1 at the time of writing) and the deps changed since this post was written.
 
 ## Docker to the rescue
 
@@ -56,7 +56,7 @@ This let's you run your cypress tests inside a docker container with a single co
 The magic here is that `-v $PWD:/e2e` maps the current folder (where you run this command from) to /e2e inside the container and thus there is no copying needed. The docker image literally picks it up from there and uses its included Cypress environment to run our mounted specs from the local `./cypress` folder.
 
 The next challenge is to make sure our app is running on the CI server before the cypress tests start and that Cypress can access it from inside the docker container.
-To start the server we followed [what the documentation suggested](https://docs.cypress.io/guides/guides/continuous-integration.html#Boot-your-server):
+To start the server we followed [what the documentation suggested](https://docs.cypress.io/guides/guides/continuous-integration.html#Boot-your-server) and use the npm module [`start-server-and-test`](https://github.com/bahmutov/start-server-and-test):
 
 Our npm script would look like this:
 
@@ -69,11 +69,13 @@ Our npm script would look like this:
 ```
 
 Because we are starting our server to test against on `localhost:3000` we now pass in `CYPRESS_baseUrl=http://172.17.0.1:3000` as and env for the `docker run` command.
-172.17.0.1 is a magic IP in docker that points to `localhost` of the host machine. You can find more info on this [On the Docker website](https://docs.docker.com/network/network-tutorial-standalone/)
+172.17.0.1 is a magic IP in docker that points to `localhost` of the host machine. You can find more info on this [on the Docker website](https://docs.docker.com/network/network-tutorial-standalone/).
 
 On docker for mac we can use the `docker.host.internal` DNS entry but this will not work on linux machines yet. See [this issue on Github for details](https://github.com/docker/for-linux/issues/264).
 
 ## Conclusion
 
 If you are already using docker on your build server it can solve many problems that arise with missing dependencies for us. Especially you can save a lot of headache that arises from different versioning. Luckily, the great people at Cypress already provided an everything-included Docker image for us, which we can use to solve this problem.
-So there you have it, now Cypress runs our integration tests from Jenkins in headless chrome from inside a Docker container. Happy Testing.
+So there you have it, now Cypress runs our integration tests from Jenkins in headless chrome from inside a Docker container.
+
+Happy Testing 😌
