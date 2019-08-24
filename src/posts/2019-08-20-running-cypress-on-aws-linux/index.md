@@ -48,21 +48,23 @@ I tried following [this blog post](https://medium.com/aubergine-solutions/instal
 
 The solution is to use the 'cypress:included' docker image as described here:
 
-https://docs.cypress.io/guides/guides/continuous-integration.html#Docker
-https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
+- https://docs.cypress.io/guides/guides/continuous-integration.html#Docker
+- https://www.cypress.io/blog/2019/05/02/run-cypress-with-a-single-docker-command/
 
-This let's you run your cypress tests inside a docker container with a single command. The magic here is that `-v $PWD:/e2e` maps current folder of your projects to /e2e inside the container and thus there is no copying needed.
+This let's you run your cypress tests inside a docker container with a single command.
+
+The magic here is that `-v $PWD:/e2e` maps the current folder (where you run this command from) to /e2e inside the container and thus there is no copying needed. The docker image literally picks it up from there and uses its included Cypress environment to run our mounted specs from the local `./cypress` folder.
 
 The next challenge is to make sure our app is running on the CI server before the cypress tests start and that Cypress can access it from inside the docker container.
 To start the server we followed [what the documentation suggested](https://docs.cypress.io/guides/guides/continuous-integration.html#Boot-your-server):
 
 Our npm script would look like this:
 
-```
+```json
 {
-"start": "cross-env webpack-dev-server --port 3000 --host 0.0.0.0",
-"cypress:integration" : "start-server-and-test start http://localhost:3000 cy:run:ci",
-"cy:run:ci": "docker run -e CYPRESS_baseUrl=http://172.17.0.1:3000 -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:3.4.1"
+  "start": "cross-env webpack-dev-server --port 3000 --host 0.0.0.0",
+  "cypress:integration": "start-server-and-test start http://localhost:3000 cy:run:ci",
+  "cy:run:ci": "docker run -e CYPRESS_baseUrl=http://172.17.0.1:3000 -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:3.4.1"
 }
 ```
 
