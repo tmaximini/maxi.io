@@ -22,6 +22,12 @@ const Headline = styled.h1`
   }
 `;
 
+const BlogPostArea = styled.article`
+  ol {
+    margin-left: 0;
+  }
+`;
+
 export default function Template({ data }) {
   const { markdownRemark: post } = data;
   return (
@@ -34,7 +40,7 @@ export default function Template({ data }) {
         <Section>
           <Published>{post.frontmatter.date}</Published>
           <Headline>{post.frontmatter.title}</Headline>
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          <BlogPostArea dangerouslySetInnerHTML={{ __html: post.html }} />
         </Section>
       </div>
     </Layout>

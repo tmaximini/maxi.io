@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 path: "/running-cypress-ci-tests-with-jenkins-on-aws-linux"
 title: "Running Cypress on an Amazon Linux AMI with Docker and Jenkins"
 published: true

@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/posts`,
-        name: 'posts'
+        name: "posts"
       }
     },
     {
@@ -32,11 +32,11 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: 'gatsby-remark-custom-blocks',
+            resolve: "gatsby-remark-custom-blocks",
             options: {
               blocks: {
                 photos: {
-                  classes: 'photos'
+                  classes: "photos"
                 }
               }
             }
@@ -46,16 +46,16 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
-              linkImagesToOriginal: true
+              maxWidth: 1120,
+              linkImagesToOriginal: false
             }
           }
         ]
       }
     },
-    'gatsby-plugin-styled-components',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    "gatsby-plugin-styled-components",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-sharp",
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
@@ -93,10 +93,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: 'UA-111816913-1',
+        trackingId: "UA-111816913-1",
         // Setting this parameter is optional
         anonymize: true
       }
     }
   ]
-}
+};
