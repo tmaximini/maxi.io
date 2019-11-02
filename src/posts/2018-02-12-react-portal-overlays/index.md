@@ -1,5 +1,4 @@
 ---
-
 order: 1
 path: '/building-fullscreen-overlays-with-react-16-portals'
 title: 'Building a fullscreen overlay with React 16s portal'
@@ -9,7 +8,7 @@ type: 'post'
 year: 2018
 ---
 
-So recently I found myself once again in the situation that I had to build a fullscreen overlay for a website, in this case for displaying a video.
+Recently I found myself once again in the situation that I had to build a fullscreen overlay for a website, in this case for displaying a video.
 This is probably something every web developer encounters on a regular basis.
 As with most programming problems there are many ways to solve this - but as I was reading [React 16's changelog](https://reactjs.org/blog/2017/09/26/react-v16.0.html#portals) recently I thought why giving the newly-added [Portals](https://reactjs.org/docs/portals.html) a shot.
 
