@@ -1,13 +1,13 @@
 ---
-order: 6
-path: '/projects/sparwelt'
-title: 'Sparwelt'
+order: 8
+path: "/projects/sparwelt"
+title: "Sparwelt"
 published: true
-date: '2014'
-type: 'project'
-url: 'https://www.sparwelt.de/internal/sparwelt-app-neu'
-image: './sparwelt.jpg'
-summary: 'A mobile appication that helps users dicover special deals, vouchers, gifts and more.'
+date: "2014"
+type: "project"
+url: "https://www.sparwelt.de/internal/sparwelt-app-neu"
+image: "./sparwelt.jpg"
+summary: "A mobile appication that helps users dicover special deals, vouchers, gifts and more."
 tech:
   - ionic framework
   - angular.js

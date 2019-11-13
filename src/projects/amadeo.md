@@ -1,12 +1,12 @@
 ---
-order: 4
-path: '/projects/amadeo'
-title: 'Amadeo'
+order: 5
+path: "/projects/amadeo"
+title: "Amadeo"
 published: true
-date: '2015 - 2016'
-type: 'project'
-image: './amadeo.png'
-summary: 'A startup that lets you insure yourself online less than 5 minutes.'
+date: "2015 - 2016"
+type: "project"
+image: "./amadeo.png"
+summary: "A startup that lets you insure yourself online less than 5 minutes."
 tech:
   - react
   - redux

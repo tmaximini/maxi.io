@@ -1,13 +1,13 @@
 ---
-order: 1
-path: '/projects/fleek'
-title: 'Fleek by Zalando'
+order: 3
+path: "/projects/fleek"
+title: "Fleek by Zalando"
 published: true
-date: '2017 - 2018'
-type: 'project'
-url: 'http://fleek.de'
-image: './fleek.png'
-summary: 'Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience.'
+date: "2017 - 2018"
+type: "project"
+url: "http://fleek.de"
+image: "./fleek.png"
+summary: "Fleek is an online shop tailored towards the younger generation. We focused primarily on a mobile Instagram like experience."
 tech:
   - react
   - redux

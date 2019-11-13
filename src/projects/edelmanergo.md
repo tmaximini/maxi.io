@@ -1,13 +1,13 @@
 ---
-order: 5
-path: '/projects/edelmanergo'
-title: 'Edelman Ergo'
+order: 7
+path: "/projects/edelmanergo"
+title: "Edelman Ergo"
 published: true
-date: '2015'
-type: 'project'
-image: './edelman.png'
-url: 'https://www.edelmanergo.com'
-summary: 'Website protoype for the joint venture of these two famous german online agencies.'
+date: "2015"
+type: "project"
+image: "./edelman.png"
+url: "https://www.edelmanergo.com"
+summary: "Website protoype for the joint venture of these two famous german online agencies."
 tech:
   - html5
   - javascript

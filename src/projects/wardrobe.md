@@ -1,13 +1,13 @@
 ---
-order: 1
-path: '/projects/zalando-wardrobe'
-title: 'Zalando Wardrobe'
+order: 5
+path: "/projects/zalando-wardrobe"
+title: "Zalando Wardrobe"
 published: true
-date: '2018'
-type: 'project'
-url: 'https://www.zalando-wardrobe.de/'
-image: './wardrobe.png'
-summary: 'A gatsbyjs powered landing page for an innovative mobile application.'
+date: "2018"
+type: "project"
+url: "https://www.zalando-wardrobe.de/"
+image: "./wardrobe.png"
+summary: "A gatsbyjs powered landing page for an innovative mobile application."
 tech:
   - gatsbyjs
   - react

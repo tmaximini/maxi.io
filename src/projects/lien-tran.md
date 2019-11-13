@@ -1,13 +1,13 @@
 ---
-order: 3
-path: '/projects/lien-tran'
-title: 'Lien Tran'
+order: 4
+path: "/projects/lien-tran"
+title: "Lien Tran"
 published: true
-date: '2014'
-type: 'project'
-url: 'http://lien-tran.com'
-image: './lien-tran.png'
-summary: 'Lien Tran is an interior architect and designer based in Berlin.'
+date: "2014"
+type: "project"
+url: "http://lien-tran.com"
+image: "./lien-tran.png"
+summary: "Lien Tran is an interior architect and designer based in Berlin."
 tech:
   - angular.js
   - sass
