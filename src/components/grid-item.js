@@ -2,32 +2,18 @@ import styled from "styled-components"
 
 const GridItem = styled.article`
   position: relative;
-  min-height: 350px;
-  height: 50%;
+  height: 50vh;
   width: 100%;
-
-
-
 
   @media screen and (min-width: 800px) {
     width: 50%;
-    min-height: 450px;
   }
 
-  @media screen and (min-width: 1200px) {
-    width: 50%;
-    min-height: 550px;
-  }
 
   @media screen and (min-width: 1600px) {
     width: 33.33333%;
-    min-height: 440px;
   }
 
-  @media screen and (min-width: 2000px) {
-    width: 33.33333%;
-    min-height: 500px;
-  }
 
   > div {
     position: absolute !important;

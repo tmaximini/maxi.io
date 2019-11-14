@@ -29,3 +29,9 @@ h4,
 h5 {
   margin-top: 1.45em;
 }
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
