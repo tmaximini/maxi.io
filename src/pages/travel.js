@@ -10,13 +10,17 @@ import SEO from "../components/seo"
 import { MONTH_NAMES } from '../constants'
 
 const TravelPage = ({ data: { entries } }) => {
+
+  const posts = entries.nodes.reverse()
+
+
   return (
     <Layout>
       <SEO title={`Travel Photos | Thomas Maximini`} />
       <Section style={{ position: 'relative', paddingTop: '40px', maxWidth: '100%' }}>
         <h1 style={{ marginBottom: '1.45rem' }}>Travel Diaries</h1>
           <PhotoGrid>
-            {entries.nodes.map(photo => (
+            {posts.map(photo => (
               <GridItem key={photo.slug}>
                 <Img fluid={photo.cover.childImageSharp.fluid} />
                 <div className="table">

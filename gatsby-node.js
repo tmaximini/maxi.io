@@ -95,8 +95,6 @@ exports.createPages = async ({ actions, graphql }) => {
     });
   });
 
-  console.info({ allTravel})
-
   allTravel.data.photos.nodes.forEach(node => {
     createPage({
       path: node.slug,
