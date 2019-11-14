@@ -9,6 +9,7 @@ const Project = styled.li`
   width: 100%;
   max-width: 40em;
   cursor: pointer;
+  padding: 10px;
   @media screen and (min-width: 60em) {
     width: 50%;
     padding-right: 20px;

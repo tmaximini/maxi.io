@@ -32,7 +32,7 @@ const BlogPage = ({ data }) => {
   return (
     <Layout>
       <SEO title={`Blog | Thomas Maximini`} />
-      <Section style={{ position: 'relative', paddingTop: '40px' }}>
+      <Section style={{ position: 'relative', paddingTop: '40px', padding: '10px' }}>
         <h1>Writings</h1>
         {Object.keys(groupedPosts)
 

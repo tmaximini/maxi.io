@@ -8,6 +8,7 @@ const ProfileWrapper = styled.section`
   text-align: center;
   margin-top: 40px;
   min-height: 100%;
+  padding: 10px 0;
   a {
     font-weight: bold;
   }
