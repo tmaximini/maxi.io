@@ -6,7 +6,7 @@ published: true
 date: "2019"
 type: "project"
 url: "https://www.arethaiskandar.com"
-image: "./aretha.png"
+image: "./arethaiskandar.png"
 summary: "The personal website of the parisian singer and songwriter Aretha Iskandar."
 tech:
   - gatsby

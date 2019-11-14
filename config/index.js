@@ -3,7 +3,7 @@ module.exports = {
   
     siteTitle: "Thomas Maximini", // Navigation and Site Title
     siteTitleAlt: "Thomas Maximini - full stack web developer", // Alternative Site title for SEO
-    siteTitleShort: "ArethaIskandar", // short_name for manifest
+    siteTitleShort: "ThomasMaximini", // short_name for manifest
     siteHeadline: "Full stack web developer from Germany", // Headline for schema.org JSONLD
     siteUrl: "https://thomasmaximini.com", // Domain of your site. No trailing slash!
     siteLanguage: "en", // Language Tag on <html> element
