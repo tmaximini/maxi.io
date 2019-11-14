@@ -1,13 +1,23 @@
 const path = require("path");
 
-exports.createPages = ({ actions, graphql }) => {
+const wrapper = promise =>
+  promise.then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+    return result
+  })
+
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
 
   const postTemplate = path.resolve("src/templates/post.js");
-  const travelTemplate = path.resolve("src/templates/travel.js");
+  // const travelTemplate = path.resolve("src/templates/travel.js");
   const projectTemplate = path.resolve("src/templates/project.js");
 
-  return graphql(`
+  const photosTemplate = require.resolve("./src/templates/photos.js")
+
+  const allMarkdown = await graphql(`
     {
       allMarkdownRemark(sort: { fields: [frontmatter___order], order: ASC }) {
         edges {
@@ -36,50 +46,72 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(res => {
-    if (res.errors) {
-      return Promise.reject(res.errors);
-    }
+  `)
 
-    const projects = res.data.allMarkdownRemark.edges.filter(
-      ({ node }) => node.frontmatter.type === "project"
-    );
-    const posts = res.data.allMarkdownRemark.edges.filter(
-      ({ node }) => node.frontmatter.type === "post"
-    );
-    const travel = res.data.allMarkdownRemark.edges.filter(
-      ({ node }) => node.frontmatter.type === "travel"
-    );
-
-    projects.forEach(({ node }, index) => {
-      createPage({
-        path: node.frontmatter.path,
-        component: projectTemplate,
-        context: {
-          prev:
-            index === 0
-              ? projects[projects.length - 1].node
-              : projects[index - 1].node,
-          next:
-            index === projects.length - 1
-              ? projects[0].node
-              : projects[index + 1].node
+  const allTravel = await wrapper(
+    graphql(`
+      {
+        photos: allTravelYaml {
+          nodes {
+            slug
+            images
+          }
         }
-      });
-    });
+      }
+    `)
+  )
 
-    posts.forEach(({ node }) => {
-      createPage({
-        path: node.frontmatter.path,
-        component: postTemplate
-      });
-    });
+  const projects = allMarkdown.data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.frontmatter.type === "project"
+  );
+  const posts = allMarkdown.data.allMarkdownRemark.edges.filter(
+    ({ node }) => node.frontmatter.type === "post"
+  );
+  // const travel = allMarkdown.data.allMarkdownRemark.edges.filter(
+  //   ({ node }) => node.frontmatter.type === "travel"
+  // );
 
-    travel.forEach(({ node }) => {
-      createPage({
-        path: node.frontmatter.path,
-        component: travelTemplate
-      });
+  projects.forEach(({ node }, index) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: projectTemplate,
+      context: {
+        prev:
+          index === 0
+            ? projects[projects.length - 1].node
+            : projects[index - 1].node,
+        next:
+          index === projects.length - 1
+            ? projects[0].node
+            : projects[index + 1].node
+      }
     });
   });
+
+  posts.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: postTemplate
+    });
+  });
+
+  console.info({ allTravel})
+
+  allTravel.data.photos.nodes.forEach(node => {
+    createPage({
+      path: node.slug,
+      component: photosTemplate,
+      context: {
+        slug: node.slug,
+        images: `/${node.images}/`,
+      },
+    })
+  })
+
+  // travel.forEach(({ node }) => {
+  //   createPage({
+  //     path: node.frontmatter.path,
+  //     component: travelTemplate
+  //   });
+  // });
 };

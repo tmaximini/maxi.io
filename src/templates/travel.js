@@ -33,7 +33,7 @@ export default function Template({ data }) {
 
 export const postQuery = graphql`
   query TravelPostByPath($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    info: markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
         path
@@ -42,12 +42,17 @@ export const postQuery = graphql`
         keywords
       }
     }
-    allFile(filter: { relativeDirectory: { eq: "./photos" } }) {
+    images: allFile(filter: { relativeDirectory: { eq: "./photos" } }) {
       edges {
         node {
           id
           name
-          relativePath
+          extension
+          childImageSharp {
+            fluid(quality: 95, maxWidth: 1200) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
         }
       }
     }

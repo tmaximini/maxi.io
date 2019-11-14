@@ -4,11 +4,13 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import WorkOverview from '../components/Work/WorkOverview'
 import Section from '../components/Shared/Section/Section'
+import SEO from "../components/seo"
 
 const WorkPage = ({ data }) => {
   const { edges: projects } = data.allMarkdownRemark
   return (
     <Layout>
+      <SEO title={`Selected Work | Thomas Maximini`} />
     <Section style={{ position: 'relative', paddingTop: '40px' }}>
       <h1>Work</h1>
       <WorkOverview projects={projects.map(p => p.node)} />

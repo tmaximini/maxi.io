@@ -1,81 +1,39 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
+import Img from "gatsby-image"
 
 import Layout from '../components/Layout'
 import Section from '../components/Shared/Section/Section'
+import GridItem from "../components/grid-item"
+import PhotoGrid from "../components/photo-grid"
+import SEO from "../components/seo"
 import { MONTH_NAMES } from '../constants'
 
-const TravelOverview = styled.div`
-  a {
-    text-decoration: none;
-  }
-
-  a:hover {
-    border-bottom: 1px solid;
-  }
-
-  h3 {
-    margin-bottom: 0.725em;
-  }
-  table {
-    border: 0;
-    td {
-      border: 0;
-      width: 50%;
-      padding: 5px;
-      font-size: 1.1em;
-      &:nth-child(odd) {
-        color: #587a7b;
-        text-align: right;
-      }
-    }
-  }
-`
-
-const TravelPage = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark
+const TravelPage = ({ data: { entries } }) => {
   return (
     <Layout>
-      <Section style={{ position: 'relative', paddingTop: '40px' }}>
+      <SEO title={`Travel Photos | Thomas Maximini`} />
+      <Section style={{ position: 'relative', paddingTop: '40px', maxWidth: '100%' }}>
         <h1 style={{ marginBottom: '1.45rem' }}>Travel Diaries</h1>
-        <p style={{ textAlign: 'center' }}>
-          See where I am (possibly) now on{' '}
-          <a href="https://nomadlist.com/@tmaximini" title="Nomadlist">
-            Nomadlist
-          </a>
-        </p>
-        <TravelOverview>
-          <table>
-            <tbody>
-              {posts
-                .sort(function(a, b) {
-                  const aDate = a.node.frontmatter.date.split('.')
-                  const bDate = b.node.frontmatter.date.split('.')
-                  return (
-                    new Date(Date.UTC(bDate[2], bDate[1], bDate[0])) -
-                    new Date(Date.UTC(aDate[2], aDate[1], aDate[0]))
-                  )
-                })
-                .map(p => {
-                  const { date, path, title, year } = p.node.frontmatter
-                  const month = parseInt(date.split('.')[1]) - 1
-                  return (
-                    <tr key={p.node.id}>
-                      <td className="color">
-                        <span>
-                          {MONTH_NAMES[month]} {year}
-                        </span>
-                      </td>
-                      <td>
-                        <Link to={path}>{` ${title}`}</Link>
-                      </td>
-                    </tr>
-                  )
-                })}
-            </tbody>
-          </table>
-        </TravelOverview>
+          <PhotoGrid>
+            {entries.nodes.map(photo => (
+              <GridItem key={photo.slug}>
+                <Img fluid={photo.cover.childImageSharp.fluid} />
+                <div className="table">
+                  <div className="vert-center">
+                    <h2>{photo.title_detail}</h2>
+                    <Link
+                      to={photo.slug}
+                      aria-label={`View photo "${photo.title_detail}"`}
+                      className="show-gallery"
+                    >
+                      <span>View Photos</span>
+                    </Link>
+                  </div>
+                </div>
+              </GridItem>
+            ))}
+          </PhotoGrid>
       </Section>
     </Layout>
   )
@@ -85,20 +43,16 @@ export default TravelPage
 
 export const postsQuery = graphql`
   query AllTravelPosts {
-    allMarkdownRemark(
-      limit: 20
-      sort: { fields: [frontmatter___date], order: ASC }
-      filter: { frontmatter: { type: { eq: "travel" }, published: { eq: true } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            path
-            title
-            published
-            date
-            year
+    entries: allTravelYaml {
+      nodes {
+        title
+        title_detail
+        slug
+        cover {
+          childImageSharp {
+            fluid(quality: 95, maxWidth: 1200) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
           }
         }
       }

@@ -1,15 +1,43 @@
+const config = require("./config")
+
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix
+
 module.exports = {
   siteMetadata: {
-    title: `Thomas Maximini`
+    siteUrl: config.siteUrl + pathPrefix,
+    pathPrefix,
+    title: config.siteTitle,
+    titleAlt: config.siteTitleAlt,
+    description: config.siteDescription,
+    keywords: config.keywords,
+    logo: config.siteLogo,
+    headline: config.siteHeadline,
+    siteLanguage: config.siteLanguage,
+    ogLanguage: config.ogLanguage,
+    author: config.author,
+    twitter: config.userTwitter,
+    facebook: config.ogSiteName,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalyticsID,
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: false,
+        // enable ip anonymization
+        anonymize: true,
+        cookieDomain: "thomasmaximini.com",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-remark-copy-linked-files`,
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/posts`,
+        path: `${__dirname}/content/posts`,
         name: "posts"
       }
     },
@@ -17,14 +45,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/src/projects`
+        path: `${__dirname}/content/projects`
       }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `projects`,
-        path: `${__dirname}/src/travel`
+        name: `travel`,
+        path: `${__dirname}/content/travel`
       }
     },
     {
@@ -91,12 +119,17 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        trackingId: "UA-111816913-1",
-        // Setting this parameter is optional
-        anonymize: true
-      }
-    }
+        name: `thomas-maximini-com`,
+        short_name: `tmaximini`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `static/logo.png`, // This path is relative to the root of the site.
+      },
+    },
+    "gatsby-plugin-sitemap",
   ]
 };

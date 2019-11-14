@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import groupBy from 'lodash/groupBy'
 import Section from '../components/Shared/Section/Section'
 import Layout from '../components/Layout'
+import SEO from '../components/seo'
 
 const BlogOverview = styled.div`
   a {
@@ -30,6 +31,7 @@ const BlogPage = ({ data }) => {
 
   return (
     <Layout>
+      <SEO title={`Blog | Thomas Maximini`} />
       <Section style={{ position: 'relative', paddingTop: '40px' }}>
         <h1>Writings</h1>
         {Object.keys(groupedPosts)
