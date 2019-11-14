@@ -1,5 +1,12 @@
 const path = require("path");
 
+const sharp = require('sharp')
+
+// https://github.com/gatsbyjs/gatsby/issues/6291
+sharp.simd(false)
+sharp.cache(false)
+
+
 const wrapper = promise =>
   promise.then(result => {
     if (result.errors) {
