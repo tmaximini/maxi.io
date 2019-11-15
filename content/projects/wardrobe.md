@@ -3,7 +3,7 @@ order: 5
 path: "/projects/zalando-wardrobe"
 title: "Zalando Wardrobe"
 published: true
-date: "2018"
+date: "April 2018"
 type: "project"
 url: "https://www.zalando-wardrobe.de/"
 image: "./wardrobe.png"

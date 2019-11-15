@@ -12,6 +12,8 @@ const Wrapper = styled.div`
     color: #666666;
     font-style: italic;
     margin-left: 0;
+    display: block;
+    width: 100%;
   }
   h2,
   h3 {
@@ -36,6 +38,7 @@ const Flex = styled.div`
 
 const InfoBox = styled.div`
   margin-bottom: 20px;
+  width: 100%;
   h3 {
     margin-bottom: 10px;
     fonts-size: 1.2em;
@@ -54,60 +57,86 @@ const FlexRight = styled(Flex)`
 `;
 
 const ImgContainer = styled.div`
-  height: 200px;
-  width: 200px;
-  margin: 20px 0;
+  max-height: 400px;
+  
+  margin: 20px auto;
+  text-align: center;
   @media screen and (min-width: 40em) {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
   }
   * {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     @media screen and (min-width: 40em) {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
     }
   }
 `;
 
 const DateEl = styled.div`
-  font-size: 1.1em;
+  font-size: 1em;
   margin: 0 0 20px 0;
-`;
+  color: #848484;
+  display: block;
+  width: 100%;
+  font-style: italic;
+  `;
+
+const Tech = styled.ul`
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+overflow-x: scroll;
+padding: 10px 0;
+margin-right: 10px;
+width: 100%;
+list-style: none;
+margin: 0;
+`
+
+const Technology = styled.li`
+  border-radius: 3px;
+  border: 1px solid #848484;
+  color: #848484;
+  padding: 4px 8px 4px 8px;
+  position: relative;
+  margin: 0 10px 10px 0;
+`
+
+const ImageEl = styled(Image)`
+  box-shadow: #9c9c9c 0 5px 15px 0;
+`
 
 const ProjectDetailInfo = ({ project }) => {
   const { title, tech, url, image, summary, date } = project.frontmatter;
 
   return (
     <Wrapper>
-      <Flex style={{ flexGrow: 2, paddingRight: "20px" }}>
         <h1 style={{ marginBottom: "20px" }}>{title}</h1>
-        <DateEl>{date}</DateEl>
+        
         <blockquote>"{summary}"</blockquote>
         <ImgContainer>
-          <Image fluid={image.childImageSharp.fluid} />
+          <ImageEl fluid={image.childImageSharp.fluid} />
         </ImgContainer>
         <div dangerouslySetInnerHTML={{ __html: project.html }} />
-      </Flex>
-      <FlexRight>
         {url && (
           <InfoBox>
-            <h3>Links</h3>
             <a target="_blank" rel="noopener noreferrer" href={url}>
               {url}
             </a>
           </InfoBox>
         )}
         <InfoBox>
-          <h3>Technologies</h3>
-          <ul>
+          
+          <Tech>
             {tech.map(item => (
-              <li key={item}>{item}</li>
+              <Technology key={item}>{item}</Technology>
             ))}
-          </ul>
+          </Tech>
+          <DateEl>{date}</DateEl>
         </InfoBox>
-      </FlexRight>
     </Wrapper>
   );
 };

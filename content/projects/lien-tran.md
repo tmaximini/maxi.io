@@ -3,7 +3,7 @@ order: 4
 path: "/projects/lien-tran"
 title: "Lien Tran"
 published: true
-date: "2014"
+date: "September 2014"
 type: "project"
 url: "http://lien-tran.com"
 image: "./lien-tran.png"

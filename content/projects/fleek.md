@@ -3,7 +3,7 @@ order: 3
 path: "/projects/fleek"
 title: "Fleek by Zalando"
 published: true
-date: "2017 - 2018"
+date: "October 2017 - March 2018"
 type: "project"
 url: "http://fleek.de"
 image: "./fleek.png"

@@ -3,7 +3,7 @@ order: 4
 path: "/projects/zalando-lounge"
 title: "Zalando Lounge"
 published: true
-date: "2015 - 2016"
+date: "July 2015 - March 2016"
 type: "project"
 url: "http://zalando-lounge.de"
 image: "./zal-lounge.png"

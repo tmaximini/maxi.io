@@ -4,14 +4,18 @@ const GridItem = styled.article`
   position: relative;
   height: 50vh;
   width: 100%;
+  margin: 5px 0;
+  
 
+  box-sizing: border-box;
   @media screen and (min-width: 800px) {
-    width: 50%;
+    width: calc(50% - 10px);
+    margin: 5px;
   }
 
 
   @media screen and (min-width: 1600px) {
-    width: 33.33333%;
+    width: calc(33.33333% - 10px);
   }
 
 
@@ -70,6 +74,11 @@ const GridItem = styled.article`
     transition: all 0.3s ease 0s !important;
     transform: translateY(5px);
     display: table-cell;
+
+    a {
+      text-decoration: none;
+    }
+
   }
 
   .table:hover .vert-center {

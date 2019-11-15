@@ -3,7 +3,7 @@ order: 8
 path: "/projects/sparwelt"
 title: "Sparwelt"
 published: true
-date: "2014"
+date: "November 2014 - February 2015"
 type: "project"
 url: "https://www.sparwelt.de/internal/sparwelt-app-neu"
 image: "./sparwelt.jpg"

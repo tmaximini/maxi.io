@@ -59,6 +59,7 @@ const ImgContainer = styled.div`
   width: 100px;
   height: 100px;
   margin-right: 20px;
+  box-shadow: #9c9c9c 0px 3px 7px 0;
   @media screen and (min-width: 40em) {
     width: 150px;
     height: 150px;
