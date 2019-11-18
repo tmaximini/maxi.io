@@ -1,25 +1,25 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react";
+import { graphql } from "gatsby";
 
-import Layout from '../components/Layout'
-import WorkOverview from '../components/Work/WorkOverview'
-import Section from '../components/Shared/Section/Section'
-import SEO from "../components/seo"
+import Layout from "../components/Layout";
+import WorkOverview from "../components/Work/WorkOverview";
+import Section from "../components/Shared/Section/Section";
+import SEO from "../components/seo";
 
 const WorkPage = ({ data }) => {
-  const { edges: projects } = data.allMarkdownRemark
+  const { edges: projects } = data.allMarkdownRemark;
   return (
     <Layout>
-      <SEO title={`Selected Work | Thomas Maximini`} />
-    <Section style={{ position: 'relative', paddingTop: '40px' }}>
-      <h1>Work</h1>
-      <WorkOverview projects={projects.map(p => p.node)} />
-    </Section>
+      <SEO title={`Selected Work`} />
+      <Section style={{ position: "relative", paddingTop: "40px" }}>
+        <h1>Work</h1>
+        <WorkOverview projects={projects.map(p => p.node)} />
+      </Section>
     </Layout>
-  )
-}
+  );
+};
 
-export default WorkPage
+export default WorkPage;
 
 export const workQuery = graphql`
   query AllProjects {
@@ -50,4 +50,4 @@ export const workQuery = graphql`
       }
     }
   }
-`
+`;
