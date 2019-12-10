@@ -1,9 +1,9 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
-import groupBy from 'lodash/groupBy'
-import Section from '../components/Shared/Section/Section'
-import Layout from '../components/Layout'
+import React from "react";
+import { Link, graphql } from "gatsby";
+import styled from "styled-components";
+import groupBy from "lodash/groupBy";
+import Section from "../components/Shared/Section/Section";
+import Layout from "../components/Layout";
 
 const BlogOverview = styled.div`
   a {
@@ -22,15 +22,15 @@ const BlogOverview = styled.div`
     margin: 0;
     list-style: none;
   }
-`
+`;
 
 const BlogPage = ({ data }) => {
-  const { edges: posts } = data.allMarkdownRemark
-  const groupedPosts = groupBy(posts, post => post.node.frontmatter.year)
+  const { edges: posts } = data.allMarkdownRemark;
+  const groupedPosts = groupBy(posts, post => post.node.frontmatter.year);
 
   return (
     <Layout>
-      <Section style={{ position: 'relative', paddingTop: '40px' }}>
+      <Section style={{ position: "relative", paddingTop: "40px" }}>
         <h1>Writings</h1>
         {Object.keys(groupedPosts)
 
@@ -39,20 +39,29 @@ const BlogPage = ({ data }) => {
             <BlogOverview key={year}>
               <h3>{year}</h3>
               <ul>
-                {groupedPosts[year].sort((a, b) => (a.order < b.order ? 1 : -1)).map(p => (
-                  <li key={p.node.id}>
-                    <Link to={p.node.frontmatter.path}>{p.node.frontmatter.title}</Link>
-                  </li>
-                ))}
+                {groupedPosts[year]
+                  .sort((a, b) => {
+                    console.log(a, b);
+                    return a.node.frontmatter.order > b.node.frontmatter.order
+                      ? 1
+                      : -1;
+                  })
+                  .map(p => (
+                    <li key={p.node.id}>
+                      <Link to={p.node.frontmatter.path}>
+                        {p.node.frontmatter.title}
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             </BlogOverview>
           ))}
       </Section>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;
 
 export const postsQuery = graphql`
   query AllBlogPosts {
@@ -65,6 +74,7 @@ export const postsQuery = graphql`
         node {
           id
           frontmatter {
+            order
             path
             title
             published
@@ -75,4 +85,4 @@ export const postsQuery = graphql`
       }
     }
   }
-`
+`;
