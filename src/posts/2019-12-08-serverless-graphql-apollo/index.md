@@ -5,7 +5,7 @@ title: "Building a serverless GraphQL api with Node.js, AWS Lambda and Apollo"
 published: true
 date: "10.12.2019"
 type: "post"
-keywords: "GraphQL, Apollo, AWS, serverless"
+keywords: "GraphQL, Apollo, AWS, serverless, DynamoDB"
 year: 2019
 ---
 
@@ -32,6 +32,11 @@ Therefore we should install the serverless cli globally using `npm install -g se
 
 As a GraphQL server we are using [Apollo](https://www.apollographql.com/), which is also one of the most famous graqhql clients and servers. Apollo Client now fully [supports](https://www.apollographql.com/docs/react/api/react-hooks/) [React Hooks](https://reactjs.org/docs/hooks-intro.html) which is one of the reasons I love using it.
 The server-side implementation with Apollo is also very straightforward and they offer an [AWS Lambda compatible package](https://www.apollographql.com/docs/apollo-server/deployment/lambda/), `apollo-server-lambda`, which we are going to use in this tutorial.
+
+## Pre-Requisites
+
+You should have an AWS Account and the [AWS cli](https://aws.amazon.com/de/cli/) installed.
+You should have run `aws configure` and setup your local machine with the AWS Access Key ID and AWS Secret Access Key from an IAM user with privileges to access DynamoDB.
 
 ## The Apollo Server
 
@@ -167,7 +172,7 @@ Now create another file, `index.js`, where we import said server.
 // index.js
 const { ApolloServer } = require("apollo-server-lambda");
 
-const schema = require("./schema");
+const schema = require("./graphql/schema");
 
 const server = new ApolloServer(schema);
 
@@ -243,3 +248,149 @@ As ApolloServer mocks everything by default, you can now run your first test que
   }
 }
 ```
+
+## Fetching real data
+
+Now if we want to display actual data, not just mock data, we have to write [some resolvers](https://www.apollographql.com/docs/apollo-server/data/data/).
+
+As we want to stay serverless, we use AWS DynamoDB as a data layer in this example. DynamoDB is a "serverless" NoSQL Database service from AWS, that can handle large amounts of data easily and where [we only pay for what we use](https://aws.amazon.com/dynamodb/pricing/).
+
+To communicate with the DynamoDB locally, we need a `.env` file where we add the following information:
+
+```
+AWS_ACCCES_ID=<your access id>
+AWS_SECRET_KEY=<your secret key>
+AWS_REGION=<your region>
+```
+
+_Make sure the `.env` file is git ignored and never gets checked into version control, as it contains sensitive information._
+
+Now let's write our first resolver in `resolvers/article.js`.
+
+```js
+const AWS = require("aws-sdk");
+
+// this flag is set when the process runs on AWS lambda
+// so we can use it to determine if we run on AWS or not
+const isLambda = !!(process.env.LAMBDA_TASK_ROOT || false);
+
+// if we are local, add env vars to communicate with DynamoDB
+if (!isLambda) {
+  require("dotenv").config();
+  AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_ID,
+    secretAccessKey: process.env.AWS_SECRET_KEY,
+    region: process.env.AWS_REGION
+  });
+}
+
+// we might need to transform the data from the DB format to
+// whatever format works best for our client apps
+const { transformArticle } = require("../transformers/article");
+
+// INIT AWS
+const docClient = new AWS.DynamoDB.DocumentClient();
+
+// default DynamoDB params to be extended
+const defaultParams = {
+  // our DynamoDB table name
+  TableName: "Articles",
+  // the attributes that we want to get from that table
+  AttributesToGet: ["ID", "Name", "Producer", "Description", "Price", "Images"]
+};
+
+// promisified generic getter
+const getByParams = params =>
+  new Promise((resolve, reject) => {
+    docClient.get(params, (err, data) => {
+      if (err) {
+        console.log("error getting from dynamodb", err);
+        reject(err);
+      } else {
+        // transform the DB result to desired format before returning
+        const result = transformArticle(data.Item);
+        console.log("yay got data from dynamodb", result);
+        resolve(result);
+      }
+    });
+  });
+
+// our resolver function
+const getArticleById = async id => {
+  const params = {
+    ...defaultParams,
+    Key: {
+      ID: id
+    }
+  };
+
+  return getByParams(params);
+};
+
+module.exports = {
+  getArticleById
+};
+```
+
+The transformer function might look something like this - this really depends on your use case! You might not even need one depending on your data model.
+
+```js
+const transformArticle = item => {
+  return {
+    id: item.ID,
+    name: item.Name,
+    image: item.Images.Image.Link,
+    brand: item.Producer,
+    slug: item.Slug,
+    price: item.Price,
+    description: Array.isArray(item.Translations)
+      ? item.Translations[0].DescriptionLong
+      : item.Translations.DescriptionLong || "no description yet"
+  };
+};
+
+module.exports = {
+  transformArticle
+};
+```
+
+Now with our resolver in place, we can jump back into `schema.js` and actually use it:
+
+```js
+// ...
+const { getArticleById } = require("../resolvers/article");
+// ...
+const resolvers = {
+  Query: {
+    product(obj, args, context, info) {
+      return getArticleById(args.id);
+    }
+  },
+  Product: {
+    price: obj => ({
+      amount: obj.price,
+      currency: "EUR"
+    })
+  }
+};
+// ...
+```
+
+We imported our resolver function and used it in the `Query` object of the resolvers object. the second argument, `args`, contains the request argumens, in this case `id`.
+
+Nested resolvers, such as Product.price, get the parent object passed in as a first argument. This is pretty neat as it let's us abstract oder schema further into re-usable sub types, such as `Price`.
+
+## Deployment to serverless
+
+Now you can run `sls deploy` and the project gets packaged and deployed to AWS Lambda. Your output should look something like this:
+
+![serverless deployment](sls.png "serverless deployment")
+<span style="font-size: 11px;">Our serverless deployment</span>
+
+## Conclusion
+
+Serverless technologies are changing the way we develop our applications. The fact that we don't need to think about infrastructure or optimise for later scaling gives us the possibility to laser focus on our apps. Another big plus is the low entry costs and not paying for any idle servers, we only pay for what is being executed. The downsides might be vendor lock-in into AWS, Google etc, because smaller businesses can just not compete with the services offered by large data centers of these providers.
+
+You can find the code of this example [on my Github](https://github.com/tmaximini/graphql-apollo-serverless-example).
+
+_This post was also published on [Medium](https://medium.com/@tmaximini/building-a-serverless-graphql-api-with-node-js-aws-lambda-and-apollo-b5796ab24727)._
