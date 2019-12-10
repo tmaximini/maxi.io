@@ -1,21 +1,21 @@
 ---
-order: 1
-path: '/traits-of-good-developers'
-title: 'Traits of good developers'
+order: 2
+path: "/traits-of-good-developers"
+title: "Traits of good developers"
 published: true
-date: '02.11.2019'
-type: 'post'
-keywords: 'Developers, Career, Opinion'
+date: "02.11.2019"
+type: "post"
+keywords: "Developers, Career, Opinion"
 year: 2019
 ---
 
 ## What are traits of good developers?
 
-![Camp Adventure, Haslev , Denmark](image.jpg '@peteriveyphotography unsplash.com')
+![Camp Adventure, Haslev , Denmark](image.jpg "@peteriveyphotography unsplash.com")
 <span style="font-size: 11px;">Photo: @peteriveyphotography unsplash.com</span>
 
 ```js
-const developer = { isLit: true }
+const developer = { isLit: true };
 ```
 
 This is an opinionated piece and by no means a complete list. The understanding of what is considered a good developer is a highly subjective topic. These are some of the traits that come to my mind when I think about the people that inspired me and sparked enthusiasm and productivity at my projects. If you disagree or have anything to add [tweet at me to let me know](https://twitter.com/tmaximini)

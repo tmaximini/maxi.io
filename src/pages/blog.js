@@ -44,7 +44,12 @@ const BlogPage = ({ data }) => {
               <h3>{year}</h3>
               <ul>
                 {groupedPosts[year]
-                  .sort((a, b) => (a.order < b.order ? 1 : -1))
+                  .sort((a, b) => {
+                    console.log(a, b);
+                    return a.node.frontmatter.order > b.node.frontmatter.order
+                      ? 1
+                      : -1;
+                  })
                   .map(p => (
                     <li key={p.node.id}>
                       <Link to={p.node.frontmatter.path}>
@@ -73,6 +78,7 @@ export const postsQuery = graphql`
         node {
           id
           frontmatter {
+            order
             path
             title
             published
