@@ -58,8 +58,7 @@ const Profile = () => (
     </P>
     <P>
       I am based in Limburg, Germany. Before that I used to live and work in
-      Berlin for 12 years. Eventually I grew a bit tired of living in a big city
-      so I moved to the countryside.
+      Berlin for 12 years.
     </P>
     <P>
       Here you can check out my <Link to="/blog">blog</Link> or some of my{" "}
