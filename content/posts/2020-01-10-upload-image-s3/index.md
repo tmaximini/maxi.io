@@ -158,7 +158,11 @@ const Upload = ({ register }) => {
 export default Upload;
 ```
 
-Notice that I am creating a _preview_ of the image I am about to upload and save it in the component's state (`setPreview(URL.createObjectURL(file));`).
+Notice that I am creating a _preview_ of the image I am about to upload and save it in the component's state:
+
+```js
+setPreview(URL.createObjectURL(file));
+```
 
 I also added a hidden input field where I store the image's location (our AWS S3 bucket + file path) after uploading the image so I can associate the image with the user record in my form.
 
