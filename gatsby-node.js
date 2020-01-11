@@ -1,19 +1,18 @@
 const path = require("path");
 
-const sharp = require('sharp')
+const sharp = require("sharp");
 
 // https://github.com/gatsbyjs/gatsby/issues/6291
-sharp.simd(false)
-sharp.cache(false)
-
+sharp.simd(false);
+sharp.cache(false);
 
 const wrapper = promise =>
   promise.then(result => {
     if (result.errors) {
-      throw result.errors
+      throw result.errors;
     }
-    return result
-  })
+    return result;
+  });
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
@@ -21,8 +20,6 @@ exports.createPages = async ({ actions, graphql }) => {
   const postTemplate = path.resolve("src/templates/post.js");
   // const travelTemplate = path.resolve("src/templates/travel.js");
   const projectTemplate = path.resolve("src/templates/project.js");
-
-  const photosTemplate = require.resolve("./src/templates/photos.js")
 
   const allMarkdown = await graphql(`
     {
@@ -53,20 +50,7 @@ exports.createPages = async ({ actions, graphql }) => {
         }
       }
     }
-  `)
-
-  const allTravel = await wrapper(
-    graphql(`
-      {
-        photos: allTravelYaml {
-          nodes {
-            slug
-            images
-          }
-        }
-      }
-    `)
-  )
+  `);
 
   const projects = allMarkdown.data.allMarkdownRemark.edges.filter(
     ({ node }) => node.frontmatter.type === "project"
@@ -74,9 +58,6 @@ exports.createPages = async ({ actions, graphql }) => {
   const posts = allMarkdown.data.allMarkdownRemark.edges.filter(
     ({ node }) => node.frontmatter.type === "post"
   );
-  // const travel = allMarkdown.data.allMarkdownRemark.edges.filter(
-  //   ({ node }) => node.frontmatter.type === "travel"
-  // );
 
   projects.forEach(({ node }, index) => {
     createPage({
@@ -101,22 +82,4 @@ exports.createPages = async ({ actions, graphql }) => {
       component: postTemplate
     });
   });
-
-  allTravel.data.photos.nodes.forEach(node => {
-    createPage({
-      path: node.slug,
-      component: photosTemplate,
-      context: {
-        slug: node.slug,
-        images: `/${node.images}/`,
-      },
-    })
-  })
-
-  // travel.forEach(({ node }) => {
-  //   createPage({
-  //     path: node.frontmatter.path,
-  //     component: travelTemplate
-  //   });
-  // });
 };

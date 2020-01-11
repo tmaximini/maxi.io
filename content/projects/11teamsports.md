@@ -3,9 +3,9 @@ order: 2
 path: "/projects/11teamsports-immaker"
 title: "11teamsports"
 published: true
-date: "March 2019 - present"
+date: "March 2019 - December 2019"
 type: "project"
-url: "https://11teamsports.com/de-de"
+url: "https://11teamsports.com"
 image: "./teamsports.png"
 summary: "11teamsports is one of the biggest german online shops for football and training equipment."
 tech:
