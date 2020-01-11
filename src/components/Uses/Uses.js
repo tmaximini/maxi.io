@@ -107,6 +107,14 @@ const Uses = () => (
           <Link to="https://ia.net/writer">iA Writer</Link>.
         </li>
         <li>
+          I use <Link to="https://www.spectacleapp.com/">Spectacle</Link> as my
+          window manager.
+        </li>
+        <li>
+          <Link to="https://www.macbartender.com/">Bartender</Link> keeps my OSX
+          menu bar clean and organized.
+        </li>
+        <li>
           <Link to="https://www.dropbox.com">Dropbox</Link> helps me to sync and
           backup all my important files across devices.
         </li>
