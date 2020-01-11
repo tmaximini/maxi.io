@@ -127,6 +127,10 @@ const Uses = () => (
           Sometimes I use <Link to="https://brew.sh/">Homebrew</Link> to install
           missing packages on OSX.
         </li>
+        <li>
+          <Link to="https://justgetflux.com/">Flux</Link> improves the quality
+          of my sleep when working late on my computer.
+        </li>
       </ul>
     </p>
   </UsesWrapper>
