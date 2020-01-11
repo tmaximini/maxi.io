@@ -1,6 +1,6 @@
-const config = require("./config")
+const config = require("./config");
 
-const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix
+const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
 
 module.exports = {
   siteMetadata: {
@@ -16,7 +16,7 @@ module.exports = {
     ogLanguage: config.ogLanguage,
     author: config.author,
     twitter: config.userTwitter,
-    facebook: config.ogSiteName,
+    facebook: config.ogSiteName
   },
   plugins: [
     {
@@ -27,8 +27,8 @@ module.exports = {
         head: false,
         // enable ip anonymization
         anonymize: true,
-        cookieDomain: "thomasmaximini.com",
-      },
+        cookieDomain: "thomasmaximini.com"
+      }
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
@@ -49,26 +49,9 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `travel`,
-        path: `${__dirname}/content/travel`
-      }
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          {
-            resolve: "gatsby-remark-custom-blocks",
-            options: {
-              blocks: {
-                photos: {
-                  classes: "photos"
-                }
-              }
-            }
-          },
           `gatsby-remark-prismjs`,
 
           {
@@ -127,8 +110,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/logo.png`, // This path is relative to the root of the site.
-      },
+        icon: `static/logo.png` // This path is relative to the root of the site.
+      }
     },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-netlify-cache"
