@@ -178,10 +178,11 @@ I also added a hidden input field where I store the image's location (our AWS S3
 ```
 
 The `ref={register}` here registers the component to my form - this is done by [react-hook-form](https://react-hook-form.com/) and I pass in the `register` function from the parent (the form) component.
+So much for the client side part of the application. Now let's have a look at the server side for uploading the images to our AWS S3 bucket.
 
 ## The GraphQL server part
 
-Let's say in our schema we have the following mutations:
+So somewhere we need to have an Apollo Graphql server running that handles our `uploadImage` mutation. I have setup a [simple serverless Apollo server on AWS Lambda](https://www.thomasmaximini.com/build-a-serverless-graphlql-api-with-apollo-server-on-aws-lambda). Let's say in our schema we have the following mutations:
 
 ```js
   type Mutation {
@@ -286,3 +287,4 @@ const handleFileUpload = async file => {
 
 So now, every time an image get's selected or dropped on the dropzone in the form, the `uploadImage` mutation gets called and the image gets immediately uploaded in the background.
 The image's location get's stored in a hidden input field as soon as the upload has finished so the `createUser` mutation can store the location as part of the user record.
+Thanks to [Ben Awad](https://github.com/benawad/apollo-server-react-file-upload) for the initial inspiration.
