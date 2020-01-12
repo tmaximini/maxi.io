@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Section = styled.section`
   margin: 0 auto;
@@ -10,8 +10,7 @@ const Section = styled.section`
 
   h1 {
     text-align: center;
-    margin-bottom: 1.25em;
   }
-`
+`;
 
-export default Section
+export default Section;

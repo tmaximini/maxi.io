@@ -14,13 +14,13 @@ I recently found the need to add an image upload to a form for user avatars. The
 ## Client Side form
 
 As in most of my projects, I am using React on the client side.
-I imagine you've already set up Apollo Client successfully on the client, so we just dive right into the image upload.
+I assume you've already set up Apollo Client successfully on the client, so we just dive right into the image upload.
 
 We are going to need the `useMutation` hook from `@apollo/react-hooks` as well as the `useDropzone` hook from [react-dropzone](https://react-dropzone.netlify.com/).
 
 The client side component looks like this:
 
-```js
+```jsx
 import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import gql from "graphql-tag";
@@ -28,6 +28,7 @@ import { useMutation } from "@apollo/react-hooks";
 
 import styled from "@emotion/styled";
 
+// just some styled components for the image upload area
 const getColor = props => {
   if (props.isDragAccept) {
     return "#00e676";
@@ -90,6 +91,7 @@ const errorStyle = {
   fontSize: "0.75rem"
 };
 
+// relevant code starts here
 const uploadFileMutation = gql`
   mutation UploadFile($file: Upload!) {
     uploadFile(file: $file) {
@@ -166,7 +168,7 @@ setPreview(URL.createObjectURL(file));
 
 I also added a hidden input field where I store the image's location (our AWS S3 bucket + file path) after uploading the image so I can associate the image with the user record in my form.
 
-```js
+```jsx
 <input
   type="hidden"
   name="avatarUrl"

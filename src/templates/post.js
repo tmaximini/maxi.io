@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import Section from "../components/Shared/Section/Section";
 import styled from "styled-components";
 
-require("prismjs/themes/prism-okaidia.css");
+require("prism-themes/themes/prism-darcula.css");
 
 const Published = styled.span`
   display: block;
