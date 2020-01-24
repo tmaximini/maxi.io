@@ -26,6 +26,12 @@ const BlogPostArea = styled.article`
   ol {
     margin-left: 0;
   }
+
+  blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #999;
+  }
 `;
 
 export default function Template({ data }) {
@@ -36,6 +42,7 @@ export default function Template({ data }) {
         <Helmet>
           <title>{post.frontmatter.title} - Thomas Maximini</title>
           <meta name="keywords" content={post.frontmatter.keywords} />
+          <meta name="description" content={post.frontmatter.keywords} />
         </Helmet>
         <Section>
           <Published>{post.frontmatter.date}</Published>
