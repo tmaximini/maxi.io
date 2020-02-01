@@ -48,7 +48,7 @@ const Profile = () => (
     <NameWrapper>
       <h3>Hi, my name is</h3>
       <Name>Thomas Maximini</Name>
-      <h3>and I am a freelance software developer</h3>
+      <h3>and I am a freelance software engineer</h3>
     </NameWrapper>
 
     <ProfilePic src={pic} />
@@ -57,12 +57,9 @@ const Profile = () => (
       open web technologies.
     </P>
     <P>
-      I am based in Limburg, Germany. Before that I used to live and work in
-      Berlin for 12 years. Most of my work is done remotely these days.
-    </P>
-    <P>
-      Here you can check out my <Link to="/blog">blog</Link> or some of my{" "}
+      You can check out my <Link to="/blog">blog</Link> or some of my{" "}
       <Link to="/work">work</Link> while you're here.
+      <br /> This is what I <Link to="/uses">use</Link> for work.
     </P>
     <P>
       You can also find me on <a href="http://github.com/tmaximini">Github</a>,{" "}
