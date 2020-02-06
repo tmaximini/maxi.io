@@ -1,7 +1,7 @@
 ---
 order: 1
-path: "/json-stringifying-react-components"
-title: "JSON.stringify and React components"
+path: "/json-stringify-symbols-and-react-components"
+title: "JSON.stringify, Symbols and React components"
 published: true
 date: "06.02.2020"
 type: "post"
