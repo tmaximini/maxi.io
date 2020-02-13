@@ -1,6 +1,6 @@
 ---
-order: 1
-path: "/accessing-authorization-headers-in-apollo-graphql"
+order: 3
+path: "/blog//accessing-authorization-headers-in-apollo-graphql"
 title: "Accessing Authorization headers in Apollo graphql client"
 published: true
 date: "24.01.2020"

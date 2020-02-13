@@ -70,7 +70,7 @@ export default BlogPage;
 export const postsQuery = graphql`
   query AllBlogPosts {
     allMarkdownRemark(
-      limit: 10
+      limit: 30
       sort: { fields: [frontmatter___date], order: ASC }
       filter: { frontmatter: { type: { eq: "post" }, published: { eq: true } } }
     ) {

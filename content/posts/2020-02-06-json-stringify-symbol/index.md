@@ -1,5 +1,5 @@
 ---
-order: 1
+order: 2
 path: "/json-stringify-symbols-and-react-components"
 title: "JSON.stringify, Symbols and React components"
 published: true
