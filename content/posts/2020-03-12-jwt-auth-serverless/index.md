@@ -167,7 +167,7 @@ When we decided on our data model and table name it makes sense to revisit our `
 
 We will also need a few *secret* environment variables. A simple way to define them is just creating a *secrets.json* file in your project root (make sure to .gitignore it!) and define them in a json format.
 
-```yml
+```yaml
     org: your-org
     
     custom:
