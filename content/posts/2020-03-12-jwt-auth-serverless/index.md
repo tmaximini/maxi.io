@@ -30,7 +30,7 @@ These are roughly the steps that we have to go through in order to secure our AP
 4. Save token in Cookie 🍪
 5. Sign every request with this token in the HTTP Authorization header
 6. Setup authorizer function that verifies this token (on requesting a secured api route). authorizer response can be cached for a certain amount to increase api throughput.
-7. Authorizer generates a  `[policyDocument](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-output.html)` that allows or denies access to the service
+7. Authorizer generates a [policyDocument](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-output.html) that allows or denies access to the service
 
 ## Plan our app
 
