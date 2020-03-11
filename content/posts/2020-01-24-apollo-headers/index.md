@@ -129,7 +129,7 @@ In order to expose the header correctly we had to use the `apollo-server-express
       resolvers,,
       context: (ctx) => {
     		// get session, implementation omitted for clarity
-        const session = getOrCreateSession()
+        const session = getSession()
 
         ctx.res.setHeader('Authorization', `Bearer ${session.id}`)
 
