@@ -1,10 +1,10 @@
 ---
-
 order: 2
 path: '/getting-started-with-crosswalk-for-ionic-framework'
 title: 'Getting started with crosswalk for Ionic Framework'
+subtitle: 'How to use the drop in replacement for the Android webview'
 published: true
-date: '23.01.2015'
+date: '20150123'
 year: 2015
 type: 'post'
 ---
@@ -32,7 +32,7 @@ I will briefly explain how you'd go about adding Crosswalk to your project witho
 
 First you go the [xwalk downloads page](https://crosswalk-project.org/documentation/downloads.html) and grab the Cordova Android Version. I have a Nexus5 phone so I download the one for the ARM platform. The unzipped folder should look like this:
 
-![Crosswalk unzipped](xwalk_unzipped.png "Crosswalk Cordova unzipped")
+![Crosswalk unzipped](xwalk_unzipped.png 'Crosswalk Cordova unzipped')
 
 If you don't have android added yet to your project, do it now (`ionic platform add android`). Now you just replace the contents of `<your_project>/platforms/android/CordovaLib/` with the contents of the `framework` folder that we just unzipped and you copy the VERSION file to `<your_project>/platforms/android/`.
 

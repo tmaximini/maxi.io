@@ -1,15 +1,19 @@
 ---
 order: 1
-path: "/build-a-serverless-graphlql-api-with-apollo-server-on-aws-lambda"
-title: "Building a serverless GraphQL api with Node.js, AWS Lambda and Apollo"
+path: '/build-a-serverless-graphlql-api-with-apollo-server-on-aws-lambda'
+title: 'Serverless GraphQL APIs with Node.js and Apollo'
+subtitle: 'Run your Apollo as a Lambda'
 published: true
-date: "10.12.2019"
-type: "post"
-keywords: "GraphQL, Apollo, AWS, serverless, DynamoDB"
+date: '20191210'
+type: 'post'
+keywords: 'GraphQL, Apollo, AWS, serverless, DynamoDB'
+tags:
+  - serverless
+  - apollo
 year: 2019
 ---
 
-![Umbrellas](umbrellas.jpg "@@jj_89 unsplash.com")
+![Umbrellas](umbrellas.jpg '@@jj_89 unsplash.com')
 <span style="font-size: 11px;">Photo by Jakub Jacobsky on Unsplash</span>
 
 ## Why serverless
@@ -60,7 +64,7 @@ I install both apollo-server and apollo-server-lambda here, because I want to de
 
 ```js
 // schema.js
-const { gql } = require("apollo-server-lambda");
+const { gql } = require('apollo-server-lambda');
 
 const typeDefs = gql`
   type Image {
@@ -102,7 +106,7 @@ module.exports = {
   typeDefs,
   resolvers,
   mocks,
-  mockEntireSchema: true
+  mockEntireSchema: true,
 };
 ```
 
@@ -112,15 +116,15 @@ For quicker local development, we create a file `local.js`, where we import Apol
 
 ```js
 // local.js
-const { ApolloServer } = require("apollo-server");
+const { ApolloServer } = require('apollo-server');
 
-const { typeDefs, resolvers, mocks } = require("./graphql/schema");
+const { typeDefs, resolvers, mocks } = require('./graphql/schema');
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
   mocks,
-  mockEntireSchema: false
+  mockEntireSchema: false,
 });
 
 server.listen().then(({ url }) => {
@@ -142,9 +146,9 @@ Fot the serverless function we create a file `lambda.js` with the following cont
 
 ```js
 // lambda.js
-const { ApolloServer } = require("apollo-server-lambda");
+const { ApolloServer } = require('apollo-server-lambda');
 
-const { typeDefs, resolvers, mocks } = require("./graphql/schema");
+const { typeDefs, resolvers, mocks } = require('./graphql/schema');
 
 const server = new ApolloServer({
   typeDefs,
@@ -155,12 +159,12 @@ const server = new ApolloServer({
     headers: event.headers,
     functionName: context.functionName,
     event,
-    context
-  })
+    context,
+  }),
 });
 
 module.exports = {
-  server
+  server,
 };
 ```
 
@@ -170,18 +174,18 @@ Now create another file, `index.js`, where we import said server.
 
 ```js
 // index.js
-const { ApolloServer } = require("apollo-server-lambda");
+const { ApolloServer } = require('apollo-server-lambda');
 
-const schema = require("./graphql/schema");
+const schema = require('./graphql/schema');
 
 const server = new ApolloServer(schema);
 
 exports.graphqlHandler = server.createHandler({
   cors: {
-    origin: "*",
-    credentials: false
+    origin: '*',
+    credentials: false,
   },
-  endpointURL: "/graphql"
+  endpointURL: '/graphql',
 });
 ```
 
@@ -196,12 +200,12 @@ provider:
   runtime: nodejs10.x
   region: eu-central-1
 iamRoleStatements:
-  Effect: "Allow"
+  Effect: 'Allow'
   Action:
-    - "dynamodb:GetItem"
-    - "dynamodb:PutItem"
-    - "dynamodb:Scan"
-  Resource: "*"
+    - 'dynamodb:GetItem'
+    - 'dynamodb:PutItem'
+    - 'dynamodb:Scan'
+  Resource: '*'
 functions:
   graphql:
     # this is formatted as <FILENAME>.<HANDLER>
@@ -231,7 +235,7 @@ Let's run `npm run dev` and the local development server should start up:
 
 Now visit http://localhost:4000 and confirm everything works, you should see a GraphQL Playground.
 
-![localhost:4000 GraphQL Playground](localhost.png " GraphQL Playground")
+![localhost:4000 GraphQL Playground](localhost.png ' GraphQL Playground')
 <span style="font-size: 11px;">Our GraphQL Playground at localhost:4000</span>
 
 As ApolloServer mocks everything by default, you can now run your first test query against the server:
@@ -268,7 +272,7 @@ _Make sure the `.env` file is git ignored and never gets checked into version co
 Now let's write our first resolver in `resolvers/article.js`.
 
 ```js
-const AWS = require("aws-sdk");
+const AWS = require('aws-sdk');
 
 // this flag is set when the process runs on AWS lambda
 // so we can use it to determine if we run on AWS or not
@@ -276,17 +280,17 @@ const isLambda = !!(process.env.LAMBDA_TASK_ROOT || false);
 
 // if we are local, add env vars to communicate with DynamoDB
 if (!isLambda) {
-  require("dotenv").config();
+  require('dotenv').config();
   AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_ID,
     secretAccessKey: process.env.AWS_SECRET_KEY,
-    region: process.env.AWS_REGION
+    region: process.env.AWS_REGION,
   });
 }
 
 // we might need to transform the data from the DB format to
 // whatever format works best for our client apps
-const { transformArticle } = require("../transformers/article");
+const { transformArticle } = require('../transformers/article');
 
 // INIT AWS
 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -294,9 +298,16 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 // default DynamoDB params to be extended
 const defaultParams = {
   // our DynamoDB table name
-  TableName: "Articles",
+  TableName: 'Articles',
   // the attributes that we want to get from that table
-  AttributesToGet: ["ID", "Name", "Producer", "Description", "Price", "Images"]
+  AttributesToGet: [
+    'ID',
+    'Name',
+    'Producer',
+    'Description',
+    'Price',
+    'Images',
+  ],
 };
 
 // promisified generic getter
@@ -304,12 +315,12 @@ const getByParams = params =>
   new Promise((resolve, reject) => {
     docClient.get(params, (err, data) => {
       if (err) {
-        console.log("error getting from dynamodb", err);
+        console.log('error getting from dynamodb', err);
         reject(err);
       } else {
         // transform the DB result to desired format before returning
         const result = transformArticle(data.Item);
-        console.log("yay got data from dynamodb", result);
+        console.log('yay got data from dynamodb', result);
         resolve(result);
       }
     });
@@ -320,15 +331,15 @@ const getArticleById = async id => {
   const params = {
     ...defaultParams,
     Key: {
-      ID: id
-    }
+      ID: id,
+    },
   };
 
   return getByParams(params);
 };
 
 module.exports = {
-  getArticleById
+  getArticleById,
 };
 ```
 
@@ -345,12 +356,12 @@ const transformArticle = item => {
     price: item.Price,
     description: Array.isArray(item.Translations)
       ? item.Translations[0].DescriptionLong
-      : item.Translations.DescriptionLong || "no description yet"
+      : item.Translations.DescriptionLong || 'no description yet',
   };
 };
 
 module.exports = {
-  transformArticle
+  transformArticle,
 };
 ```
 
@@ -358,20 +369,20 @@ Now with our resolver in place, we can jump back into `schema.js` and actually u
 
 ```js
 // ...
-const { getArticleById } = require("../resolvers/article");
+const { getArticleById } = require('../resolvers/article');
 // ...
 const resolvers = {
   Query: {
     product(obj, args, context, info) {
       return getArticleById(args.id);
-    }
+    },
   },
   Product: {
     price: obj => ({
       amount: obj.price,
-      currency: "EUR"
-    })
-  }
+      currency: 'EUR',
+    }),
+  },
 };
 // ...
 ```
@@ -384,7 +395,7 @@ Nested resolvers, such as Product.price, get the parent object passed in as a fi
 
 Now you can run `sls deploy` and the project gets packaged and deployed to AWS Lambda. Your output should look something like this:
 
-![serverless deployment](sls.png "serverless deployment")
+![serverless deployment](sls.png 'serverless deployment')
 <span style="font-size: 11px;">Our serverless deployment</span>
 
 ## Conclusion

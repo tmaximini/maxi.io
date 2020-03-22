@@ -1,17 +1,18 @@
 ---
 order: 2
-path: "/traits-of-good-developers"
-title: "Traits of good developers"
+path: '/traits-of-good-developers'
+title: 'Traits of good developers'
+subtitle: "That's maybe like, your opinion man"
 published: true
-date: "02.11.2019"
-type: "post"
-keywords: "Developers, Career, Opinion"
+date: '20191102'
+type: 'post'
+keywords: 'Developers, Career, Opinion'
 year: 2019
 ---
 
 ## What are traits of good developers?
 
-![Camp Adventure, Haslev , Denmark](image.jpg "@peteriveyphotography unsplash.com")
+![Camp Adventure, Haslev , Denmark](image.jpg '@peteriveyphotography unsplash.com')
 <span style="font-size: 11px;">Photo: @peteriveyphotography unsplash.com</span>
 
 ```js

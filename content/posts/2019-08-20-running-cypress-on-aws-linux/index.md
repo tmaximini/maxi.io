@@ -1,11 +1,12 @@
 ---
 order: 3
-path: "/running-cypress-ci-tests-with-jenkins-on-aws-linux"
-title: "Running Cypress on an Amazon Linux AMI with Docker and Jenkins"
+path: '/running-cypress-ci-tests-with-jenkins-on-aws-linux'
+title: 'Running Cypress on an Amazon Linux AMI with Docker and Jenkins'
+subtitle: 'Get cypress working together with AWS Linux on your CI'
 published: true
-date: "20.08.2019"
-type: "post"
-keywords: "Cypress, Continuous Integration, AWS Linux, Docker, Jenkins"
+date: '20190820'
+type: 'post'
+keywords: 'Cypress, Continuous Integration, AWS Linux, Docker, Jenkins'
 year: 2019
 ---
 

@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 const HeaderWrapper = styled.header`
   height: 60px;
@@ -19,9 +19,6 @@ const Inner = styled.div`
   padding: 0 10px;
   max-width: 62em;
   margin: 0 auto;
-  @media screen and (min-width: 375px) {
-    padding: 0 20px;
-  }
 `;
 
 const Logo = styled(Link)`
@@ -43,8 +40,8 @@ const NavLink = styled(Link)`
 
 NavLink.defaultProps = {
   activeStyle: {
-    borderBottom: "1px solid #4b4c4b"
-  }
+    borderBottom: '1px solid #4b4c4b',
+  },
 };
 
 const Header = () => (

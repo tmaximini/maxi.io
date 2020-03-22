@@ -1,10 +1,10 @@
-import React from "react";
-import { Link, graphql } from "gatsby";
-import styled from "styled-components";
-import groupBy from "lodash/groupBy";
-import Section from "../components/Shared/Section/Section";
-import Layout from "../components/Layout";
-import SEO from "../components/seo";
+import React from 'react';
+import { Link, graphql } from 'gatsby';
+import styled from 'styled-components';
+import Section from '../components/Shared/Section/Section';
+import BlogPostTeaser from '../components/Blog/BlogPostTeaser';
+import Layout from '../components/Layout';
+import SEO from '../components/seo';
 
 const BlogOverview = styled.div`
   a {
@@ -27,39 +27,32 @@ const BlogOverview = styled.div`
 
 const BlogPage = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark;
-  const groupedPosts = groupBy(posts, post => post.node.frontmatter.year);
+
+  const postsOrdered = posts.sort((a, b) =>
+    a.node.frontmatter.date > b.node.frontmatter.date ? 1 : -1,
+  );
 
   return (
     <Layout>
       <SEO title={`Blog`} />
       <Section
-        style={{ position: "relative", paddingTop: "40px", padding: "10px" }}
+        style={{
+          position: 'relative',
+          paddingTop: '40px',
+          padding: '10px',
+        }}
       >
         <h1>Writings</h1>
-        {Object.keys(groupedPosts)
-
-          .reverse()
-          .map(year => (
-            <BlogOverview key={year}>
-              <h3>{year}</h3>
-              <ul>
-                {groupedPosts[year]
-                  .sort((a, b) => {
-                    console.log(a, b);
-                    return a.node.frontmatter.order > b.node.frontmatter.order
-                      ? 1
-                      : -1;
-                  })
-                  .map(p => (
-                    <li key={p.node.id}>
-                      <Link to={p.node.frontmatter.path}>
-                        {p.node.frontmatter.title}
-                      </Link>
-                    </li>
-                  ))}
-              </ul>
-            </BlogOverview>
-          ))}
+        <BlogOverview>
+          <ul>
+            {postsOrdered.reverse().map(post => (
+              <BlogPostTeaser
+                post={post.node.frontmatter}
+                key={post.node.id}
+              />
+            ))}
+          </ul>
+        </BlogOverview>
       </Section>
     </Layout>
   );
@@ -72,7 +65,9 @@ export const postsQuery = graphql`
     allMarkdownRemark(
       limit: 30
       sort: { fields: [frontmatter___date], order: ASC }
-      filter: { frontmatter: { type: { eq: "post" }, published: { eq: true } } }
+      filter: {
+        frontmatter: { type: { eq: "post" }, published: { eq: true } }
+      }
     ) {
       edges {
         node {
@@ -81,9 +76,11 @@ export const postsQuery = graphql`
             order
             path
             title
+            subtitle
             published
             date
             year
+            tags
           }
         }
       }

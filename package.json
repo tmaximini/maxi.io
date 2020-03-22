@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Thomas Maximini <tmaximini@gmail.com>",
   "dependencies": {
-    "date-fns": "^1.29.0",
+    "date-fns": "^2.11.0",
     "gatsby": "^2.17.4",
     "gatsby-image": "^2.2.29",
     "gatsby-link": "^2.2.8",

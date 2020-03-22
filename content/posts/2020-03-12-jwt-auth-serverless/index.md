@@ -1,18 +1,19 @@
 ---
 order: 1
-path: "/blog/jwt-authorization-for-serverless-apis-on-aws-lambda"
-title: "JWT Authorization for serverless APIs on AWS Lambda"
+path: '/blog/jwt-authorization-for-serverless-apis-on-aws-lambda'
+title: 'JWT Authorization for serverless APIs on AWS Lambda'
+subtitle: 'How to protect serverless API routes'
 published: true
-date: "11.03.2020"
-type: "post"
-keywords: "jwt, serverless, aws, auth"
+date: '20200311'
+type: 'post'
+keywords: 'jwt, serverless, aws, auth'
 year: 2020
 ---
 
-![gate](gate.png "@jeremy unsplash.com")
+![gate](gate.png '@jeremy unsplash.com')
 <span style="font-size: 11px;">Photo by Jeremy Goldberg on Unsplash</span>
 
-Serverless functions allow us to write small contained API endpoints for our apps. In this post we are going to learn how to secure our serverless API endpoint with a json web token ([JWT](https://jwt.io/)) based authorization. 
+Serverless functions allow us to write small contained API endpoints for our apps. In this post we are going to learn how to secure our serverless API endpoint with a json web token ([JWT](https://jwt.io/)) based authorization.
 
 ### TL;DR
 
@@ -25,7 +26,7 @@ Read on for a full explanation of what is going on here.
 These are roughly the steps that we have to go through in order to secure our API endpoint:
 
 1. Register with username, password, password hash gets stored in DB
-2. Login with Username / Password 
+2. Login with Username / Password
 3. If hash of password matches stored passwordHash for user, generate a JWT token from user's id and their auth scope
 4. Save token in Cookie 🍪
 5. Sign every request with this token in the HTTP Authorization header
@@ -49,51 +50,51 @@ So let's initalize the app. You will find the final code of the example in githu
 Now we go and update the generated `serverless.yml` file. We are going to add all our functions from step 1 (register, login, me, verifyToken to it). It should look similar to this one:
 
 ```yaml
-    org: your-org
-    
-    service: serverless-jwt-authorizer
-    provider:
-      name: aws
-      runtime: nodejs12.x
-      region: eu-central-1
-    functions:
-      verify-token:
-        handler: functions/authorize.handler
-    
-      me:
-        handler: functions/me.handler
-        events:
-          - http:
-              path: me
-              method: get
-              cors: true
-              authorizer:
-                name: verify-token
-    						# this tells the lambda where to take the information from, 
-    						# in our case the HTTP Authorization header
-                identitySource: method.request.header.Authorization 
-                resultTtlInSeconds: 3600 # cache the result for 1 hour
-      login:
-        handler: functions/login.handler
-        events:
-          - http:
-              path: login
-              method: post
-              cors: true
-      register:
-        handler: functions/register.handler
-        events:
-          - http:
-              path: register
-              method: post
-              cors: true
+org: your-org
+
+service: serverless-jwt-authorizer
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+functions:
+  verify-token:
+    handler: functions/authorize.handler
+
+  me:
+    handler: functions/me.handler
+    events:
+      - http:
+          path: me
+          method: get
+          cors: true
+          authorizer:
+            name: verify-token
+            # this tells the lambda where to take the information from,
+            # in our case the HTTP Authorization header
+            identitySource: method.request.header.Authorization
+            resultTtlInSeconds: 3600 # cache the result for 1 hour
+  login:
+    handler: functions/login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+  register:
+    handler: functions/register.handler
+    events:
+      - http:
+          path: register
+          method: post
+          cors: true
 ```
 
 ### Folder structure for serverless APIs
 
-The way I do it is to have a single file in `./functions` for each Lambda. Of course you can export multiple functions from the same file but like this I keep sanity and it makes naming easier (each file exports a *handler* function that I use as the handler in serverless.yml).
+The way I do it is to have a single file in `./functions` for each Lambda. Of course you can export multiple functions from the same file but like this I keep sanity and it makes naming easier (each file exports a _handler_ function that I use as the handler in serverless.yml).
 
-All the helpers and non-lambda functions go into the `./lib` folder. 
+All the helpers and non-lambda functions go into the `./lib` folder.
 
 ```bash
     .
@@ -131,31 +132,30 @@ When designing a service or an api I like to start with the data model. This is 
 
 In our case, the schema is fairly simple for now, but we keep it generic enough to be able to extend it later on. I am using the [dynamodb-toolbox](https://github.com/jeremydaly/dynamodb-toolbox) package here to define my data model and simplify writing queries.
 
-
 ```js
-    const { Model } = require("dynamodb-toolbox");
-    const User = new Model("User", {
-      // Specify table name
-      table: "test-users-table",
-    
-      // Define partition and sort keys
-      partitionKey: "pk",
-      sortKey: "sk",
-    
-      // Define schema
-      schema: {
-        pk: { type: "string", alias: "email" },
-        sk: { type: "string", hidden: true, alias: "type" },
-        id: { type: "string" },
-        passwordHash: { type: "string" },
-        createdAt: { type: "string" }
-      }
-    });
+const { Model } = require('dynamodb-toolbox');
+const User = new Model('User', {
+  // Specify table name
+  table: 'test-users-table',
+
+  // Define partition and sort keys
+  partitionKey: 'pk',
+  sortKey: 'sk',
+
+  // Define schema
+  schema: {
+    pk: { type: 'string', alias: 'email' },
+    sk: { type: 'string', hidden: true, alias: 'type' },
+    id: { type: 'string' },
+    passwordHash: { type: 'string' },
+    createdAt: { type: 'string' },
+  },
+});
 ```
 
 We will obviously not store the password in clear text in our database, so we use bcrypt (footnote about bcryptjs is the better choice on lambda) to create a `passwordHash` and then delete the original plain text password from the props object before spreading it into our user.
 
-I chose the email here as a primary key and not the id because this is what I am using to query single items. You yould also use the userId or any combination.  
+I chose the email here as a primary key and not the id because this is what I am using to query single items. You yould also use the userId or any combination.
 
 It's important to not that DynamoDB can not fetch single items by non key properties, e.g. in the example above I am not able to say `getById(id)`. I would have to fetch them first and then filter by using a FilterExpression.
 
@@ -163,79 +163,79 @@ The advantage of a NoSQL database such as DynamoDB is that columns and fields ar
 
 ## Defining resources in serverless.yml
 
-When we decided on our data model and table name it makes sense to revisit our `serverless.yml` and prepare the DynamoDB resource there, so we won't have to do any manual work from the AWS console. The serverless framework allows us to define resources and permissions right from the `serverless.yml` file. 
+When we decided on our data model and table name it makes sense to revisit our `serverless.yml` and prepare the DynamoDB resource there, so we won't have to do any manual work from the AWS console. The serverless framework allows us to define resources and permissions right from the `serverless.yml` file.
 
-We will also need a few *secret* environment variables. A simple way to define them is just creating a *secrets.json* file in your project root (make sure to .gitignore it!) and define them in a json format.
+We will also need a few _secret_ environment variables. A simple way to define them is just creating a _secrets.json_ file in your project root (make sure to .gitignore it!) and define them in a json format.
 
 ```yaml
-    org: your-org
-    
-    custom:
-      secrets: ${file(secrets.json)}
-      tableName: "test-users-table"
-    
-    service: serverless-jwt-authorizer
-    provider:
-      name: aws
-      runtime: nodejs12.x
-      region: eu-central-1
-      environment:
-        JWT_SECRET: ${self:custom.secrets.JWT_SECRET}
-        AWS_ID: ${self:custom.secrets.AWS_ID}
-      iamRoleStatements:
-        - Effect: "Allow"
-          Action:
-            - "dynamodb:GetItem"
-            - "dynamodb:PutItem"
-          Resource: "arn:aws:dynamodb:eu-central-1:${self:custom.secrets.AWS_ID}:table/${self:custom.tableName}"
-    functions:
-      verify-token:
-        handler: functions/authorize.handler
-    
-      me:
-        handler: functions/me.handler
-        events:
-          - http:
-              path: me
-              method: get
-              cors: true
-              authorizer:
-                name: verify-token
-                identitySource: method.request.header.Authorization
-                resultTtlInSeconds: 3600
-      login:
-        handler: functions/login.handler
-        events:
-          - http:
-              path: login
-              method: post
-              cors: true
-      register:
-        handler: functions/register.handler
-        events:
-          - http:
-              path: register
-              method: post
-              cors: true
-    resources:
-      Resources:
-        usersTable:
-          Type: AWS::DynamoDB::Table
-          Properties:
-            TableName: ${self:custom.tableName}
-            AttributeDefinitions:
-              - AttributeName: pk
-                AttributeType: S
-              - AttributeName: sk
-                AttributeType: S
-            KeySchema:
-              - AttributeName: pk
-                KeyType: HASH
-              - AttributeName: sk
-                KeyType: RANGE
-            ProvisionedThroughput:
-              ReadCapacityUnits: 1
-              WriteCapacityUnits: 1
+org: your-org
+
+custom:
+  secrets: ${file(secrets.json)}
+  tableName: 'test-users-table'
+
+service: serverless-jwt-authorizer
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: eu-central-1
+  environment:
+    JWT_SECRET: ${self:custom.secrets.JWT_SECRET}
+    AWS_ID: ${self:custom.secrets.AWS_ID}
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'dynamodb:GetItem'
+        - 'dynamodb:PutItem'
+      Resource: 'arn:aws:dynamodb:eu-central-1:${self:custom.secrets.AWS_ID}:table/${self:custom.tableName}'
+functions:
+  verify-token:
+    handler: functions/authorize.handler
+
+  me:
+    handler: functions/me.handler
+    events:
+      - http:
+          path: me
+          method: get
+          cors: true
+          authorizer:
+            name: verify-token
+            identitySource: method.request.header.Authorization
+            resultTtlInSeconds: 3600
+  login:
+    handler: functions/login.handler
+    events:
+      - http:
+          path: login
+          method: post
+          cors: true
+  register:
+    handler: functions/register.handler
+    events:
+      - http:
+          path: register
+          method: post
+          cors: true
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+          - AttributeName: sk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH
+          - AttributeName: sk
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
 ```
 
 ## User registration
@@ -243,59 +243,59 @@ We will also need a few *secret* environment variables. A simple way to define t
 In order to let a user register for our service, we need to store their data in our database. With our data model in place, we can now use [AWS DynamoDB DocumentClient](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html) together with our dynamodb-toolkit to simplify this process. Take a look at the following code:
 
 ```js
-    // lib/db.js
-    
-    const AWS = require("aws-sdk");
-    const bcrypt = require("bcryptjs");
-    const { Model } = require("dynamodb-toolbox");
-    const { v4: uuidv4 } = require("uuid");
-    
-    const User = new Model("User", {
-      // Specify table name
-      table: "test-users-table",
-    
-      // Define partition and sort keys
-      partitionKey: "pk",
-      sortKey: "sk",
-    
-      // Define schema
-      schema: {
-        pk: { type: "string", alias: "email" },
-        sk: { type: "string", hidden: true, alias: "type" },
-        id: { type: "string" },
-        passwordHash: { type: "string" },
-        createdAt: { type: "string" }
-      }
-    });
-    
-    // INIT AWS
-    AWS.config.update({
-      region: "eu-central-1"
-    });
-    // init DynamoDB document client
-    const docClient = new AWS.DynamoDB.DocumentClient();
-    
-    const createDbUser = async props => {
-      const passwordHash = await bcrypt.hash(props.password, 8); // hash the pass
-      delete props.password; // don't save it in clear text
-    
-      const params = User.put({
-        ...props,
-        id: uuidv4(),
-        type: "User",
-        passwordHash,
-        createdAt: new Date()
-      });
-    
-      const response = await docClient.put(params).promise();
-    
-      return User.parse(response);
-    };
-    
-    // export it so we can use it in our lambda
-    module.exports = {
-      createDbUser
-    };
+// lib/db.js
+
+const AWS = require('aws-sdk');
+const bcrypt = require('bcryptjs');
+const { Model } = require('dynamodb-toolbox');
+const { v4: uuidv4 } = require('uuid');
+
+const User = new Model('User', {
+  // Specify table name
+  table: 'test-users-table',
+
+  // Define partition and sort keys
+  partitionKey: 'pk',
+  sortKey: 'sk',
+
+  // Define schema
+  schema: {
+    pk: { type: 'string', alias: 'email' },
+    sk: { type: 'string', hidden: true, alias: 'type' },
+    id: { type: 'string' },
+    passwordHash: { type: 'string' },
+    createdAt: { type: 'string' },
+  },
+});
+
+// INIT AWS
+AWS.config.update({
+  region: 'eu-central-1',
+});
+// init DynamoDB document client
+const docClient = new AWS.DynamoDB.DocumentClient();
+
+const createDbUser = async props => {
+  const passwordHash = await bcrypt.hash(props.password, 8); // hash the pass
+  delete props.password; // don't save it in clear text
+
+  const params = User.put({
+    ...props,
+    id: uuidv4(),
+    type: 'User',
+    passwordHash,
+    createdAt: new Date(),
+  });
+
+  const response = await docClient.put(params).promise();
+
+  return User.parse(response);
+};
+
+// export it so we can use it in our lambda
+module.exports = {
+  createDbUser,
+};
 ```
 
 This is enough for creating our user registration on the database side.
@@ -307,56 +307,56 @@ When getting triggered by an HTTP post, we want to extract the user data from th
 Let's create a file called `functions/register.js` that looks like this:
 
 ```js
-    // functions/register.js
-    
-    const { createDbUser } = require("../lib/db");
-    
-    module.exports.handler = async function registerUser(event) {
-      const body = JSON.parse(event.body);
-    
-      return createDbUser(body)
-        .then(user => ({
-          statusCode: 200,
-          body: JSON.stringify(user)
-        }))
-        .catch(err => {
-          console.log({ err });
-    
-          return {
-            statusCode: err.statusCode || 500,
-            headers: { "Content-Type": "text/plain" },
-            body: { stack: err.stack, message: err.message }
-          };
-        });
-    };
+// functions/register.js
+
+const { createDbUser } = require('../lib/db');
+
+module.exports.handler = async function registerUser(event) {
+  const body = JSON.parse(event.body);
+
+  return createDbUser(body)
+    .then(user => ({
+      statusCode: 200,
+      body: JSON.stringify(user),
+    }))
+    .catch(err => {
+      console.log({ err });
+
+      return {
+        statusCode: err.statusCode || 500,
+        headers: { 'Content-Type': 'text/plain' },
+        body: { stack: err.stack, message: err.message },
+      };
+    });
+};
 ```
 
 We are trying to create the user, and if everything goes well we send the user object back with a 200 success status code, otherwise we send an error response.
 
-Next, we are looking to implement the login. 
+Next, we are looking to implement the login.
 
 ### Logging in users
 
 First, we need to extend our lib/db.js helpers file with a function that retrieves an user by email, so we can check if the user exists and if so compare the passwordHash to the hash of the password that was sent with the request.
 
 ```js
-    //...
-    
-    const getUserByEmail = async email => {
-      const params = User.get({ email, sk: "User" });
-      const response = await docClient.get(params).promise();
-    
-      return User.parse(response);
-    };
-    
-    // don't forget to export it
-    module.exports = {
-      createDbUser,
-      getUserByEmail
-    };
+//...
+
+const getUserByEmail = async email => {
+  const params = User.get({ email, sk: 'User' });
+  const response = await docClient.get(params).promise();
+
+  return User.parse(response);
+};
+
+// don't forget to export it
+module.exports = {
+  createDbUser,
+  getUserByEmail,
+};
 ```
 
-Now we can import and use this function in our user lambda. 
+Now we can import and use this function in our user lambda.
 
 Let's break down the steps we need for logging in the user:
 
@@ -368,51 +368,55 @@ Let's break down the steps we need for logging in the user:
 Here is the implementation of the `login` handler:
 
 ```js
-    // ./functions/login.js
-    const { login } = require("../lib/utils");
-    
-    module.exports.handler = async function signInUser(event) {
-      const body = JSON.parse(event.body);
-    
-      return login(body)
-        .then(session => ({
-          statusCode: 200,
-          body: JSON.stringify(session)
-        }))
-        .catch(err => {
-          console.log({ err });
-    
-          return {
-            statusCode: err.statusCode || 500,
-            headers: { "Content-Type": "text/plain" },
-            body: { stack: err.stack, message: err.message }
-          };
-        });
-    };
-    
-    // ./lib/utils.js
-    async function login(args) {
-      try {
-        const user = await getUserByEmail(args.email);
-    
-        const isValidPassword = await comparePassword(
-          args.password,
-          user.passwordHash
-        );
-    
-        if (isValidPassword) {
-          const token = await signToken(user);
-          return Promise.resolve({ auth: true, token: token, status: "SUCCESS" });
-        }
-      } catch (err) {
-        console.info("Error login", err);
-        return Promise.reject(new Error(err));
-      }
+// ./functions/login.js
+const { login } = require('../lib/utils');
+
+module.exports.handler = async function signInUser(event) {
+  const body = JSON.parse(event.body);
+
+  return login(body)
+    .then(session => ({
+      statusCode: 200,
+      body: JSON.stringify(session),
+    }))
+    .catch(err => {
+      console.log({ err });
+
+      return {
+        statusCode: err.statusCode || 500,
+        headers: { 'Content-Type': 'text/plain' },
+        body: { stack: err.stack, message: err.message },
+      };
+    });
+};
+
+// ./lib/utils.js
+async function login(args) {
+  try {
+    const user = await getUserByEmail(args.email);
+
+    const isValidPassword = await comparePassword(
+      args.password,
+      user.passwordHash,
+    );
+
+    if (isValidPassword) {
+      const token = await signToken(user);
+      return Promise.resolve({
+        auth: true,
+        token: token,
+        status: 'SUCCESS',
+      });
     }
-    
-    function comparePassword(eventPassword, userPassword) {
-      return bcrypt.compare(eventPassword, userPassword);
-    }
+  } catch (err) {
+    console.info('Error login', err);
+    return Promise.reject(new Error(err));
+  }
+}
+
+function comparePassword(eventPassword, userPassword) {
+  return bcrypt.compare(eventPassword, userPassword);
+}
 ```
 
 With registration and login in place, we can now proceed to implement a protected API endpoint.
@@ -423,96 +427,101 @@ So let's say we have a protected resource in our API. A user profile might be a 
 
 Here are the steps we need to implement:
 
-1. validate jwt token (*done by our lamda authorizer function*)
-2. get related user from database 
+1. validate jwt token (_done by our lamda authorizer function_)
+2. get related user from database
 3. return user
 
 Sounds simple right? Let's take a look:
 
 ```js
-    // ./functions/me.js
-    const { getUserByEmail } = require("../lib/db");
-    const { getUserFromToken } = require("../lib/utils");
-    
-    module.exports.handler = async function(event) {
-      const userObj = await getUserFromToken(event.headers.Authorization);
-    
-      const dbUser = await getUserByEmail(userObj.email);
-    
-      return {
-        statusCode: 200,
-        headers: {},
-        body: JSON.stringify(dbUser)
-      };
-    };
-    
-    
-    // ./lib/utils.js
-    async function getUserFromToken(token) {
-      const secret = Buffer.from(process.env.JWT_SECRET, "base64");
-    
-      const decoded = jwt.verify(token.replace("Bearer ", ""), secret);
-    
-      return decoded;
-    }
+// ./functions/me.js
+const { getUserByEmail } = require('../lib/db');
+const { getUserFromToken } = require('../lib/utils');
+
+module.exports.handler = async function(event) {
+  const userObj = await getUserFromToken(event.headers.Authorization);
+
+  const dbUser = await getUserByEmail(userObj.email);
+
+  return {
+    statusCode: 200,
+    headers: {},
+    body: JSON.stringify(dbUser),
+  };
+};
+
+// ./lib/utils.js
+async function getUserFromToken(token) {
+  const secret = Buffer.from(process.env.JWT_SECRET, 'base64');
+
+  const decoded = jwt.verify(token.replace('Bearer ', ''), secret);
+
+  return decoded;
+}
 ```
 
-The implementation of `/me` is fairly short and straightforward. The way AWS authorizers work is by using *[policy documents](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-output.html)*. 
+The implementation of `/me` is fairly short and straightforward. The way AWS authorizers work is by using _[policy documents](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-lambda-authorizer-output.html)_.
 
 The policyDocument has to contain the following information:
 
-- Resource (The *ARN* orAmazon resource name, a unique identifier of a AWS resource)
+- Resource (The _ARN_ orAmazon resource name, a unique identifier of a AWS resource)
 - Effect (either `"allow"` or `"deny"`)
 - Action (a keyword that describes the desired action, in our case `"execute-api:Invoke"`
 
 ### The authorizer function
 
 ```js
-    const jwt = require("jsonwebtoken");
-    
-    function generateAuthResponse(principalId, effect, methodArn) {
-      const policyDocument = generatePolicyDocument(effect, methodArn);
-    
-      return {
-        principalId,
-        policyDocument
-      };
-    }
-    
-    function generatePolicyDocument(effect, methodArn) {
-      if (!effect || !methodArn) return null;
-    
-      const policyDocument = {
-        Version: "2012-10-17",
-        Statement: [
-          {
-            Action: "execute-api:Invoke",
-            Effect: effect,
-            Resource: methodArn
-          }
-        ]
-      };
-    
-      return policyDocument;
-    }
-    
-    module.exports.verifyToken = (event, context, callback) => {
-      const token = event.authorizationToken.replace("Bearer ", "");
-      const methodArn = event.methodArn;
-    
-      if (!token || !methodArn) return callback(null, "Unauthorized");
-    
-      const secret = Buffer.from(process.env.JWT_SECRET, "base64");
-    
-      // verifies token
-      const decoded = jwt.verify(token, secret);
-    
-      if (decoded && decoded.id) {
-        return callback(null, generateAuthResponse(decoded.id, "Allow", methodArn));
-      } else {
-        return callback(null, generateAuthResponse(decoded.id, "Deny", methodArn));
-      }
-    };
+const jwt = require('jsonwebtoken');
+
+function generateAuthResponse(principalId, effect, methodArn) {
+  const policyDocument = generatePolicyDocument(effect, methodArn);
+
+  return {
+    principalId,
+    policyDocument,
+  };
+}
+
+function generatePolicyDocument(effect, methodArn) {
+  if (!effect || !methodArn) return null;
+
+  const policyDocument = {
+    Version: '2012-10-17',
+    Statement: [
+      {
+        Action: 'execute-api:Invoke',
+        Effect: effect,
+        Resource: methodArn,
+      },
+    ],
+  };
+
+  return policyDocument;
+}
+
+module.exports.verifyToken = (event, context, callback) => {
+  const token = event.authorizationToken.replace('Bearer ', '');
+  const methodArn = event.methodArn;
+
+  if (!token || !methodArn) return callback(null, 'Unauthorized');
+
+  const secret = Buffer.from(process.env.JWT_SECRET, 'base64');
+
+  // verifies token
+  const decoded = jwt.verify(token, secret);
+
+  if (decoded && decoded.id) {
+    return callback(
+      null,
+      generateAuthResponse(decoded.id, 'Allow', methodArn),
+    );
+  } else {
+    return callback(
+      null,
+      generateAuthResponse(decoded.id, 'Deny', methodArn),
+    );
+  }
+};
 ```
 
 ## Deploy and test
@@ -536,7 +545,7 @@ We can use the the same cURL command for login, just change /register to /login 
 ```
 
 This should return a token:
-    
+
 ```bash
 {"auth":true,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRtYXhpbWluaUBnbWFpbC5jb20iLCJpZCI6ImI5Zjc2ZjUzLWVkNjUtNDk5Yi04ZTBmLTY0YWI5NzI4NTE0MCIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNTgzMjE4OTk4LCJleHAiOjE1ODMzMDUzOTh9.noxR1hV4VIdnVKREkMUXvnUVUbDZzZH_-LYnjMGZcVY","status":"SUCCESS"}
 ```
