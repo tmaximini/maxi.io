@@ -36,6 +36,8 @@ export default function BlogPostTeaser({ post }) {
     post.date.substr(6, 2),
   );
 
+  console.info({ post });
+
   return (
     <BPT>
       <div>
@@ -43,7 +45,9 @@ export default function BlogPostTeaser({ post }) {
           {format(date, 'MMM dd yyyy')}
         </time>{' '}
         <h2>
-          <a>{post.title}</a>
+          <a href={post.path} title={post.title}>
+            {post.title}
+          </a>
         </h2>{' '}
         <div>
           <p>{post.subtitle}</p>

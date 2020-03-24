@@ -1,6 +1,6 @@
 ---
 order: 3
-path: '/blog//accessing-authorization-headers-in-apollo-graphql'
+path: '/blog/accessing-authorization-headers-in-apollo-graphql'
 title: 'Accessing Authorization headers in Apollo graphql client'
 subtitle: 'Afterware is the new middleware'
 published: true

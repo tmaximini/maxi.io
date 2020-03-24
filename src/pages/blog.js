@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Section from '../components/Shared/Section/Section';
 import BlogPostTeaser from '../components/Blog/BlogPostTeaser';
 import Layout from '../components/Layout';
+import Headline from '../components/shared/Headline/Headline';
 import SEO from '../components/seo';
 
 const BlogOverview = styled.div`
@@ -34,11 +35,10 @@ const BlogPage = ({ data }) => {
       <Section
         style={{
           position: 'relative',
-          paddingTop: '40px',
-          padding: '10px',
+          padding: '40px 10px 10px 10px',
         }}
       >
-        <h1>Writings</h1>
+        <Headline>Writings</Headline>
         <BlogOverview>
           <ul>
             {postsOrdered.reverse().map(post => (
