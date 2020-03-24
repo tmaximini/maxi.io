@@ -7,6 +7,9 @@ published: true
 date: '20190820'
 type: 'post'
 keywords: 'Cypress, Continuous Integration, AWS Linux, Docker, Jenkins'
+tags:
+  - jenkins
+  - docker
 year: 2019
 ---
 

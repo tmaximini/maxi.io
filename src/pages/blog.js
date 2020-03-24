@@ -11,10 +11,6 @@ const BlogOverview = styled.div`
     text-decoration: none;
   }
 
-  a:hover {
-    border-bottom: 1px solid;
-  }
-
   h3 {
     margin-bottom: 0.725em;
   }

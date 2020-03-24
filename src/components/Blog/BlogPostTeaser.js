@@ -2,6 +2,8 @@ import React from 'react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 
+import DevTag from './DevTag';
+
 const BPT = styled.li`
   margin-bottom: 3em;
   time {
@@ -17,21 +19,13 @@ const BPT = styled.li`
   }
   a {
     cursor: pointer;
-    &:hover {
-      color: blue;
-    }
   }
   p {
-    margin: 0.5em 0;
+    margin: 0.35em 0;
+    color: #555;
   }
   .tags {
     display: flex;
-    li {
-      font-size: 0.875em;
-      margin-right: 10px;
-      color: #777;
-      font-style: italic;
-    }
   }
 `;
 
@@ -45,7 +39,7 @@ export default function BlogPostTeaser({ post }) {
   return (
     <BPT>
       <div>
-        <time dateTime={date.toString()}>
+        <time dateTime={date.toISOString()}>
           {format(date, 'MMM dd yyyy')}
         </time>{' '}
         <h2>
@@ -55,12 +49,7 @@ export default function BlogPostTeaser({ post }) {
           <p>{post.subtitle}</p>
         </div>{' '}
         <ul className="tags">
-          {post.tags &&
-            post.tags.map(tag => (
-              <li>
-                <a href={`tags/${tag}`}>{tag}</a>
-              </li>
-            ))}
+          {post.tags && post.tags.map(tag => <DevTag tag={tag} />)}
         </ul>
       </div>
     </BPT>

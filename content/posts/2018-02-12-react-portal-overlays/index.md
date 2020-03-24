@@ -6,6 +6,8 @@ subtitle: 'React 16 is here and it has portals'
 published: true
 date: '20180212'
 type: 'post'
+tags:
+  - React
 year: 2018
 ---
 

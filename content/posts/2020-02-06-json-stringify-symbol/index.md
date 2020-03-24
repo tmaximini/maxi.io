@@ -7,6 +7,8 @@ published: true
 date: '20200206'
 type: 'post'
 keywords: 'React'
+tags:
+  - React
 year: 2020
 ---
 

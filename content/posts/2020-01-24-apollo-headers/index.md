@@ -7,6 +7,8 @@ published: true
 date: '20200124'
 type: 'post'
 keywords: 'GraphQL, Apollo, HTTP'
+tags:
+  - apollo
 year: 2020
 ---
 

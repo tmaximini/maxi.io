@@ -7,6 +7,8 @@ published: true
 date: '20200311'
 type: 'post'
 keywords: 'jwt, serverless, aws, auth'
+tags:
+  - serverless
 year: 2020
 ---
 
