@@ -1,12 +1,14 @@
-import React from "react";
-import Helmet from "react-helmet";
-import { graphql } from "gatsby";
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
+import { format } from 'date-fns';
+import styled from 'styled-components';
 
-import Layout from "../components/Layout";
-import Section from "../components/Shared/Section/Section";
-import styled from "styled-components";
+import Layout from '../components/Layout';
+import Section from '../components/Shared/Section/Section';
+import { parsePostDate } from '../utils';
 
-require("prism-themes/themes/prism-darcula.css");
+require('prism-themes/themes/prism-darcula.css');
 
 const Published = styled.span`
   display: block;
@@ -32,22 +34,33 @@ const BlogPostArea = styled.article`
     font-style: italic;
     color: #999;
   }
+
+  a {
+    text-decoration: underline;
+  }
 `;
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data;
+
+  const date = parsePostDate(post.frontmatter.date);
   return (
     <Layout>
       <div>
         <Helmet>
           <title>{post.frontmatter.title} - Thomas Maximini</title>
           <meta name="keywords" content={post.frontmatter.keywords} />
-          <meta name="description" content={post.frontmatter.keywords} />
+          <meta
+            name="description"
+            content={post.frontmatter.keywords}
+          />
         </Helmet>
         <Section>
-          <Published>{post.frontmatter.date}</Published>
+          <Published>{format(date, 'MMM dd yyyy')}</Published>
           <Headline>{post.frontmatter.title}</Headline>
-          <BlogPostArea dangerouslySetInnerHTML={{ __html: post.html }} />
+          <BlogPostArea
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
         </Section>
       </div>
     </Layout>

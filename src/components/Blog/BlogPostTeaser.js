@@ -2,6 +2,8 @@ import React from 'react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 
+import { parsePostDate } from '../../utils';
+
 import DevTag from './DevTag';
 
 const BPT = styled.li`
@@ -26,17 +28,12 @@ const BPT = styled.li`
   }
   .tags {
     display: flex;
+    flex-wrap: wrap;
   }
 `;
 
 export default function BlogPostTeaser({ post }) {
-  const date = new Date(
-    post.date.substr(0, 4),
-    parseInt(post.date.substr(4, 2) - 1),
-    post.date.substr(6, 2),
-  );
-
-  console.info({ post });
+  const date = parsePostDate(post.date);
 
   return (
     <BPT>

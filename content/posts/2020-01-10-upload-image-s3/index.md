@@ -1,12 +1,15 @@
 ---
 order: 4
-path: '/upload-images-to-aws-s3-using-apollo-graphql'
-title: 'Upload images to AWS S3 with Apollo GraphQL'
+path: '/upload-images-to-aws-s3-with-react-and-apollo-graphql'
+title: 'Upload images to AWS S3 with React and Apollo GraphQL'
 subtitle: 'Simple file uploads with react-dropzone'
 published: true
 date: '20200110'
 type: 'post'
 keywords: 'GraphQL, Apollo, AWS, S3, Image Upload'
+tags:
+  - React
+  - AWS
 year: 2020
 ---
 

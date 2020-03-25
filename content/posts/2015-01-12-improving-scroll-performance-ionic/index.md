@@ -6,6 +6,8 @@ subtitle: 'Prevent your users from a laggy scrolling experience'
 published: true
 date: '20150112'
 type: 'post'
+tags:
+  - angular
 year: 2015
 ---
 

@@ -24,6 +24,8 @@ const getTagIcon = tag => {
       return <Icons.Docker />;
     case 'angular':
       return <Icons.Angular />;
+    case 'lambda':
+      return <Icons.Lambda />;
   }
 };
 

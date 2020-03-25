@@ -7,3 +7,4 @@ export { default as Typescript } from './Typescript';
 export { default as React } from './React';
 export { default as Jenkins } from './Jenkins';
 export { default as Docker } from './Docker';
+export { default as Lambda } from './Lambda';

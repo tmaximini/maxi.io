@@ -9,6 +9,7 @@ type: 'post'
 keywords: 'jwt, serverless, aws, auth'
 tags:
   - serverless
+  - Lambda
 year: 2020
 ---
 
