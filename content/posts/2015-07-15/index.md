@@ -1,9 +1,10 @@
 ---
 title: How to stay up to date as a web developer
+subtitle: This is how I keep myself updated
 order: 1
 path: '/how-to-stay-up-to-date-as-a-web-developer'
 published: true
-date: '15.07.2015'
+date: '20150715'
 year: 2015
 type: 'post'
 ---
@@ -16,21 +17,21 @@ In this post I want to share some resources and strategies that make it easier f
 
 Newsletters are one of my favorite format to keep me up to date: You get them in your inbox and scan them if there is anything that catches your interest. Most of them arrive on a weekly basis and are well curated with the latest developments in their field. Here are the ones that I am currently subscribed to:
 
-* [http://javascriptweekly.com](http://javascriptweekly.com)
-* [http://nodeweekly.com](http://nodeweekly.com)
-* [http://html5weekly.com](http://html5weekly.com)
-* [http://css-weekly.com](http://css-weekly.com)
-* [http://mobilewebweekly.co](http://mobilewebweekly.co)
-* [https://wdrl.info](https://wdrl.info)
-* [https://umaar.com/dev-tips](https://umaar.com/dev-tips)
-* [http://adripofjavascript.com](http://adripofjavascript.com)
-* [https://freshbrewed.co/frontend/](https://freshbrewed.co/frontend/)
-* [http://www.ng-newsletter.com](http://www.ng-newsletter.com)
+- [http://javascriptweekly.com](http://javascriptweekly.com)
+- [http://nodeweekly.com](http://nodeweekly.com)
+- [http://html5weekly.com](http://html5weekly.com)
+- [http://css-weekly.com](http://css-weekly.com)
+- [http://mobilewebweekly.co](http://mobilewebweekly.co)
+- [https://wdrl.info](https://wdrl.info)
+- [https://umaar.com/dev-tips](https://umaar.com/dev-tips)
+- [http://adripofjavascript.com](http://adripofjavascript.com)
+- [https://freshbrewed.co/frontend/](https://freshbrewed.co/frontend/)
+- [http://www.ng-newsletter.com](http://www.ng-newsletter.com)
 
 There are also more specialized ones such as:
 
-* [http://postgresweekly.com](http://postgresweekly.com/)
-* [http://rubyweekly.com](http://rubyweekly.com/)
+- [http://postgresweekly.com](http://postgresweekly.com/)
+- [http://rubyweekly.com](http://rubyweekly.com/)
 
 but I canceled those as I don't do much ruby at the moment and I definitely have to _filter_ the amount of stuff I can learn, read, etc.
 
@@ -62,19 +63,19 @@ Here is a list of [RSS feeds that's potentially interesting for web developers](
 
 The older generation probably still remembers IRC channels. It's a simple text based chat protocol and there are channels dedicated to a lot of open-source technologies. These are usually good places to ask for help when you are stuck, because they are usually populated around the clock from people of different time zones. I just made it a habit to have my IRC client (I use [LimeChat](http://limechat.net/)) most of the time while working. A couple of channels I hang out in (all on Freenode):
 
-* \#angularjs
-* \#cordova
-* \#node.js
-* \#gulpjs
-* \#io.js
-* \#reactjs
-* \#meteor
-* \#ionic
-* \#express
-* \#crosswalk
-* \#mongodb
+- \#angularjs
+- \#cordova
+- \#node.js
+- \#gulpjs
+- \#io.js
+- \#reactjs
+- \#meteor
+- \#ionic
+- \#express
+- \#crosswalk
+- \#mongodb
 
-![Freenode](freenode.png "Freenode")
+![Freenode](freenode.png 'Freenode')
 
 ## Twitter
 
@@ -93,9 +94,9 @@ Usually these meetups are free to attend for anyone.
 There is a huge trend around conferences in the tech community. If you are following certain people on Twitter, it seems all they do is go to conferences! While I do think conferences are great to drive technology forward, they tend to feel a bit elitist and expensive. Of course there are exceptions, such as [RejectJS](http://rejectjs.org/) which I like a lot.
 So if you are like me and don't particulary enjoy attending these conferences or prefer to spend your free time with friends and family, just go and watch the talks on Youtube. Usually they are uploaded within a month after a conference.
 
-* [JSConf Videos](https://www.youtube.com/user/jsconfeu/playlists)
-* [ng-Conf Videos](https://www.youtube.com/user/ngconfvideos/playlists)
-* [React Conf Playlist](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
+- [JSConf Videos](https://www.youtube.com/user/jsconfeu/playlists)
+- [ng-Conf Videos](https://www.youtube.com/user/ngconfvideos/playlists)
+- [React Conf Playlist](https://www.youtube.com/playlist?list=PLb0IAmt7-GS1cbw4qonlQztYV1TAW0sCr)
 
 ## Github
 
@@ -106,38 +107,38 @@ There is also [Github explore](https://github.com/explore) which comes as a week
 
 Another favorite of mine are screencasts, as it really helps me to follow along with a video tutorial. I think it's a great way of learning to program and it keeps my motivation up.
 
-* [https://egghead.io](https://egghead.io/) (paid) - paid content but totally worth it. An invaluable resource for advanced Javascript developers.
+- [https://egghead.io](https://egghead.io/) (paid) - paid content but totally worth it. An invaluable resource for advanced Javascript developers.
 
-* [http://nodetuts.com](http://nodetuts.com/) (free) - great way to learn node.js from a seasoned expert.
+- [http://nodetuts.com](http://nodetuts.com/) (free) - great way to learn node.js from a seasoned expert.
 
-* [https://css-tricks.com/video-screencasts/](https://css-tricks.com/video-screencasts/) (free) - really good CSS and workflow tips.
+- [https://css-tricks.com/video-screencasts/](https://css-tricks.com/video-screencasts/) (free) - really good CSS and workflow tips.
 
-* [http://nsscreencast.com](http://nsscreencast.com/) (paid) - This one is specific for native iOS development.
+- [http://nsscreencast.com](http://nsscreencast.com/) (paid) - This one is specific for native iOS development.
 
-* [https://sysadmincasts.com](https://sysadmincasts.com/) (free) - some great tips here for devops and server management.
+- [https://sysadmincasts.com](https://sysadmincasts.com/) (free) - some great tips here for devops and server management.
 
 ## Podcasts
 
 Sometimes it's good just to listen to something that's not music. That's where a good podcast comes in handy. Although it might be problematic to concentrate on both a technical podcast and coding at the same time here are some recommendations:
 
-* [http://shoptalkshow.com](http://shoptalkshow.com)
-* [http://thewebahead.net](http://thewebahead.net)
-* [http://devchat.tv/js-jabber](http://devchat.tv/js-jabber)
-* [http://devchat.tv/freelancers](http://devchat.tv/freelancers)
-* [http://devchat.tv/adventures-in-angular](http://devchat.tv/adventures-in-angular)
-* [http://nodeup.com](http://nodeup.com)
-* [http://responsivewebdesign.com/podcast](http://responsivewebdesign.com/podcast)
+- [http://shoptalkshow.com](http://shoptalkshow.com)
+- [http://thewebahead.net](http://thewebahead.net)
+- [http://devchat.tv/js-jabber](http://devchat.tv/js-jabber)
+- [http://devchat.tv/freelancers](http://devchat.tv/freelancers)
+- [http://devchat.tv/adventures-in-angular](http://devchat.tv/adventures-in-angular)
+- [http://nodeup.com](http://nodeup.com)
+- [http://responsivewebdesign.com/podcast](http://responsivewebdesign.com/podcast)
 
 ## Books
 
 Sometimes it's good to just read a good old fashioned book in the tub or on the beach. The best series I came across so far for Javascript is the ["You don't know JS" series](https://github.com/getify/You-Dont-Know-JS) from Kyle Simpson . You can read them on Github for free or buy them.
-I am also a fan of the stuff [Manning](http://manning.com/) puts out there, especially their early access program. They do special offers from time to time where you can save some $$$.
+I am also a fan of the stuff [Manning](http://manning.com/) puts out there, especially their early access program. They do special offers from time to time where you can save some \$\$\$.
 
 ## Mailing Lists
 
 If you want to feel like a 90s developer, try signing up for some mailing lists. Joke aside, there are still lots of people using mailing lists, also I don't find the format as accessible as others, in some cases it really helps (e.g. if you want to follow the latest discussions from ECMA-Script or Chromium development).
 
-![Mailing Lists](mailing-lists.png "Mailing Lists")
+![Mailing Lists](mailing-lists.png 'Mailing Lists')
 
 ## Conclusion
 

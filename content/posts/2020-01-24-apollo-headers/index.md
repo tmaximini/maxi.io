@@ -1,15 +1,18 @@
 ---
 order: 3
-path: "/blog/accessing-authorization-headers-in-apollo-graphql"
-title: "Accessing Authorization headers in Apollo graphql client"
+path: '/blog/accessing-authorization-headers-in-apollo-graphql'
+title: 'Accessing Authorization headers in Apollo graphql client'
+subtitle: 'Afterware is the new middleware'
 published: true
-date: "24.01.2020"
-type: "post"
-keywords: "GraphQL, Apollo, HTTP"
+date: '20200124'
+type: 'post'
+keywords: 'GraphQL, Apollo, HTTP'
+tags:
+  - apollo
 year: 2020
 ---
 
-![tunnel](tunnel.jpg "@zachwoolf unsplash.com")
+![tunnel](tunnel.jpg '@zachwoolf unsplash.com')
 <span style="font-size: 11px;">Photo by Zach Woolf on Unsplash</span>
 
 ## Use case
@@ -35,24 +38,24 @@ First, we need to setup our apollo-link with a combination of HttpLink and a so-
 This is how we instantiate the ApolloClient using our custom afterware to access the response headers:
 
 ```js
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
-import { ApolloClient } from "apollo-client";
-import { ApolloLink } from "apollo-link";
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloClient } from 'apollo-client';
+import { ApolloLink } from 'apollo-link';
 
-const ENDPOINT = "https://your-gql-server.com";
+const ENDPOINT = 'https://your-gql-server.com';
 
 function createApolloClient(initialState = {}) {
   const sessionID = getSessionID(); // get sessionID, e.g. from a cookie
 
   // create HttpLink with custom headers if we have sessionID
   const httpLink = new HttpLink({
-    uri: "http://localhost:4000/graphql",
+    uri: 'http://localhost:4000/graphql',
     headers: sessionID
       ? {
-          Authorization: `Bearer ${sessionID}`
+          Authorization: `Bearer ${sessionID}`,
         }
-      : {}
+      : {},
   });
 
   // our custom "afterware" that checks each response and saves the sessionID
@@ -60,7 +63,9 @@ function createApolloClient(initialState = {}) {
   const afterwareLink = new ApolloLink((operation, forward) => {
     forward(operation).map(response => {
       const context = operation.getContext();
-      const authHeader = context.response.headers.get("Authorization");
+      const authHeader = context.response.headers.get(
+        'Authorization',
+      );
 
       // We would see this log in the SSR logs in the terminal
       // but in the browser console it would always be null!
@@ -68,7 +73,7 @@ function createApolloClient(initialState = {}) {
 
       if (authHeader) {
         // cut off the 'Bearer ' part from the header
-        SESSION_ID = authHeader.replace("Bearer ", "");
+        SESSION_ID = authHeader.replace('Bearer ', '');
 
         setSessionID(SESSION_ID); // save sessionID, e.g. in a cookie
       }
@@ -82,7 +87,7 @@ function createApolloClient(initialState = {}) {
 
   return new ApolloClient({
     link, // use combined version for our final client
-    cache: new InMemoryCache().restore(initialState)
+    cache: new InMemoryCache().restore(initialState),
   });
 }
 ```

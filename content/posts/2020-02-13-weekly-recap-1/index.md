@@ -1,11 +1,12 @@
 ---
 order: 1
-path: "/blog/weekly-recap-1"
-title: "Weekly recap #1"
+path: '/blog/Monthly-recap-1'
+title: 'Monthly recap #1'
+subtitle: 'Stuff that happened lately'
 published: true
-date: "13.02.2020"
-type: "post"
-keywords: "weekly, personal"
+date: '20200213'
+type: 'post'
+keywords: 'Monthly, personal'
 year: 2020
 ---
 

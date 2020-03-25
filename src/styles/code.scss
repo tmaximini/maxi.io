@@ -22,7 +22,7 @@
  * 1. Make the element just wide enough to fit its content.
  * 2. Always fill the visible space in .gatsby-highlight.
  */
-.gatsby-highlight pre[class*="language-"] {
+.gatsby-highlight pre[class*='language-'] {
   background-color: transparent;
   margin: 0;
   padding: 0;
@@ -31,13 +31,13 @@
   min-width: 100%; /* 2 */
 }
 
-code[class*="language-"] {
+code[class*='language-'] {
   white-space: nowrap;
 }
 
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
   margin-right: 5px;
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
   padding-left: 5px !important;
   white-space: pre !important;
 }

@@ -2,9 +2,12 @@
 order: 3
 path: '/improving-scroll-performance-for-lists-ionic-framework'
 title: 'Improving scroll performance for lists in Ionic Framework'
+subtitle: 'Prevent your users from a laggy scrolling experience'
 published: true
-date: '12.01.2015'
+date: '20150112'
 type: 'post'
+tags:
+  - angular
 year: 2015
 ---
 
@@ -48,11 +51,13 @@ This sounds pretty awesome. And it is really awesome too: The idea behind collec
 
 ```html
 <div class="contact-list">
-  <div ng-repeat="person in contacts | filter:{name: searchModel.name}"
-     class="item item-icon-right"
-     ng-class="{'selected': option.active}"
-     ng-click="showDetails(person)">
-      <span ng-bind="::person.name"></span>
+  <div
+    ng-repeat="person in contacts | filter:{name: searchModel.name}"
+    class="item item-icon-right"
+    ng-class="{'selected': option.active}"
+    ng-click="showDetails(person)"
+  >
+    <span ng-bind="::person.name"></span>
   </div>
 </div>
 ```
@@ -61,12 +66,12 @@ It is very useful though for items of the same fixed height, such as simple list
 
 ### Native scrolling
 
-Native scrolling means we tell Ionic not to use its [$ionicScrollDelegate](http://ionicframework.com/docs/api/service/$ionicScrollDelegate/) service for scrolling, but instead fall back to the browser's own scrolling behaviour. As scrolling is one of the most basic features of any browser, this usually means we get a great performance across all devices.
+Native scrolling means we tell Ionic not to use its [\$ionicScrollDelegate](http://ionicframework.com/docs/api/service/$ionicScrollDelegate/) service for scrolling, but instead fall back to the browser's own scrolling behaviour. As scrolling is one of the most basic features of any browser, this usually means we get a great performance across all devices.
 There are a few drawbacks from this solution though:
 
-* Scroll behaviour might differentiate quite a bit between different browsers and operating systems. This bit us a few times, especially with iOS being weird with firing scroll events. See [this blog post by TJ VanToll](http://developer.telerik.com/featured/scroll-event-change-ios-8-big-deal/) for more information on iOS scroll behaviour.
-* By default, no scrollbar is visible (Can be overwritten by CSS).
-* Infinite Scroll and Pull to refresh won't work, we had to write our own solution for both.
+- Scroll behaviour might differentiate quite a bit between different browsers and operating systems. This bit us a few times, especially with iOS being weird with firing scroll events. See [this blog post by TJ VanToll](http://developer.telerik.com/featured/scroll-event-change-ios-8-big-deal/) for more information on iOS scroll behaviour.
+- By default, no scrollbar is visible (Can be overwritten by CSS).
+- Infinite Scroll and Pull to refresh won't work, we had to write our own solution for both.
 
 To activate native scrolling in Ionic, you just the the `"overflow-scroll = true"` option on [IonContent](http://ionicframework.com/docs/api/directive/ionContent/). It is super performant and was the only valid solution in our case, as we wanted to support also older devices.
 
@@ -77,18 +82,18 @@ Infinite scroll could for example easily be implemented like this, with `wrapper
  * captures all scroll events and checks offset from top and distance from bottom
  * if we are as close as OFFSET to bottom, we start loading the next page
  */
-var OFFSET = 200 // how many px from bottom should we start loading
+var OFFSET = 200; // how many px from bottom should we start loading
 wrapperEl.addEventListener(
   'scroll',
   function() {
-    var listRect = listEL.getBoundingClientRect()
-    var wrapRect = wrapperEl.getBoundingClientRect()
+    var listRect = listEL.getBoundingClientRect();
+    var wrapRect = wrapperEl.getBoundingClientRect();
     if (listRect.bottom - OFFSET < wrapRect.height) {
-      scope.nextPage()
+      scope.nextPage();
     }
   },
-  false
-)
+  false,
+);
 ```
 
 Although iOS momentum scrolling does not send continous scroll events after your touch move ended, it will send one more scroll event when the momentum scroll finishes, which is enough for this solution to check again and trigger the infinite scroll.
@@ -102,11 +107,13 @@ Ionic does a great job at delivering excellent CSS and great directives that ena
 The Ionic Team itself are acknowledging the downsides of Javascript-based scrolling and are working on rewriting their scrolling system based on native scrolling. You should follow [this thread](http://forum.ionicframework.com/t/native-scrolling-android-testers-wanted/17059) for more information. Also, native scrolling can now be set globally like this:
 
 ```javascript
-angular.module('ionicApp', ['ionic']).config(function($ionicConfigProvider) {
-  if (!ionic.Platform.isIOS()) {
-    $ionicConfigProvider.scrolling.jsScrolling(false)
-  }
-})
+angular
+  .module('ionicApp', ['ionic'])
+  .config(function($ionicConfigProvider) {
+    if (!ionic.Platform.isIOS()) {
+      $ionicConfigProvider.scrolling.jsScrolling(false);
+    }
+  });
 ```
 
 instead of setting `overflow-scroll="true"` on each `ion-content` element.

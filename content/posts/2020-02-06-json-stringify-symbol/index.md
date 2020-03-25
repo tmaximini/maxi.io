@@ -1,11 +1,14 @@
 ---
 order: 2
-path: "/json-stringify-symbols-and-react-components"
-title: "JSON.stringify, Symbols and React components"
+path: '/json-stringify-symbols-and-react-components'
+title: 'JSON.stringify, Symbols and React components'
+subtitle: "Doh! Symbols won\'t get stringified"
 published: true
-date: "06.02.2020"
-type: "post"
-keywords: "React"
+date: '20200206'
+type: 'post'
+keywords: 'React'
+tags:
+  - React
 year: 2020
 ---
 
@@ -38,7 +41,7 @@ It finally occured to me to look at compiled jsx _before calling_ JSON.stringify
 
 ```js
 const MyTestComponent = () => {
-  const componentName = "MyTestComponent";
+  const componentName = 'MyTestComponent';
 
   return (
     <div>
@@ -78,7 +81,7 @@ The good news is we can add a [custom replacer function to stringify](https://de
 
 ```js
 const asString = JSON.stringify(templateJSX, (k, v) =>
-  typeof v === "symbol" ? `$$Symbol:${Symbol.keyFor(v)}` : v
+  typeof v === 'symbol' ? `$$Symbol:${Symbol.keyFor(v)}` : v,
 );
 ```
 

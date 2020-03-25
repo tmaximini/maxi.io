@@ -1,11 +1,15 @@
 ---
 order: 4
-path: "/upload-images-to-aws-s3-using-apollo-graphql"
-title: "Upload images to AWS S3 with Apollo GraphQL"
+path: '/upload-images-to-aws-s3-with-react-and-apollo-graphql'
+title: 'Upload images to AWS S3 with React and Apollo GraphQL'
+subtitle: 'Simple file uploads with react-dropzone'
 published: true
-date: "10.01.2020"
-type: "post"
-keywords: "GraphQL, Apollo, AWS, S3, Image Upload"
+date: '20200110'
+type: 'post'
+keywords: 'GraphQL, Apollo, AWS, S3, Image Upload'
+tags:
+  - React
+  - AWS
 year: 2020
 ---
 
@@ -21,25 +25,25 @@ We are going to need the `useMutation` hook from `@apollo/react-hooks` as well a
 The client side component looks like this:
 
 ```jsx
-import React, { useCallback, useState, useEffect } from "react";
-import { useDropzone } from "react-dropzone";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import React, { useCallback, useState, useEffect } from 'react';
+import { useDropzone } from 'react-dropzone';
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/react-hooks';
 
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 // just some styled components for the image upload area
 const getColor = props => {
   if (props.isDragAccept) {
-    return "#00e676";
+    return '#00e676';
   }
   if (props.isDragReject) {
-    return "#ff1744";
+    return '#ff1744';
   }
   if (props.isDragActive) {
-    return "#2196f3";
+    return '#2196f3';
   }
-  return "#eeeeee";
+  return '#eeeeee';
 };
 
 const Container = styled.div`
@@ -59,36 +63,36 @@ const Container = styled.div`
 `;
 
 const thumbsContainer = {
-  display: "flex",
-  marginTop: 16
+  display: 'flex',
+  marginTop: 16,
 };
 
 const thumbStyle = {
-  display: "inline-flex",
+  display: 'inline-flex',
   borderRadius: 2,
-  border: "1px solid #eaeaea",
+  border: '1px solid #eaeaea',
   marginBottom: 8,
   marginRight: 8,
   width: 100,
   height: 100,
-  padding: 4
+  padding: 4,
 };
 
 const thumbInner = {
-  display: "flex",
+  display: 'flex',
   minWidth: 0,
-  overflow: "hidden"
+  overflow: 'hidden',
 };
 
 const img = {
-  display: "block",
-  width: "auto",
-  height: "100%"
+  display: 'block',
+  width: 'auto',
+  height: '100%',
 };
 
 const errorStyle = {
-  color: "#c45e5e",
-  fontSize: "0.75rem"
+  color: '#c45e5e',
+  fontSize: '0.75rem',
 };
 
 // relevant code starts here
@@ -110,21 +114,23 @@ const Upload = ({ register }) => {
         setPreview(URL.createObjectURL(file));
         uploadFile({ variables: { file } });
       } else {
-        setErrors("Something went wrong. Check file type and size (max. 1 MB)");
+        setErrors(
+          'Something went wrong. Check file type and size (max. 1 MB)',
+        );
       }
     },
-    [uploadFile]
+    [uploadFile],
   );
   const {
     getRootProps,
     getInputProps,
     isDragActive,
     isDragAccept,
-    isDragReject
+    isDragReject,
   } = useDropzone({
     onDrop,
-    accept: "image/jpeg, image/png",
-    maxSize: 1024000
+    accept: 'image/jpeg, image/png',
+    maxSize: 1024000,
   });
 
   const thumb = (
@@ -136,7 +142,9 @@ const Upload = ({ register }) => {
   );
 
   return (
-    <Container {...getRootProps({ isDragActive, isDragAccept, isDragReject })}>
+    <Container
+      {...getRootProps({ isDragActive, isDragAccept, isDragReject })}
+    >
       <input {...getInputProps()} />
       {isDragActive ? (
         <p>Drop the files here ...</p>
@@ -222,8 +230,8 @@ const resolvers = {
       const response = await handleFileUpload(file);
 
       return response;
-    }
-  }
+    },
+  },
 };
 ```
 
@@ -232,28 +240,28 @@ The `handleFileUpload` method is imported from my resolvers file and handles the
 The code looks like this:
 
 ```js
-const AWS = require("aws-sdk");
+const AWS = require('aws-sdk');
 // store each image in it's own unique folder to avoid name duplicates
-const uuidv4 = require("uuid/v4");
+const uuidv4 = require('uuid/v4');
 // load config data from .env file
-require("dotenv").config();
+require('dotenv').config();
 // update AWS config env data
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_ID,
   secretAccessKey: process.env.AWS_SECRET_KEY,
-  region: process.env.AWS_REGION
+  region: process.env.AWS_REGION,
 });
 const s3 = new AWS.S3({ region: process.env.AWS_REGION });
 
 // my default params for s3 upload
 // I have a max upload size of 1 MB
 const s3DefaultParams = {
-  ACL: "public-read",
+  ACL: 'public-read',
   Bucket: process.env.S3_BUCKET_NAME,
   Conditions: [
-    ["content-length-range", 0, 1024000], // 1 Mb
-    { acl: "public-read" }
-  ]
+    ['content-length-range', 0, 1024000], // 1 Mb
+    { acl: 'public-read' },
+  ],
 };
 
 // the actual upload happens here
@@ -267,17 +275,17 @@ const handleFileUpload = async file => {
       {
         ...s3DefaultParams,
         Body: createReadStream(),
-        Key: `${key}/${filename}`
+        Key: `${key}/${filename}`,
       },
       (err, data) => {
         if (err) {
-          console.log("error uploading...", err);
+          console.log('error uploading...', err);
           reject(err);
         } else {
-          console.log("successfully uploaded file...", data);
+          console.log('successfully uploaded file...', data);
           resolve(data);
         }
-      }
+      },
     );
   });
 };

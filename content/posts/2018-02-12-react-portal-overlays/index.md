@@ -2,9 +2,12 @@
 order: 1
 path: '/building-fullscreen-overlays-with-react-16-portals'
 title: 'Building a fullscreen overlay with React 16s portal'
+subtitle: 'React 16 is here and it has portals'
 published: true
-date: '12.02.2018'
+date: '20180212'
 type: 'post'
+tags:
+  - React
 year: 2018
 ---
 
@@ -21,35 +24,35 @@ A portal is just a DOM-fragment that is not mounted as a direct child or sibling
 First, let's build a very generic and re-usable `Modal` component that implements the Portal logic.
 
 ```javascript
-import React from 'react'
-import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 // I use the same div here that I mount my app into
 // so the modal will be a sibling of the rest of the app
 // in the DOM hierachy
-const modalRoot = document.getElementById('root')
+const modalRoot = document.getElementById('root');
 
 export default class Modal extends React.PureComponent {
   static propTypes = {
-    children: PropTypes.node
-  }
+    children: PropTypes.node,
+  };
 
   constructor(props) {
-    super(props)
-    this.el = document.createElement('div')
+    super(props);
+    this.el = document.createElement('div');
   }
 
   componentDidMount() {
-    modalRoot.appendChild(this.el)
+    modalRoot.appendChild(this.el);
   }
 
   componentWillUnmount() {
-    modalRoot.removeChild(this.el)
+    modalRoot.removeChild(this.el);
   }
 
   render() {
-    return ReactDOM.createPortal(this.props.children, this.el)
+    return ReactDOM.createPortal(this.props.children, this.el);
   }
 }
 ```
@@ -59,33 +62,36 @@ This component does nothing else than creating a div and mouting it as a child o
 Now we build the actual `VideoModal` component that makes use of this generic Modal and adds a little functionality:
 
 ```javascript
-import React from 'react'
-import PropTypes from 'prop-types'
-import CssModules from 'react-css-modules'
-import { RemoveIcon } from '@components/Shared/Icons/Icons'
-import Modal from './Modal'
-import classes from './VideoModal.scss'
+import React from 'react';
+import PropTypes from 'prop-types';
+import CssModules from 'react-css-modules';
+import { RemoveIcon } from '@components/Shared/Icons/Icons';
+import Modal from './Modal';
+import classes from './VideoModal.scss';
 
 @CssModules(classes)
 export default class VideoModal extends React.PureComponent {
   static propTypes = {
     children: PropTypes.node,
-    handleClose: PropTypes.func.isRequired
-  }
+    handleClose: PropTypes.func.isRequired,
+  };
 
   render() {
     return (
       <Modal>
         <div styleName="wrapper">
           <div styleName="inner">
-            <button onClick={this.props.handleClose} styleName="close">
+            <button
+              onClick={this.props.handleClose}
+              styleName="close"
+            >
               <RemoveIcon />
             </button>
             {this.props.children}
           </div>
         </div>
       </Modal>
-    )
+    );
   }
 }
 ```
@@ -147,26 +153,26 @@ Imagine a video list component where we map over an array of items like this:
 Now, the `StoryAvatar` might look something like this:
 
 ```javascript
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import classnames from 'classnames'
-import VideoModal from '../Modal/VideoModal'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import VideoModal from '../Modal/VideoModal';
 
 export default class StoryAvatar extends PureComponent {
   static propTypes = {
-    story: PropTypes.object.isRequired
-  }
+    story: PropTypes.object.isRequired,
+  };
 
   state = {
-    shown: false
-  }
+    shown: false,
+  };
 
   handleClick = () => {
-    const { shown } = this.state
+    const { shown } = this.state;
     this.setState({
-      shown: !shown
-    })
-  }
+      shown: !shown,
+    });
+  };
 
   renderModal = () => (
     <VideoModal handleClose={this.handleClick}>
@@ -179,11 +185,11 @@ export default class StoryAvatar extends PureComponent {
         allowFullScreen
       />
     </VideoModal>
-  )
+  );
 
   render() {
-    const { story } = this.props
-    const { seen } = this.state
+    const { story } = this.props;
+    const { seen } = this.state;
     return (
       <div styleName={classnames('story', { seen })}>
         <span styleName="button" onClick={this.handleClick}>
@@ -191,7 +197,7 @@ export default class StoryAvatar extends PureComponent {
             <span
               styleName="avatar"
               style={{
-                backgroundImage: `url(${story.photo})`
+                backgroundImage: `url(${story.photo})`,
               }}
             />
           </span>
@@ -202,7 +208,7 @@ export default class StoryAvatar extends PureComponent {
         </span>
         {shown && this.renderModal()}
       </div>
-    )
+    );
   }
 }
 ```
