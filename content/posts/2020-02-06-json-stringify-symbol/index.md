@@ -2,7 +2,7 @@
 order: 2
 path: '/json-stringify-symbols-and-react-components'
 title: 'JSON.stringify, Symbols and React components'
-subtitle: "Doh! Symbols won\'t get stringified"
+subtitle: "Doh! Symbols won't get stringified"
 published: true
 date: '20200206'
 type: 'post'
