@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import WorkOverview from '../components/Work/WorkOverview';
 import Section from '../components/Shared/Section/Section';
-import Headline from '../components/shared/Headline/Headline';
+import Headline from '../components/Shared/Headline/Headline';
 import SEO from '../components/seo';
 
 const WorkPage = ({ data }) => {

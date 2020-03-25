@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Section from '../components/Shared/Section/Section';
 import BlogPostTeaser from '../components/Blog/BlogPostTeaser';
 import Layout from '../components/Layout';
-import Headline from '../components/shared/Headline/Headline';
+import Headline from '../components/Shared/Headline/Headline';
 import SEO from '../components/seo';
 
 const BlogOverview = styled.div`
