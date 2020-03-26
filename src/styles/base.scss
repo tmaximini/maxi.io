@@ -1,12 +1,9 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Droid Sans, Helvetica Neue, sans-serif;
-  background: linear-gradient(
-    -20deg,
-    hsla(174, 43%, 79%, 0.33) 0%,
-    hsla(241, 100%, 91%, 0.77),
-    hsl(220, 43%, 96%) 80%
-  );
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Droid Sans, Helvetica Neue, sans-serif;
+
+  background-color: #f0f3f9;
+
   color: rgba(0, 0, 0, 0.7);
   -webkit-font-smoothing: antialiased;
 }
