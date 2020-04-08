@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "gatsby";
-import P from "../Shared/P/P";
-import pic from "./icke.png";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import P from '../Shared/P/P';
+import pic from './icke.png';
 
 const ProfileWrapper = styled.section`
   text-align: center;
@@ -24,7 +24,7 @@ const ProfilePic = styled.img`
 
 const NameWrapper = styled.div`
   margin-bottom: 20px;
-  font-family: "Alike", serif;
+  font-family: 'Alike', serif;
   h3 {
     margin: 10px auto;
     font-size: 1.1em;
@@ -45,26 +45,27 @@ const Name = styled.h2`
 
 const Profile = () => (
   <ProfileWrapper>
-    <NameWrapper>
-      <h3>Hi, my name is</h3>
-      <Name>Thomas Maximini</Name>
-      <h3>and I am a freelance software engineer</h3>
-    </NameWrapper>
+    <h3>Hi, I'm Thomas 👋</h3>
 
+    <P>
+      A software engineer and and product manager living in Germany.
+      <br />
+      Currently I am working with the good folks over at{' '}
+      <a href="https://www.crowdcast.io/" alt="Crowdcast.io">
+        CrowdCast
+      </a>
+      .
+    </P>
     <ProfilePic src={pic} />
     <P>
-      My focus is on interactive web and mobile applications based on modern and
-      open web technologies.
+      I design and implement systems and services around web and cloud
+      technologies. <br /> You can find out more about what I use{' '}
+      <a href="/uses">here</a>.
     </P>
     <P>
-      You can check out my <Link to="/blog">blog</Link> or some of my{" "}
-      <Link to="/work">work</Link> while you're here.
-      <br /> This is what I <Link to="/uses">use</Link> for work.
-    </P>
-    <P>
-      You can also find me on <a href="http://github.com/tmaximini">Github</a>,{" "}
-      <a href="http://twitter.com/tmaximini">Twitter</a> or send me an{" "}
-      <a href="mailto:tmaximini@gmail.com">E-Mail</a>.
+      You can check out my <Link to="/blog">blog</Link>, or find me
+      online on <a href="http://github.com/tmaximini">Github</a> and{' '}
+      <a href="http://twitter.com/tmaximini">Twitter</a>.
     </P>
   </ProfileWrapper>
 );

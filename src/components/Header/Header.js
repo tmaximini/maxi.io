@@ -50,7 +50,7 @@ const Header = () => (
       <Logo to="/">Maxi.io</Logo>
       <nav>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/work">Work</NavLink>
+        {/* <NavLink to="/work">Work</NavLink> */}
         <NavLink to="/blog">Blog</NavLink>
       </nav>
     </Inner>
