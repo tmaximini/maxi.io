@@ -45,7 +45,7 @@ const Name = styled.h2`
 
 const Profile = () => (
   <ProfileWrapper>
-    <h3>Hi, I'm Thomas 👋</h3>
+    <h3>Hi there, I'm Thomas 👋</h3>
 
     <P>
       A software engineer and and product manager living in Germany.
@@ -59,21 +59,20 @@ const Profile = () => (
     <ProfilePic src={pic} />
     <P>
       I design and implement systems and services around web and cloud
-      technologies. <br /> You can find out more about what I use{' '}
-      <a href="/uses">here</a>.
+      technologies. <br />
+      <a href="/uses">Here</a> are some of things I use daily.
     </P>
     <P>
       You can check out my <Link to="/blog">blog ✍️</Link> , or find
-      me online on <a href="http://github.com/tmaximini">Github</a>{' '}
+      me online on <a href="http://github.com/tmaximini">Github </a>{' '}
       and <a href="http://twitter.com/tmaximini">Twitter 🐦</a>.
     </P>
     <P>
       I am lucky to work fully remote these days. <br />
-      When I find the time I love to travel 🌴 and take photos 📷.{' '}
-      <br />
-      Check out my{' '}
-      <a href="https://www.instagram.com/mxmn82">Instagram</a> for
-      these.
+      When I find the time I love to travel 🌴 and{' '}
+      <a href="https://www.instagram.com/mxmn82">
+        take photos 📷
+      </a>. <br />
     </P>
   </ProfileWrapper>
 );
