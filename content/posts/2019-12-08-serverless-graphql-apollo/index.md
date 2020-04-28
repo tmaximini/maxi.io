@@ -8,7 +8,6 @@ date: '20191210'
 type: 'post'
 keywords: 'GraphQL, Apollo, AWS, serverless, DynamoDB'
 tags:
-  - Node
   - Apollo
   - Serverless
 year: 2019

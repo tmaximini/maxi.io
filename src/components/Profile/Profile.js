@@ -63,9 +63,17 @@ const Profile = () => (
       <a href="/uses">here</a>.
     </P>
     <P>
-      You can check out my <Link to="/blog">blog</Link>, or find me
-      online on <a href="http://github.com/tmaximini">Github</a> and{' '}
-      <a href="http://twitter.com/tmaximini">Twitter</a>.
+      You can check out my <Link to="/blog">blog ✍️</Link> , or find
+      me online on <a href="http://github.com/tmaximini">Github</a>{' '}
+      and <a href="http://twitter.com/tmaximini">Twitter 🐦</a>.
+    </P>
+    <P>
+      I am lucky to work fully remote these days. <br />
+      When I find the time I love to travel 🌴 and take photos 📷.{' '}
+      <br />
+      Check out my{' '}
+      <a href="https://www.instagram.com/mxmn82">Instagram</a> for
+      these.
     </P>
   </ProfileWrapper>
 );
