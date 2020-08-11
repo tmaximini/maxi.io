@@ -34,7 +34,7 @@ const Uses = () => (
       </li>
       <li>
         From time to time I still go back to{' '}
-        <a href="https://www.sublimetext.com/3">Sublime Text 3</a> ot
+        <a href="https://www.sublimetext.com/3">Sublime Text 3</a> or
         fire up{' '}
         <a href="https://www.jetbrains.com/webstorm/">Webstorm</a>.
       </li>
