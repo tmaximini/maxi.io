@@ -56,6 +56,7 @@ const Uses = () => (
     <h3>Programming</h3>
     <ul>
       <li>Javascript 😃</li>
+      <li>Typescript</li>
       <li>React</li>
       <li>Node.js</li>
       <li>AWS</li>
