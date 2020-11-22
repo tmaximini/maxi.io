@@ -26,6 +26,8 @@ const getTagIcon = tag => {
       return <Icons.Angular />;
     case 'lambda':
       return <Icons.Lambda />;
+    case 'next.js':
+      return <Icons.Next />;
   }
 };
 
@@ -37,6 +39,10 @@ const IconTag = styled.li`
   align-items: center;
   span {
     margin-right: 4px;
+  }
+  svg {
+    height: 60px;
+    width: 120px;
   }
 `;
 

@@ -37,7 +37,8 @@ code[class*='language-'] {
 
 :not(pre) > code[class*='language-'] {
   margin-right: 5px;
-  background-color: rgba(0, 0, 0, 0.9) !important;
+  background-color: #4d4d4d !important;
   padding-left: 5px !important;
   white-space: pre !important;
+  color: white;
 }
