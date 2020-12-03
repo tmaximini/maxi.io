@@ -42,7 +42,7 @@ const IconTag = styled.li`
   }
   svg {
     height: 60px;
-    width: 120px;
+    max-width: 120px;
   }
 `;
 
