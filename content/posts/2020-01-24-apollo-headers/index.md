@@ -61,7 +61,7 @@ function createApolloClient(initialState = {}) {
   // our custom "afterware" that checks each response and saves the sessionID
   // if it contains an 'Authorization' header
   const afterwareLink = new ApolloLink((operation, forward) => {
-    forward(operation).map(response => {
+    return forward(operation).map(response => {
       const context = operation.getContext();
       const authHeader = context.response.headers.get(
         'Authorization',
