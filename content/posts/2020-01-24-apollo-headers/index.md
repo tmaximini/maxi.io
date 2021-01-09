@@ -107,7 +107,7 @@ By default, only the 6 [CORS-safelisted response headers](https://developer.mozi
 - [Last-Modified](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Last-Modified)
 - [Pragma](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Pragma)
 
-The default ApolloServer from `apollo-server` can only take a boolean attribute `cors. If set to true, apollo-server will add the cors middleware but with default values.
+The default ApolloServer from `apollo-server` can only take a boolean attribute `cors`. If set to true, apollo-server will add the cors middleware but with default values.
 
 This is not enough in our case! As we learned this means it would just expose the 6 headers above.
 
