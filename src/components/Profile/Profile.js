@@ -48,7 +48,7 @@ const Profile = () => (
     <h3>Hi there, I'm Thomas 👋</h3>
 
     <P>
-      A software engineer and and product manager living in Germany.
+      A software engineer and product manager living in Germany.
       <br />
       Currently I am working with the good folks over at{' '}
       <a href="https://www.crowdcast.io/" alt="Crowdcast.io">
