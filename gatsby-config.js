@@ -1,6 +1,6 @@
-const config = require("./config");
+const config = require('./config');
 
-const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
   siteMetadata: {
@@ -16,7 +16,7 @@ module.exports = {
     ogLanguage: config.ogLanguage,
     author: config.author,
     twitter: config.userTwitter,
-    facebook: config.ogSiteName
+    facebook: config.ogSiteName,
   },
   plugins: [
     {
@@ -27,8 +27,8 @@ module.exports = {
         head: false,
         // enable ip anonymization
         anonymize: true,
-        cookieDomain: "thomasmaximini.com"
-      }
+        cookieDomain: 'thomasmaximini.com',
+      },
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
@@ -38,15 +38,15 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/posts`,
-        name: "posts"
-      }
+        name: 'posts',
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `projects`,
-        path: `${__dirname}/content/projects`
-      }
+        path: `${__dirname}/content/projects`,
+      },
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -58,23 +58,23 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1120,
-              linkImagesToOriginal: false
-            }
-          }
-        ]
-      }
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
     },
-    "gatsby-plugin-styled-components",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    'gatsby-plugin-styled-components',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
         // Setting a color is optional.
         color: `tomato`,
         // Disable the loading spinner.
-        showSpinner: false
-      }
+        showSpinner: false,
+      },
     },
     {
       resolve: `gatsby-remark-images`,
@@ -98,8 +98,8 @@ module.exports = {
         // will be rendered at 50px.
         //
         // Defaults to false.
-        sizeByPixelDensity: false
-      }
+        sizeByPixelDensity: false,
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -110,10 +110,9 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `static/logo.png` // This path is relative to the root of the site.
-      }
+        icon: `static/logo.png`, // This path is relative to the root of the site.
+      },
     },
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-netlify-cache"
-  ]
+    'gatsby-plugin-sitemap',
+  ],
 };
