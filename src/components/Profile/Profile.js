@@ -56,6 +56,7 @@ const Profile = () => (
       </a>
       .
     </P>
+
     <ProfilePic src={pic} />
     <P>
       I design and implement systems and services around web and cloud
